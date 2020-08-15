@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class login_activity extends AppCompatActivity {
 
     Button loginBtn;
-    TextView forgetpwd;
+    TextView forgetpwd,register;
     EditText un,pwd;
 
     @Override
@@ -24,6 +24,7 @@ public class login_activity extends AppCompatActivity {
         forgetpwd = findViewById(R.id.login_forgetpassword);
         un = findViewById(R.id.login_username);
         pwd = findViewById(R.id.login_password);
+        register = findViewById(R.id.login_btn_register);
     }
 
     @Override
@@ -44,18 +45,15 @@ public class login_activity extends AppCompatActivity {
             }
         });
 
+        register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                navigateToActivityRegister();
+            }
+        });
+
     }
 
-//    private void checkAdminLogin() {
-//
-//        String username = un.getText().toString();
-//        String password = pwd.getText().toString();
-//
-//        if(username == "admin" && password == "admin" )
-//        {
-//            navigateToActivityAdmin();
-//        }
-//    }
 
     public void navigateToActivitySecond()
     {
@@ -69,5 +67,10 @@ public class login_activity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void navigateToActivityRegister()
+    {
+        Intent intent = new Intent(login_activity.this, ragistratiion.class);
+        startActivity(intent);
+    }
 
 }
