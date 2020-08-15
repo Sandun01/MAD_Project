@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".app_woofprofile_menu">
+
+    <!--Top menue bar begis-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginTop="0dp"
+        android:background="@color/colorTopMenueBackgroud"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/app_logo_top"
+            android:layout_width="140dp"
+            android:layout_height="70dp"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/logo_top" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:fontFamily="@font/baloo"
+            android:text="@string/app_top_txtProfile"
+            android:textColor="@color/colorTheme"
+            android:textSize="50sp" />
+
+    </LinearLayout>
+    <!--Top menue bar ends-->
+
+
+    <!--body start-->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="70dp"
+        android:layout_marginBottom="70dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="169dp"
+            android:layout_height="135dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:contentDescription="@string/app_top_txtProfile"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_app_bottomnavibar_profile" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="@string/loginActivity_usernameInput"
+            android:textColor="@color/colorBtnblack"
+            android:textSize="34sp"
+            app:layout_constraintStart_toEndOf="@+id/imageView"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/woofprofile_menu_adsbtn"
+            android:layout_width="280dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/btn_normal_common"
+            android:text="@string/woofprofile_menue_ads"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+        <Button
+            android:id="@+id/woofprofile_menu_profilebtn"
+            android:layout_width="280dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/btn_normal_common"
+            android:text="@string/woofprofile_menue_editprof"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/woofprofile_menu_adsbtn" />
+
+        <Button
+            android:id="@+id/woofprofile_menu_ordersbtn"
+            android:layout_width="280dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/btn_normal_common"
+            android:text="@string/woofprofile_menue_orders"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/woofprofile_menu_profilebtn" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <!--body end-->
+
+
+    <!--Bottom navigation bar begins-->
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/app_bottom_navigationbar"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/colorBtnblack"
+        app:itemIconSize="50dp"
+        app:itemIconTint="@drawable/app_bottom_navibar_selector"
+        app:menu="@menu/app_bottom_navibar_menue" />
+
+    <!--Bottom navigation bar Ends-->
+
+</RelativeLayout>

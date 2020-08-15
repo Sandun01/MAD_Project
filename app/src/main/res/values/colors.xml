@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#03DAC5</color>
+    <color name="colorTheme">#FF5050</color>
+    <color name="colorBtnTheme">#6A6A6A</color>
+    <color name="colorBtnLayout">#8A6A6A6A</color>
+    <color name="colorBtnwhite">#8AFFFFFF</color>
+    <color name="colorBtnblack">#000000</color>
+    <color name="colorTopMenueBackgroud">#F1F0F2</color>
+    <color name="colorBottomNavBar">#D1D0D1</color>
+    <color name="colorWoofCareList">#FAF9EA</color>
+    <color name="colorWoofcareOrgName">#18014E</color>
+
+    <color name="colorCommonButton">#A3D4FB</color>
+    <color name="colorlistbackRed">#9FFFBAB5</color>
+    <color name="colorlistbackBlue">#DAEDFB</color>
+    <color name="colorlistbackGreen">#E8FFCE</color>
+    <color name="colorOrderbutton">#000E5A</color>
+    <color name="colorOrderviewBtn">#F9D4FF</color>
+
+</resources>

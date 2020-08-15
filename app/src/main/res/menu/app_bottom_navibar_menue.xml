@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/bottomNaviBar_woofCorner"
+        android:icon="@drawable/ic_app_bottomnavibar_corner"
+        android:title=""/>
+
+    <item
+        android:id="@+id/bottomNaviBar_woofShop"
+        android:icon="@drawable/ic_app_bottomnavibar_shop"
+        android:title="" />
+
+    <item
+        android:id="@+id/bottomNaviBar_woofCare"
+        android:icon="@drawable/ic_app_bottomnavibar_care"
+        android:title="" />
+
+    <item
+        android:id="@+id/bottomNaviBar_woofProfile"
+        android:icon="@drawable/ic_app_bottomnavibar_profile"
+        android:title="" />
+
+</menu>

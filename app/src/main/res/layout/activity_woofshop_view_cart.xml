@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".woofshop_view_cart">
+
+    <!--Top menue bar begis-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginTop="0dp"
+        android:background="@color/colorTopMenueBackgroud"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/app_logo_top"
+            android:layout_width="140dp"
+            android:layout_height="70dp"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/logo_top" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:fontFamily="@font/baloo"
+            android:text="@string/app_top_txtShop"
+            android:textColor="@color/colorTheme"
+            android:textSize="50sp" />
+
+    </LinearLayout>
+    <!--Top menue bar ends-->
+
+    <!--body start-->
+
+    <!--Bottom navigation bar begins-->
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="70dp"
+        android:layout_marginBottom="70dp">
+
+        <TextView
+            android:id="@+id/textView20"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/woofshop_cart_txtCart"
+            android:textSize="36sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            app:cardBackgroundColor="@color/colorlistbackGreen"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView20">
+
+            <TextView
+                android:id="@+id/textView55"
+                android:layout_width="120dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:fontFamily="sans-serif"
+                android:text="@string/woofshop_cart_table_columnTXTproduct"
+                android:textColor="@color/colorBtnTheme"
+                android:textSize="25sp" />
+
+            <TextView
+                android:id="@+id/woofshop_orders_productname"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginStart="135dp"
+                android:layout_marginLeft="135dp"
+                android:layout_marginTop="5dp"
+                android:width="50dp"
+                android:text="@string/woofshop_productname"
+                android:textColor="@color/colorBtnblack"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/woofshop_cart_quantity"
+                android:layout_width="120dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="55dp"
+                android:fontFamily="sans-serif"
+                android:text="@string/woofshop_txtQuantity"
+                android:textColor="@color/colorBtnTheme"
+                android:textSize="25sp" />
+
+            <TextView
+                android:id="@+id/woofshop_orders_qty"
+                android:layout_width="match_parent"
+                android:layout_height="39dp"
+                android:layout_marginStart="135dp"
+                android:layout_marginLeft="135dp"
+                android:layout_marginTop="60dp"
+                android:width="50dp"
+                android:text="@string/woofshop_billqty"
+                android:textColor="@color/colorBtnblack"
+                android:textSize="23sp" />
+
+            <TextView
+                android:id="@+id/woofshop_orders_price"
+                android:layout_width="160dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="135dp"
+                android:layout_marginLeft="135dp"
+                android:layout_marginTop="110dp"
+                android:width="50dp"
+                android:text="@string/woofshop_price"
+                android:textColor="@color/colorBtnblack"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/woofshop_cart_disprice"
+                android:layout_width="120dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="100dp"
+                android:fontFamily="sans-serif"
+                android:text="@string/woofshop_cart_table_columnTXTprice"
+                android:textColor="@color/colorBtnTheme"
+                android:textSize="25sp" />
+
+            <ImageButton
+                android:id="@+id/imageButton3"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="340dp"
+                android:layout_marginTop="105dp"
+                android:background="#34F3F1F1"
+                android:tint="@color/design_default_color_error"
+                app:srcCompat="@drawable/ic_woofshop_cart_deletebtn" />
+
+        </androidx.cardview.widget.CardView>
+
+        <Button
+            android:id="@+id/calcutalebill"
+            android:layout_width="205dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="32dp"
+            android:background="@drawable/woofshop_order_button2"
+            android:fontFamily="monospace"
+            android:text="@string/woofshop_cart_btnCalculate"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.462"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardView3" />
+
+        <!--body end-->
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/app_bottom_navigationbar"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/colorBtnblack"
+        app:itemIconSize="50dp"
+        app:itemIconTint="@drawable/app_bottom_navibar_selector"
+        app:menu="@menu/app_bottom_navibar_menue" />
+
+    <!--Bottom navigation bar Ends-->
+
+</RelativeLayout>
