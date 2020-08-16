@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">WOOF</string>
 
+<!--  Login  -->
     <string name="loginActivity_headerTxt">Login</string>
     <string name="loginActivity_usernameInput">Username</string>
     <string name="loginActivity_passwordInput">Password</string>
@@ -9,95 +10,23 @@
     <string name="loginActivity_RegText1">Don\'t have an account ?</string>
     <string name="loginActivity_RegText2">Register now</string>
 
+<!--   Common  -->
     <string name="app_top_txtShop">Shop</string>
     <string name="app_top_txtAds">Corner</string>
     <string name="app_top_txtCare">Care</string>
     <string name="app_top_txtProfile">Profile</string>
     <string name="app_home">HOME</string>
+    <string name="app_top_txtadmin">Admin</string>
+
 
 <!--  Woof Care -->
-
     <string name="woofcare_findclinic_headertxt">Find Nearest Clinic</string>
     <string name="woofcare_findclinic_searchtxt">Search Location</string>
     <string name="woofcare_findclinic_clinic_name">Sample Organization</string>
     <string name="woofcare_findclinic_clinic_des">Description</string>
     <string name="woofcare_findclinic_clinic_viewButton">View</string>
     <string name="woofcare_findclinic_clinic_loc">Location</string>
-
-
-    <string name="woofadmin_menu_admiprof">Admin Profile</string>
-    <string name="woofadmin_menu_itembtn">Item Management</string>
-    <string name="woofadmin_menu_orders">Customer Orders</string>
-    <string name="woofadmin_menu_care">Care Organizations</string>
-
-
-    <string name="woofprofile_menue_ads">My Advertisements</string>
-    <string name="woofprofile_menue_editprof">Edit Profile</string>
-    <string name="woofprofile_menue_orders">My Orders</string>
-    <string name="app_top_txtadmin">Admin</string>
     <string name="woofcare_viewAd_desDetails">Golden white, 28 days, Healthy</string>
-
-<!--    Woof Shop -->
-    <string name="woofshop_txtProductname">Product:</string>
-    <string name="woofshop_productname">Large leather collar with spikes</string>
-    <string name="woofshop_txtStock">Stock :</string>
-    <string name="woofshop_stock">133</string>
-    <string name="woofshop_txtprice">Price :</string>
-    <string name="woofshop_price">1200.00</string>
-    <string name="woofshop_viewbtn">view</string>
-    <string name="woofshop_txtDescription">Description</string>
-    <string name="woofshop_description">A quality leather collar made from leather and aluminium. Imported from Germany. Suitable for large dogs.</string>
-    <string name="woofshop_btn_addtocart">add to cart</string>
-    <string name="woofshop_txtQuantity">Quantity :</string>
-    <string name="woofshop_cart_txtCart">Cart</string>
-    <string name="woofshop_cart_table_columnTXTproduct">Product</string>
-    <string name="woofshop_cart_table_columnTXTprice">Price</string>
-    <string name="woofshop_cart_table_columnTXTqty">qty.</string>
-    <string name="woofshop_cart_table_columnTXTdelete">del.</string>
-    <string name="woofshop_billqty">1</string>
-    <string name="woofshop_cart_btnCalculate">Calculate Bill</string>
-    <string name="woofshop_bill_txtBill">Bill</string>
-    <string name="woofshop_bill_txtTOTAL">TOTAL :</string>
-    <string name="woofshop_btn_next">Next</string>
-    <string name="woofshop_txtplaceOrder">Oder Details</string>
-    <string name="woofshop_order_name">Name</string>
-    <string name="woofshop_order_address">Address</string>
-    <string name="woofshop_order_phone">Phone Number</string>
-    <string name="woofshop_order_text">We deliver your order to your doorsteps....</string>
-    <string name="woofshop_placeorder_btn">Place Order</string>
-    <string name="woofshop_oder_postal">Postal Code</string>
-    <string name="woofshop_orders_delete">Cancel Order</string>
-    <string name="woofshop_orders_cusname">Customer Name</string>
-    <string name="woofshop_btn_confirmbuy">Confirm and Buy</string>
-
-<!--  Woof corner -->
-    <string name="woofcorner_viewAd_dogtype">Labrador Puppies</string>
-    <string name="woofcorner_viewAd_price">Rs. 40 000/=</string>
-    <string name="woofcorner_viewAd_description">Description:</string>
-    <string name="woofcorner_viewAd_back">Back</string>
-    <string name="woofcorner_showAds_location">Location</string>
-    <string name="woofcorner_showAd_viewButton">View</string>
-    <string name="woofcorner_showAd_description">Labrador Puppies</string>
-    <string name="woofcorner_showAd_details">Golden, 28 days, Healthy</string>
-    <string name="woofcorner_showAd_price">Rs. 40 000/=</string>
-    <string name="woofcorner_myAds_headerText">My Advertisments</string>
-    <string name="woofcorner_view_post_phone">Contact No :</string>
-    <string name="woofcorner_view_post_Number">071-2546324</string>
-    <string name="woofcorner_view_post_email">Email :</string>
-    <string name="woofcorner_view_post_mail">saman@gmail.com</string>
-    <string name="woofcorner_view_post_edit">Edit</string>
-    <string name="woofcorner_edit_post_breed">Dog Breed/Type</string>
-    <string name="woofcorner_edit_post_price">Price :</string>
-    <string name="woofcorner_edit_post_description">Description :</string>
-    <string name="woofcorner_edit_post_contact">Contact No :</string>
-    <string name="woofcorner_edit_post_email">Email :</string>
-    <string name="woofcorner_edit_post_changebut">Change Photo</string>
-    <string name="woofcorner_edit_post_savebut">Save</string>
-    <string name="woofcorner_view_post_delete">Remove</string>
-    <string name="woofcorner_edit_post_cancel">Cancel</string>
-    <string name="woofcorner_add_post_addPhoto">Add Photo</string>
-    <string name="woofcorner_add_post_postbut">Post</string>
-    <string name="woofcorner_add_post_cancelbut">Cancel</string>
 
     <string name="woofcare_clinicdetails_headtxt">CLINIC DETAILS</string>
     <string name="woofcare_clinicdetails_name">Clinic Name: VCare Veterinarian Center</string>
@@ -130,6 +59,27 @@
     <string name="woofadmin_orgadd_owner">Owner Name</string>
     <string name="woofadmin_orgadd_add">Add Clinic</string>
     <string name="woofadmin_org_addbutton">Add New Org</string>
+
+<!--    Woof admin menue-->
+    <string name="woofadmin_menu_admiprof">Admin Profile</string>
+    <string name="woofadmin_menu_itembtn">Item Management</string>
+    <string name="woofadmin_menu_orders">Customer Orders</string>
+    <string name="woofadmin_menu_care">Care Organizations</string>
+
+
+    <!--    Woof Shop production -->
+    <string name="woofshop_txtProductname">Product:</string>
+    <string name="woofshop_productname">Large leather collar with spikes</string>
+    <string name="woofshop_txtStock">Stock :</string>
+    <string name="woofshop_stock">133</string>
+    <string name="woofshop_txtprice">Price :</string>
+    <string name="woofshop_price">1200.00</string>
+    <string name="woofshop_viewbtn">view</string>
+    <string name="woofshop_txtDescription">Description</string>
+    <string name="woofshop_description">A quality leather collar made from leather and aluminium. Imported from Germany. Suitable for large dogs.</string>
+    <string name="woofshop_btn_addtocart">add to cart</string>
+    <string name="woofshop_txtQuantity">Quantity :</string>
+
     <string name="woofown_pro_txtTITLE">WOOF OWNER PROFILE</string>
     <string name="woofown_pro_txtusername">Username :</string>
     <string name="woofown_pro_usernameD">Wasnatha</string>
@@ -142,12 +92,44 @@
     <string name="woofown_pro_logout_BTN_txt">Log out</string>
     <string name="woofown_pro_update_BTN_txt">Update</string>
     <string name="woofown_pro_updateTitle">UPDATE PROFILE</string>
+    
     <string name="woofadminItemTbleTXT_view">view</string>
     <string name="woofadminBtnAddItem">Add item</string>
     <string name="woofadminItemID">001</string>
     <string name="woofadmin_delete_item_btntxt">Delete</string>
     <string name="woofadmin_update_item_btntxt">Update</string>
     <string name="woofadmin_add_item_btntxt">Add</string>
+
+    <!--    Woof admin profile-->
+    <string name="adminUsernameTXT">Username :</string>
+    <string name="adminUsernameD">ADMIN 1</string>
+    <string name="adminPasswordTXT">Password :</string>
+    <string name="adminPasswordD">***********</string>
+    <string name="adminBTNupdatepass">Update Password</string>
+
+    <!-- woof shop cart & orders   -->
+    <string name="woofshop_cart_txtCart">Cart</string>
+    <string name="woofshop_cart_table_columnTXTproduct">Product</string>
+    <string name="woofshop_cart_table_columnTXTprice">Price</string>
+    <string name="woofshop_cart_table_columnTXTqty">qty.</string>
+    <string name="woofshop_cart_table_columnTXTdelete">del.</string>
+    <string name="woofshop_cart_btnCalculate">Calculate Bill</string>
+
+    <string name="woofshop_billqty">1</string>
+    <string name="woofshop_bill_txtBill">Bill</string>
+    <string name="woofshop_bill_txtTOTAL">TOTAL :</string>
+
+    <string name="woofshop_txtplaceOrder">Oder Details</string>
+    <string name="woofshop_order_name">Name</string>
+    <string name="woofshop_order_address">Address</string>
+    <string name="woofshop_order_phone">Phone Number</string>
+    <string name="woofshop_order_text">We deliver your order to your doorsteps....</string>
+    <string name="woofshop_placeorder_btn">Place Order</string>
+    <string name="woofshop_orders_delete">Cancel Order</string>
+    <string name="woofshop_orders_cusname">Customer Name</string>
+    <string name="woofshop_btn_confirmbuy">Confirm and Buy</string>
+
+    <!--    Woof profile login/registration -->
     <string name="signupTXT">Sign up</string>
     <string name="signupUsernameTxt">Username</string>
     <string name="signupPhoneTxt">Phone number</string>
@@ -157,10 +139,42 @@
     <string name="signupCreate_btn">Create Account</string>
     <string name="signuplogintxt">Already have an account? Login</string>
     <string name="adminprofileTXT">ADMIN PROFILE</string>
-    <string name="adminUsernameTXT">Username :</string>
-    <string name="adminUsernameD">ADMIN 1</string>
-    <string name="adminPasswordTXT">Password :</string>
-    <string name="adminPasswordD">***********</string>
-    <string name="adminBTNupdatepass">Update Password</string>
+
+
+<!--  Woof corner -->
+    <string name="woofcorner_viewAd_dogtype">Labrador Puppies</string>
+    <string name="woofcorner_viewAd_price">Rs. 40 000/=</string>
+    <string name="woofcorner_viewAd_description">Description:</string>
+    <string name="woofcorner_viewAd_back">Back</string>
+    <string name="woofcorner_showAds_location">Location</string>
+    <string name="woofcorner_showAd_viewButton">View</string>
+    <string name="woofcorner_showAd_description">Labrador Puppies</string>
+    <string name="woofcorner_showAd_details">Golden, 28 days, Healthy</string>
+    <string name="woofcorner_showAd_price">Rs. 40 000/=</string>
+    <string name="woofcorner_myAds_headerText">My Advertisments</string>
+    <string name="woofcorner_view_post_phone">Contact No :</string>
+    <string name="woofcorner_view_post_Number">071-2546324</string>
+    <string name="woofcorner_view_post_email">Email :</string>
+    <string name="woofcorner_view_post_mail">saman@gmail.com</string>
+    <string name="woofcorner_view_post_edit">Edit</string>
+    <string name="woofcorner_edit_post_breed">Dog Breed/Type</string>
+    <string name="woofcorner_edit_post_price">Price :</string>
+    <string name="woofcorner_edit_post_description">Description :</string>
+    <string name="woofcorner_edit_post_contact">Contact No :</string>
+    <string name="woofcorner_edit_post_email">Email :</string>
+    <string name="woofcorner_edit_post_changebut">Change Photo</string>
+    <string name="woofcorner_edit_post_savebut">Save</string>
+    <string name="woofcorner_view_post_delete">Remove</string>
+    <string name="woofcorner_edit_post_cancel">Cancel</string>
+    <string name="woofcorner_add_post_addPhoto">Add Photo</string>
+    <string name="woofcorner_add_post_postbut">Post</string>
+    <string name="woofcorner_add_post_cancelbut">Cancel</string>
+
+<!--    User profile interface -->
+    <string name="woofprofile_menue_ads">My Advertisements</string>
+    <string name="woofprofile_menue_editprof">Edit Profile</string>
+    <string name="woofprofile_menue_orders">My Orders</string>
+
+
 
 </resources>

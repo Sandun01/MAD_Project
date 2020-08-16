@@ -62,7 +62,7 @@
             android:id="@+id/imageView"
             android:layout_width="183dp"
             android:layout_height="146dp"
-            android:src="@drawable/ic_app_bottomnavibar_profile"
+            app:srcCompat="@drawable/ic_app_bottomnavibar_profile"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

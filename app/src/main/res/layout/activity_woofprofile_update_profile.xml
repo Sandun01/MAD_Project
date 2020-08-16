@@ -26,7 +26,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="1dp"
             android:fontFamily="@font/baloo_bhai"
-            android:text="@string/app_top_txtShop"
+            android:text="@string/app_top_txtProfile"
             android:textColor="@color/colorTheme"
             android:textSize="50sp" />
 
@@ -35,8 +35,6 @@
 
 
     <!--body start-->
-    <!--body end-->
-
 
     <!--Bottom navigation bar begins-->
 
@@ -64,7 +62,7 @@
             android:id="@+id/imageView"
             android:layout_width="183dp"
             android:layout_height="146dp"
-            android:src="@drawable/ic_app_bottomnavibar_profile"
+            app:srcCompat="@drawable/ic_app_bottomnavibar_profile"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -193,7 +191,7 @@
             app:layout_constraintVertical_bias="0.682" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
+    <!--body end-->
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/app_bottom_navigationbar"
         android:layout_width="match_parent"

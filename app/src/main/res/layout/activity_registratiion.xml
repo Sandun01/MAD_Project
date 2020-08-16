@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ragistratiion">
+    tools:context=".Registratiion">
 
     <TextView
         android:id="@+id/textView37"
@@ -74,6 +74,22 @@
         android:layout_marginTop="1dp"
         android:ems="10"
         android:inputType="textPersonName"
+        android:text="@string/woofshop_order_address"
+        android:textColor="@color/colorBtnTheme"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName13"
+        app:layout_constraintVertical_bias="0.256" />
+
+    <EditText
+        android:id="@+id/editTextTextPersonName19"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:ems="10"
+        android:inputType="textPersonName"
         android:text="@string/signupemailTxt"
         android:textColor="@color/colorBtnTheme"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -81,7 +97,7 @@
         app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName13"
-        app:layout_constraintVertical_bias="0.079" />
+        app:layout_constraintVertical_bias="0.078" />
 
     <EditText
         android:id="@+id/editTextTextPersonName12"

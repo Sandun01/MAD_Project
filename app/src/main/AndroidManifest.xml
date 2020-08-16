@@ -11,7 +11,7 @@
         android:theme="@style/AppTheme">
 
         <activity android:name=".admin_account" />
-        <activity android:name=".ragistratiion" />
+        <activity android:name=".Registratiion" />
         <activity android:name=".woofadmin_addItem" />
         <activity android:name=".woofadmin_selectedProductView" />
         <activity android:name=".woofadmin_viewProduct" />

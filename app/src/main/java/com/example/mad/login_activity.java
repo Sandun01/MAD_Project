@@ -69,7 +69,7 @@ public class login_activity extends AppCompatActivity {
 
     public void navigateToActivityRegister()
     {
-        Intent intent = new Intent(login_activity.this, ragistratiion.class);
+        Intent intent = new Intent(login_activity.this, Registratiion.class);
         startActivity(intent);
     }
 

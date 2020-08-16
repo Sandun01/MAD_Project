@@ -145,13 +145,13 @@
             android:layout_marginLeft="10dp"
             android:layout_marginEnd="9dp"
             android:layout_marginRight="9dp"
-            app:layout_constraintEnd_toStartOf="@+id/share"
+            app:layout_constraintEnd_toStartOf="@+id/share_ad"
             app:layout_constraintStart_toEndOf="@+id/textView5"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_baseline_favorite_border_24" />
 
         <ImageButton
-            android:id="@+id/share"
+            android:id="@+id/share_ad"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
