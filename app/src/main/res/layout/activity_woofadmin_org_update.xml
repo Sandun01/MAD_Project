@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".woofcare_show_clinics">
+    tools:context=".woofadmin_org_update">
 
     <!--Top menue bar begis-->
     <LinearLayout
@@ -39,7 +39,7 @@
         android:layout_height="match_parent"
         android:layout_marginTop="70dp"
 
-        android:background="@color/colorBottomNavBar"
+        android:background="@color/colorWoofCareList"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent">
@@ -72,6 +72,7 @@
             android:layout_marginLeft="32dp"
             android:layout_marginTop="28dp"
             android:text="@string/woofadmin_org_name"
+            android:textColor="#171616"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/woofadmin_orgadd_headertxt" />
@@ -94,6 +95,7 @@
             android:layout_marginLeft="32dp"
             android:layout_marginTop="24dp"
             android:text="@string/woofadmin_orgdetails_contact"
+            android:textColor="#171616"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/woofadmin_orgadd_name" />
@@ -116,6 +118,7 @@
             android:layout_marginLeft="32dp"
             android:layout_marginTop="24dp"
             android:text="@string/woofadmin_orgdetails_location"
+            android:textColor="#171616"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/woofadmin_orgadd_number" />
@@ -138,6 +141,7 @@
             android:layout_marginLeft="32dp"
             android:layout_marginTop="24dp"
             android:text="@string/woofadmin_orgdetails_city"
+            android:textColor="#171616"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/woofadmin_orgadd_address" />
@@ -160,6 +164,7 @@
             android:layout_marginLeft="32dp"
             android:layout_marginTop="24dp"
             android:text="@string/woofadmin_orgdetails_description"
+            android:textColor="#171616"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/woofadmin_orgadd_city" />
@@ -182,6 +187,7 @@
             android:layout_marginLeft="32dp"
             android:layout_marginTop="24dp"
             android:text="@string/woofadmin_orgdetails_owner"
+            android:textColor="#171616"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/woofadmin_orgadd_description" />
@@ -198,13 +204,14 @@
 
         <Button
             android:id="@+id/woofadmin_org_update"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="157dp"
+            android:layout_height="65dp"
             android:layout_marginTop="60dp"
             android:layout_marginBottom="120dp"
-            android:background="@drawable/button_login_fill"
+            android:background="@color/design_default_color_secondary_variant"
             android:text="@string/woofadmin_org_update"
             android:textColor="@color/colorTopMenueBackgroud"
+            android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"

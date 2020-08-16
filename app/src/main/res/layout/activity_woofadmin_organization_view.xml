@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".woofcare_show_clinics">
+    tools:context=".woofadmin_organization_view">
 
     <!--Top menue bar begis-->
     <LinearLayout
@@ -36,7 +36,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="70dp"
-        android:background="@color/colorBottomNavBar"
+        android:background="@color/colorTopMenueBackgroud"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent">
@@ -81,7 +81,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:text="@string/woofadmin_organization_headtxt"
-            android:textColor="@color/colorBtnblack"
+            android:textColor="@color/colorPrimaryDark"
             android:textSize="30sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.497"
@@ -115,10 +115,10 @@
 
         <Button
             android:id="@+id/woofadmin_org_addbutton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="132dp"
+            android:layout_height="56dp"
             android:layout_marginTop="156dp"
-            android:background="@drawable/button_login_fill"
+            android:background="@drawable/btn_normal_common"
             android:text="@string/woofadmin_org_addbutton"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".woofcare_show_clinics">
+    tools:context=".woofadmin_org_details">
 
     <!--Top menue bar begis-->
     <LinearLayout
@@ -201,7 +201,7 @@
             android:layout_marginLeft="96dp"
             android:layout_marginTop="60dp"
             android:layout_marginBottom="120dp"
-            android:background="@drawable/button_login_fill"
+            android:background="@color/design_default_color_error"
             android:text="@string/woofadmin_org_delete"
             android:textColor="@color/colorTopMenueBackgroud"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -213,7 +213,7 @@
             android:id="@+id/woofadmin_org_update"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/button_login_fill"
+            android:background="@color/design_default_color_secondary_variant"
             android:text="@string/woofadmin_org_update"
             android:textColor="@color/colorTopMenueBackgroud"
             app:layout_constraintBaseline_toBaselineOf="@+id/woofadmin_org_delete"

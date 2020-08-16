@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorBottomNavBar"
-    tools:context=".woofcare_show_clinics">
+    tools:context=".woofcare_clinc_details">
 
     <!--Top menue bar begis-->
     <LinearLayout
@@ -46,7 +46,7 @@
         android:layout_height="match_parent"
         android:layout_marginTop="70dp"
         android:layout_marginBottom="70dp"
-        android:background="@color/colorBottomNavBar"
+        android:background="@color/colorWoofCareList"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent">
@@ -149,8 +149,8 @@
 
         <TextView
             android:id="@+id/woofadmin_orgadd_owneretails_owner"
-            android:layout_width="360dp"
-            android:layout_height="40dp"
+            android:layout_width="361dp"
+            android:layout_height="67dp"
             android:layout_marginStart="32dp"
             android:layout_marginLeft="32dp"
             android:layout_marginTop="16dp"

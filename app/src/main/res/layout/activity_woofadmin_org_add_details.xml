@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".woofcare_show_clinics">
+    tools:context=".woofadmin_org_addDetails">
 
     <!--Top menue bar begis-->
     <LinearLayout
@@ -195,19 +195,19 @@
 
         <Button
             android:id="@+id/woofadmin_org_update"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="135dp"
+            android:layout_height="71dp"
             android:layout_marginTop="32dp"
-            android:layout_marginBottom="120dp"
-            android:background="@drawable/button_login_fill"
+            android:layout_marginBottom="40dp"
+            android:background="@color/colorPrimary"
             android:text="@string/woofadmin_orgadd_add"
             android:textColor="@color/colorTopMenueBackgroud"
+            android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView41"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintVertical_bias="1.0" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

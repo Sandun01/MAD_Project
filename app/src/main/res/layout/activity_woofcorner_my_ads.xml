@@ -5,7 +5,7 @@
     android:id="@+id/postad"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".woofcare_show_clinics">
+    tools:context=".woofcorner_myAds">
 
     <!--Top menue bar begis-->
     <LinearLayout
