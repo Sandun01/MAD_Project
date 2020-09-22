@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,6 +15,23 @@ public class login_activity extends AppCompatActivity {
     Button loginBtn;
     TextView forgetpwd,register;
     EditText un,pwd;
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        //check user is logged in
+        SessionManagement sessionManagement = new SessionManagement(login_activity.this);
+        String isLoginUname = sessionManagement.getSession();
+
+        System.out.println(isLoginUname);
+
+        if(!isLoginUname.equals("E")){
+            //user logged in navigate to Admin home
+            navigateToActivityAdmin();
+        }
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,19 +49,45 @@ public class login_activity extends AppCompatActivity {
     protected void onResume() {
 
         super.onResume();
+//        loginBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                navigateToActivitySecond();
+//            }
+//        });
+
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                navigateToActivitySecond();
+
+//              System.out.println("aaaaaaaa "+pwd.toString());
+                String unameInput = un.getText().toString();
+                String pwdInput = pwd.getText().toString();
+
+                if(unameInput.equals("admin") && pwdInput.equals("admin")) {
+                    //login Session
+                    Admin admin = new Admin("Admin", "Admin");
+
+                    SessionManagement sessionManagement = new SessionManagement(login_activity.this);
+                    sessionManagement.saveSession(admin);
+                    Toast.makeText(getApplicationContext(), "Admin Login success",Toast.LENGTH_SHORT).show();
+
+                    //Navigate to admin home
+                    navigateToActivityAdmin();
+                }
+                else {
+                    Toast.makeText(getApplicationContext(), "Username or Password is Incorrect",Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
 
-        forgetpwd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-               navigateToActivityAdmin();
-            }
-        });
+//        forgetpwd.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//               navigateToActivityAdmin();
+//            }
+//        });
 
         register.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,6 +108,7 @@ public class login_activity extends AppCompatActivity {
     public void navigateToActivityAdmin()
     {
         Intent intent = new Intent(login_activity.this, woofadmin_menu.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
     }
 
