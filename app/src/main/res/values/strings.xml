@@ -162,5 +162,10 @@
     <string name="adminPasswordTXT">Password :</string>
     <string name="adminPasswordD">***********</string>
     <string name="adminBTNupdatepass">Update Password</string>
+    <string name="etproductname">Enter Product Name</string>
+    <string name="etinputProductqty">Enter Quantity</string>
+    <string name="etinputdescript">Enter Description</string>
+    <string name="etinputUP">Enter unit price</string>
+    <string name="etinputID">Enter ID</string>
 
 </resources>

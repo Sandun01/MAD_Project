@@ -68,7 +68,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/editTextTextPersonName8"
+            android:id="@+id/EtinputProductname"
             android:layout_width="300dp"
             android:layout_height="48dp"
             android:ems="10"
@@ -94,7 +94,7 @@
             app:layout_constraintVertical_bias="0.654" />
 
         <EditText
-            android:id="@+id/editTextTextPersonName10"
+            android:id="@+id/EtinputDescription"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -135,7 +135,7 @@
             app:layout_constraintVertical_bias="0.97" />
 
         <Button
-            android:id="@+id/button4"
+            android:id="@+id/btnAddProduct"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="#4CAF50"
