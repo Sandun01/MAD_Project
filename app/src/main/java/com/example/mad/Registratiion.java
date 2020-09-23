@@ -1,5 +1,6 @@
 package com.example.mad;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.ContactsContract;
@@ -10,8 +11,14 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -23,7 +30,21 @@ public class Registratiion extends AppCompatActivity {
     Button btnReg;
     TextView navLogin;
     EditText unameInput, pwd1Input, pwd2input, phoneInput, emailInput;
-    DatabaseReference dbref;
+    FirebaseAuth mAuth;
+    ProgressDialog loadBar;
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        //if user already login
+        if(mAuth.getCurrentUser() != null)
+        {
+            Intent intent = new Intent(Registratiion.this, Home.class);
+            startActivity(intent);
+        }
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +61,9 @@ public class Registratiion extends AppCompatActivity {
         btnReg = findViewById(R.id.btn_crate_account);
         navLogin = findViewById(R.id.btn_navlogin);
 
+        mAuth = FirebaseAuth.getInstance();
+        loadBar = new ProgressDialog(Registratiion.this);
+
     }
 
     @Override
@@ -53,19 +77,19 @@ public class Registratiion extends AppCompatActivity {
 
                 //check fields are empty
                 if( TextUtils.isEmpty(unameInput.getText().toString()) ){
-                    Toast.makeText(getApplicationContext(), "Please enter username", Toast.LENGTH_SHORT).show();
+                    displayError(unameInput,"Please enter username");
                 }
                 else if( TextUtils.isEmpty(phoneInput.getText().toString()) ){
-                    Toast.makeText(getApplicationContext(), "Please enter phone number", Toast.LENGTH_SHORT).show();
+                    displayError(phoneInput,"Please enter phone number");
                 }
                 else if( TextUtils.isEmpty(emailInput.getText().toString()) ){
-                    Toast.makeText(getApplicationContext(), "Please enter email", Toast.LENGTH_SHORT).show();
+                    displayError(emailInput,"Please enter email");
                 }
                 else if( TextUtils.isEmpty(pwd1Input.getText().toString()) ){
-                    Toast.makeText(getApplicationContext(), "Please enter Password", Toast.LENGTH_SHORT).show();
+                    displayError(pwd1Input,"Please enter Password");
                 }
                 else if( TextUtils.isEmpty(pwd2input.getText().toString()) ){
-                    Toast.makeText(getApplicationContext(), "Please confirm Password", Toast.LENGTH_SHORT).show();
+                    displayError(pwd2input,"Please confirm Password");
                 }
                 else{
 
@@ -80,21 +104,58 @@ public class Registratiion extends AppCompatActivity {
 
                    if(chkPhone && chkEmail && chkPwd)
                    {
-                       String uname = unameInput.getText().toString();
-                       String pwd = pwd1Input.getText().toString();
-                       String email = emailInput.getText().toString();
-                       String phone = phoneInput.getText().toString();
+                       final String uname = unameInput.getText().toString();
+                       final String pwd = pwd1Input.getText().toString();
+                       final String email = emailInput.getText().toString();
+                       final String phone = phoneInput.getText().toString();
 
-                       //add data to the database
-                       boolean checkAdded = addUserDetailsToDatabase(uname, phone, email, pwd);
+                       //display message to user
+                       loadBar.setTitle("Register New User");
+                       loadBar.setMessage("Please Wait while Validate the Details");
+                       loadBar.setCanceledOnTouchOutside(false);
+                       loadBar.show();
 
-                       //if data added sucessfully
-                       if (checkAdded){
-                           Toast.makeText(getApplicationContext(), "User Registered Successfully", Toast.LENGTH_SHORT).show();
 
-                           //navigate user to home page
-                           navigateToHome();
-                       }
+                       mAuth.createUserWithEmailAndPassword(email, pwd).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                           @Override
+                           public void onComplete(@NonNull Task<AuthResult> task) {
+                               if(task.isSuccessful())
+                               {
+                                   User user = new User();
+                                   user.setUsername(uname);
+                                   user.setPhone(phone);
+                                   user.setEmail(email);
+                                   user.setPassword(pwd);
+
+                                   FirebaseDatabase.getInstance().getReference("Users")
+                                           .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                                           .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                       @Override
+                                       public void onComplete(@NonNull Task<Void> task) {
+                                           if(task.isSuccessful())
+                                           {
+                                               loadBar.dismiss();
+                                               Toast.makeText(getApplicationContext(), "User Registered Successfully", Toast.LENGTH_SHORT).show();
+
+                                               //navigate to homepage
+                                               navigateToHome();
+                                           }
+                                           else {
+                                               loadBar.dismiss();
+                                               Toast.makeText(getApplicationContext(), "User Details Adding failed", Toast.LENGTH_SHORT).show();
+                                           }
+                                       }
+                                   });
+
+                               }
+                               else
+                               {
+                                   Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                   loadBar.dismiss();
+                               }
+                           }
+                       });
+
 
                    }
 
@@ -166,34 +227,6 @@ public class Registratiion extends AppCompatActivity {
 
     }
 
-    private boolean addUserDetailsToDatabase(String uname, String phone, String email, String pwd) {
-
-        try{
-            User user = new User();
-
-            //get firebase database instance
-            dbref = FirebaseDatabase.getInstance().getReference().child("User");
-
-            //initialize values
-            user.setUsername(uname);
-            user.setPassword(pwd);
-            user.setEmail(email);
-            user.setPhone(phone);
-
-            //add to database
-            dbref.push().setValue(user);
-
-            //display message to user
-            Toast.makeText(getApplicationContext(), "Successfully Created User", Toast.LENGTH_SHORT).show();
-            return true;
-        }
-        catch (Exception e){
-            System.out.println(e);
-            return false;
-        }
-
-    }
-
     public void navigateToLogin()
     {
         Intent intent = new Intent(Registratiion.this, login_activity.class);
@@ -204,6 +237,12 @@ public class Registratiion extends AppCompatActivity {
     {
         Intent intent = new Intent(Registratiion.this, Home.class);
         startActivity(intent);
+    }
+
+    public void displayError(EditText input, String error)
+    {
+        input.setError(error);
+        input.requestFocus();
     }
 
 }

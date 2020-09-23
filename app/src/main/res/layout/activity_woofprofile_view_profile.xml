@@ -178,7 +178,7 @@
             app:layout_constraintVertical_bias="0.679" />
 
         <Button
-            android:id="@+id/btnAdmin_addItem"
+            android:id="@+id/btnLogout"
             android:layout_width="125dp"
             android:layout_height="52dp"
             android:background="@color/colorTheme"

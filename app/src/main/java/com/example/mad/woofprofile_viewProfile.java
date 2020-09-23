@@ -10,17 +10,24 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class woofprofile_viewProfile extends AppCompatActivity {
 
-    Button toUpdateOwner;
+    Button toUpdateOwner, logoutBtn;
+    FirebaseAuth uAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_woofprofile_view_profile);
 
+        //initialize id's
         toUpdateOwner = findViewById(R.id.owner_update);
+        logoutBtn = findViewById(R.id.btnLogout);
+
+        //get firebase instance
+        uAuth = FirebaseAuth.getInstance();
 
         //bottom navigation bar begins
         BottomNavigationView bottomNavigationView = findViewById(R.id.app_bottom_navigationbar);
@@ -62,6 +69,20 @@ public class woofprofile_viewProfile extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+
+        logoutBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                //sign out
+                uAuth.signOut();
+
+                Intent intent = new Intent(woofprofile_viewProfile.this,login_activity.class);
+                startActivity(intent);
+
+            }
+        });
+
         toUpdateOwner.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -69,5 +90,6 @@ public class woofprofile_viewProfile extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
     }
 }

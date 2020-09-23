@@ -1,30 +1,49 @@
 package com.example.mad;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.preference.PreferenceGroup;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+
+import java.util.regex.Pattern;
 
 public class login_activity extends AppCompatActivity {
 
     Button loginBtn;
     TextView forgetpwd,register;
-    EditText un,pwd;
+    EditText email, pwd;
+    ProgressDialog loadingBar;
+    FirebaseAuth mAuth;
 
     @Override
     protected void onStart() {
         super.onStart();
 
-        //check user is logged in
+        //session management for admin
         SessionManagement sessionManagement = new SessionManagement(login_activity.this);
         String isLoginUname = sessionManagement.getSession();
 
-        if(!isLoginUname.equals("E")){
+        //if user already login
+        if(mAuth.getCurrentUser() != null)
+        {
+            //navigate to home
+            navigateToActivityHome();
+        }
+
+        else if(!isLoginUname.equals("E")){
             //user logged in navigate to Admin home
             navigateToActivityAdmin();
         }
@@ -36,11 +55,16 @@ public class login_activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_activity);
 
+        //initializing id's
         loginBtn = findViewById(R.id.login_btnlogin);
         forgetpwd = findViewById(R.id.login_forgetpassword);
-        un = findViewById(R.id.login_username);
+        email = findViewById(R.id.login_email);
         pwd = findViewById(R.id.login_password);
         register = findViewById(R.id.login_btn_register);
+
+        loadingBar = new ProgressDialog(login_activity.this);
+        mAuth = FirebaseAuth.getInstance();
+
     }
 
     @Override
@@ -52,22 +76,60 @@ public class login_activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                String unameInput = un.getText().toString();
+                //display message to user
+                loadingBar.setTitle("Login User");
+                loadingBar.setMessage("Please Wait while Validate the Details");
+                loadingBar.setCanceledOnTouchOutside(false);
+                loadingBar.show();
+
+                //get input details
+                String emailInput = email.getText().toString();
                 String pwdInput = pwd.getText().toString();
 
-                if(unameInput.equals("admin") && pwdInput.equals("admin")) {
-                    //login Session
-                    Admin admin = new Admin("Admin", "Admin");
+                //check valid email
+                if(checkemail())
+                {
+                    //check login
+                    mAuth.signInWithEmailAndPassword(emailInput,pwdInput).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
 
-                    SessionManagement sessionManagement = new SessionManagement(login_activity.this);
-                    sessionManagement.saveSession(admin);
-                    Toast.makeText(getApplicationContext(), "Admin Login success",Toast.LENGTH_SHORT).show();
+                            if(task.isSuccessful())
+                            {
+                                Toast.makeText(getApplicationContext(), "Login success",Toast.LENGTH_SHORT).show();
+                                //Navigate to admin home
+                                loadingBar.dismiss();
+                                navigateToActivityHome();
+                            }
+                            else
+                            {
+                                Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                loadingBar.dismiss();
+                            }
 
-                    //Navigate to admin home
-                    navigateToActivityAdmin();
+                        }
+                    });
+
                 }
-                else {
-                    Toast.makeText(getApplicationContext(), "Username or Password is Incorrect",Toast.LENGTH_SHORT).show();
+                else
+                {
+                    if(emailInput.equals("admin") && pwdInput.equals("admin")) {
+                        //login Session
+                        Admin admin = new Admin("Admin", "Admin");
+
+                        SessionManagement sessionManagement = new SessionManagement(login_activity.this);
+                        sessionManagement.saveSession(admin);
+                        Toast.makeText(getApplicationContext(), "Admin Login success",Toast.LENGTH_SHORT).show();
+
+                        //Navigate to admin home
+                        loadingBar.dismiss();
+                        navigateToActivityAdmin();
+                    }
+                    else {
+                        Toast.makeText(getApplicationContext(), "Username or Password is Incorrect",Toast.LENGTH_SHORT).show();
+                        loadingBar.dismiss();
+                    }
+
                 }
 
             }
@@ -76,7 +138,7 @@ public class login_activity extends AppCompatActivity {
         forgetpwd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               navigateToActivitySecond();
+               navigateToActivityHome();
             }
         });
 
@@ -89,8 +151,23 @@ public class login_activity extends AppCompatActivity {
 
     }
 
+    public boolean checkemail()
+    {
+        String emailInput = email.getText().toString();
+        String EmalFormat = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
 
-    public void navigateToActivitySecond()
+        if(Pattern.compile(EmalFormat).matcher(emailInput).matches())
+        {
+            return true;
+        }
+        else {
+            Toast.makeText(getApplicationContext(), "Please enter valid email", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+    }
+
+    public void navigateToActivityHome()
     {
         Intent intent = new Intent(login_activity.this, Home.class);
         startActivity(intent);
