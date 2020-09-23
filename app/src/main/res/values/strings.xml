@@ -80,6 +80,15 @@
     <string name="woofshop_btn_addtocart">add to cart</string>
     <string name="woofshop_txtQuantity">Quantity :</string>
 
+    <string name="woofadminItemTbleTXT_view">view</string>
+    <string name="woofadminBtnAddItem">Add item</string>
+    <string name="woofadminItemID">001</string>
+    <string name="woofadmin_delete_item_btntxt">Delete</string>
+    <string name="woofadmin_update_item_btntxt">Update</string>
+    <string name="woofadmin_add_item_btntxt">Add</string>
+
+
+    <!--    Woof profile -->
     <string name="woofown_pro_txtTITLE">WOOF OWNER PROFILE</string>
     <string name="woofown_pro_txtusername">Username :</string>
     <string name="woofown_pro_usernameD">Wasnatha</string>
@@ -92,13 +101,6 @@
     <string name="woofown_pro_logout_BTN_txt">Log out</string>
     <string name="woofown_pro_update_BTN_txt">Update</string>
     <string name="woofown_pro_updateTitle">UPDATE PROFILE</string>
-    
-    <string name="woofadminItemTbleTXT_view">view</string>
-    <string name="woofadminBtnAddItem">Add item</string>
-    <string name="woofadminItemID">001</string>
-    <string name="woofadmin_delete_item_btntxt">Delete</string>
-    <string name="woofadmin_update_item_btntxt">Update</string>
-    <string name="woofadmin_add_item_btntxt">Add</string>
 
     <!--    Woof admin profile-->
     <string name="adminUsernameTXT">Username :</string>
@@ -132,7 +134,7 @@
     <!--    Woof profile login/registration -->
     <string name="signupTXT">Sign up</string>
     <string name="signupUsernameTxt">Username</string>
-    <string name="signupPhoneTxt">Phone number</string>
+    <string name="signupPhoneTxt">Phone number (Ex:0771234567)</string>
     <string name="signupemailTxt">Email</string>
     <string name="signupPasswordTXT">Password</string>
     <string name="signupCon_PassTXT">Confirm password</string>
