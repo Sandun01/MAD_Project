@@ -13,7 +13,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class woofprofile_viewProfile extends AppCompatActivity {
 
-
     Button toUpdateOwner;
 
     @Override
@@ -57,6 +56,7 @@ public class woofprofile_viewProfile extends AppCompatActivity {
                 return false;
             }
         });
+
     }
 
     @Override

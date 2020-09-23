@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".admin_account" />
+        <activity android:name=".woofadmin_account" />
         <activity android:name=".Registratiion" />
         <activity android:name=".woofadmin_addItem" />
         <activity android:name=".woofadmin_selectedProductView" />

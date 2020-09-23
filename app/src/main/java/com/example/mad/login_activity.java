@@ -24,8 +24,6 @@ public class login_activity extends AppCompatActivity {
         SessionManagement sessionManagement = new SessionManagement(login_activity.this);
         String isLoginUname = sessionManagement.getSession();
 
-        System.out.println(isLoginUname);
-
         if(!isLoginUname.equals("E")){
             //user logged in navigate to Admin home
             navigateToActivityAdmin();
@@ -49,18 +47,11 @@ public class login_activity extends AppCompatActivity {
     protected void onResume() {
 
         super.onResume();
-//        loginBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                navigateToActivitySecond();
-//            }
-//        });
 
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-//              System.out.println("aaaaaaaa "+pwd.toString());
                 String unameInput = un.getText().toString();
                 String pwdInput = pwd.getText().toString();
 
@@ -82,12 +73,12 @@ public class login_activity extends AppCompatActivity {
             }
         });
 
-//        forgetpwd.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//               navigateToActivityAdmin();
-//            }
-//        });
+        forgetpwd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+               navigateToActivitySecond();
+            }
+        });
 
         register.setOnClickListener(new View.OnClickListener() {
             @Override

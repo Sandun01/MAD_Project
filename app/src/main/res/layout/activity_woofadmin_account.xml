@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".admin_account">
+    tools:context=".woofadmin_account">
 
     <!--Top menue bar begis-->
     <LinearLayout
@@ -136,7 +136,7 @@
             app:layout_constraintVertical_bias="0.797" />
 
         <Button
-            android:id="@+id/button7"
+            android:id="@+id/admin_logoutbtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@color/colorTheme"
@@ -152,5 +152,18 @@
     <!--body end-->
 
 
+    <!--Bottom navigation bar begins-->
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/app_admin_bottom_navigationbar"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/colorBtnblack"
+        app:itemIconSize="50dp"
+        app:itemIconTint="@drawable/app_bottom_navibar_selector"
+        app:menu="@menu/app_adminbottom_navibar_menue" />
+
+    <!--Bottom navigation bar Ends-->
 
 </RelativeLayout>

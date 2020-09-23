@@ -20,23 +20,12 @@ public class woofadmin_menu extends AppCompatActivity {
         itemMng = findViewById(R.id.woofprofile_menu_items);
         toAdminpro = findViewById(R.id.woofprofile_menu_adsbtn);
         ordersbtn = findViewById(R.id.woofprofile_menu_profilebtn);
-        logout= findViewById(R.id.woofadmin_logout);
 
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-
-        logout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //remove session
-                SessionManagement sessionManagement = new SessionManagement(woofadmin_menu.this);
-                sessionManagement.removeSession();
-                navigateToLogin();
-            }
-        });
 
         ordersbtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,18 +55,11 @@ public class woofadmin_menu extends AppCompatActivity {
         toAdminpro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(woofadmin_menu.this, admin_account.class);
+                Intent intent = new Intent(woofadmin_menu.this, woofadmin_account.class);
                 startActivity(intent);
             }
         });
 
-    }
-
-    public void navigateToLogin()
-    {
-        Intent intent = new Intent(woofadmin_menu.this, login_activity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(intent);
     }
 
 }
