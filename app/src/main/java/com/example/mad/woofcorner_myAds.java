@@ -6,16 +6,34 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class woofcorner_myAds extends AppCompatActivity {
-    ImageButton view,edit;
+    TextView type,price,description;
+    //RecyclerView allAds;
+    ImageButton view,edit,delete;
     FloatingActionButton postAd;
+    DatabaseReference dbRef;
+
+    private void clearControls(){
+        type.setText("");
+        price.setText("");
+        description.setText("");
+    }
 
     @SuppressLint("WrongViewCast")
     @Override
@@ -23,7 +41,17 @@ public class woofcorner_myAds extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_woofcorner_my_ads);
 
-        //bottom navigation bar begins
+        type = (TextView)findViewById(R.id.textView5);
+        price=(TextView)findViewById(R.id.textView9);
+        description = (TextView)findViewById(R.id.textView6);
+
+        dbRef = FirebaseDatabase.getInstance().getReference().child("Dog");
+        dbRef.keepSynced(true);
+
+
+
+
+                //bottom navigation bar begins
         BottomNavigationView bottomNavigationView = findViewById(R.id.app_bottom_navigationbar);
         //set selected
         bottomNavigationView.setSelectedItemId(R.id.bottomNaviBar_woofCorner);
@@ -59,6 +87,7 @@ public class woofcorner_myAds extends AppCompatActivity {
         //bottom navigation bar ends
         view = findViewById(R.id.ad_view);
         edit = findViewById(R.id.ad_edit);
+        delete = findViewById(R.id.ad_delete);
         postAd = findViewById(R.id.postAd_button);
 
     }
@@ -66,6 +95,8 @@ public class woofcorner_myAds extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+
+
 
         view.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -91,5 +122,35 @@ public class woofcorner_myAds extends AppCompatActivity {
             }
         });
 
+        delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DatabaseReference delRef = FirebaseDatabase.getInstance().getReference().child("Dog");
+                delRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if (snapshot.hasChild("")){
+                            dbRef = FirebaseDatabase.getInstance().getReference().child("Dog").child("");
+                            dbRef.removeValue();
+                            clearControls();
+                            Toast.makeText(getApplicationContext(),"Data Deleted Successfully",Toast.LENGTH_SHORT).show();
+                        }
+                        else
+                            Toast.makeText(getApplicationContext(),"No Source to Delete",Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+            }
+        });
+
+
+
     }
+
+
+
 }

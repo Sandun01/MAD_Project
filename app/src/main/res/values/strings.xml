@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">WOOF</string>
 
-<!--  Login  -->
+    <!--  Login  -->
     <string name="loginActivity_headerTxt">Login</string>
     <string name="loginActivity_usernameInput">Username</string>
     <string name="loginActivity_passwordInput">Password</string>
@@ -10,7 +10,7 @@
     <string name="loginActivity_RegText1">Don\'t have an account ?</string>
     <string name="loginActivity_RegText2">Register now</string>
 
-<!--   Common  -->
+    <!--   Common  -->
     <string name="app_top_txtShop">Shop</string>
     <string name="app_top_txtAds">Corner</string>
     <string name="app_top_txtCare">Care</string>
@@ -19,7 +19,7 @@
     <string name="app_top_txtadmin">Admin</string>
 
 
-<!--  Woof Care -->
+    <!--  Woof Care -->
     <string name="woofcare_findclinic_headertxt">Find Nearest Clinic</string>
     <string name="woofcare_findclinic_searchtxt">Search Location</string>
     <string name="woofcare_findclinic_clinic_name">Sample Organization</string>
@@ -60,7 +60,7 @@
     <string name="woofadmin_orgadd_add">Add Clinic</string>
     <string name="woofadmin_org_addbutton">Add New Org</string>
 
-<!--    Woof admin menue-->
+    <!--    Woof admin menue-->
     <string name="woofadmin_menu_admiprof">Admin Profile</string>
     <string name="woofadmin_menu_itembtn">Item Management</string>
     <string name="woofadmin_menu_orders">Customer Orders</string>
@@ -92,7 +92,7 @@
     <string name="woofown_pro_logout_BTN_txt">Log out</string>
     <string name="woofown_pro_update_BTN_txt">Update</string>
     <string name="woofown_pro_updateTitle">UPDATE PROFILE</string>
-    
+
     <string name="woofadminItemTbleTXT_view">view</string>
     <string name="woofadminBtnAddItem">Add item</string>
     <string name="woofadminItemID">001</string>
@@ -141,7 +141,7 @@
     <string name="adminprofileTXT">ADMIN PROFILE</string>
 
 
-<!--  Woof corner -->
+    <!--  Woof corner -->
     <string name="woofcorner_viewAd_dogtype">Labrador Puppies</string>
     <string name="woofcorner_viewAd_price">Rs. 40 000/=</string>
     <string name="woofcorner_viewAd_description">Description:</string>
@@ -170,11 +170,12 @@
     <string name="woofcorner_add_post_postbut">Post</string>
     <string name="woofcorner_add_post_cancelbut">Cancel</string>
 
-<!--    User profile interface -->
+    <!--    User profile interface -->
     <string name="woofprofile_menue_ads">My Advertisements</string>
     <string name="woofprofile_menue_editprof">Edit Profile</string>
     <string name="woofprofile_menue_orders">My Orders</string>
-
+    <string name="woofcare_addpost_choose">Choose</string>
+    <string name="woofcare_addpost_upload">Upload</string>
 
 
 </resources>
