@@ -6,6 +6,7 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
@@ -24,10 +25,12 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.squareup.picasso.Picasso;
 
 import java.io.File;
 import java.io.IOException;
@@ -38,12 +41,10 @@ public class woofcorner_viewad extends AppCompatActivity {
     TextView type,price,description;
     ImageButton contactNo, email;
     ImageView imageView;
+    DatabaseReference dbRef;
 
-    //Firebase
-    FirebaseStorage storage;
-    StorageReference storageReference;
+    private static final String TAG = "woofcorner_viewad";
 
-    Dog dog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,13 +60,10 @@ public class woofcorner_viewad extends AppCompatActivity {
 
         imageView = (ImageView)findViewById(R.id.imageView5);
 
-        storage = FirebaseStorage.getInstance();
-        storageReference = storage.getReference();
+        dbRef = FirebaseDatabase.getInstance().getReference();
 
-        dog = new Dog();
-
-        DatabaseReference readRef = FirebaseDatabase.getInstance().getReference().child("Dog").child("");
-        readRef.addListenerForSingleValueEvent(new ValueEventListener() {
+        Query query = dbRef.child("Dog");
+        query.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.hasChildren()){
@@ -90,25 +88,14 @@ public class woofcorner_viewad extends AppCompatActivity {
                         }
                     });
 
-                    storageReference = FirebaseStorage.getInstance().getReference().child("images/"+ UUID.randomUUID().toString());
+                    String url = snapshot.child("url").getValue().toString();
 
-                    try {
-                        final File localFile = File.createTempFile("images/"+ UUID.randomUUID().toString(),"jpg");
-                        storageReference.getFile(localFile)
-                                .addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
-                                    @Override
-                                    public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
-                                        Bitmap bitmap = BitmapFactory.decodeFile(localFile.getAbsolutePath());
-                                        ((ImageView)findViewById(R.id.imageView5)).setImageBitmap(bitmap);
-                                    }
-                                }).addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                            }
-                        });
-                    } catch (IOException e) {
-                        e.printStackTrace();
+                    Log.d(TAG, "onDataChange : url :" +url);
+
+                    if (!url.isEmpty()){
+                        Picasso.get().load(url).into(imageView);
                     }
+
 
 
                 }

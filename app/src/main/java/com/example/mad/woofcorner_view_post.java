@@ -3,7 +3,9 @@ package com.example.mad;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -21,10 +23,12 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.squareup.picasso.Picasso;
 
 import java.io.File;
 import java.io.IOException;
@@ -33,9 +37,11 @@ import java.util.UUID;
 public class woofcorner_view_post extends AppCompatActivity {
 
     TextView type,price,description,contactNo,email;
+    ImageView imageView;
     Button edit,remove;
     DatabaseReference dbRef;
-    StorageReference storageReference;
+
+    private static final String TAG = "woofcorner_view_post";
 
     private void clearControls(){
         type.setText("");
@@ -43,6 +49,7 @@ public class woofcorner_view_post extends AppCompatActivity {
         description.setText("");
         contactNo.setText("");
         email.setText("");
+        imageView.setImageURI(Uri.parse(""));
     }
 
     @Override
@@ -50,38 +57,23 @@ public class woofcorner_view_post extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_woofcorner_view_post);
 
+        Log.d(TAG, "onCreate: started");
+
         type = (TextView)findViewById(R.id.textView9);
         price = (TextView)findViewById(R.id.textView7);
         description = (TextView)findViewById(R.id.textView11);
         contactNo = (TextView)findViewById(R.id.textView32);
         email = (TextView)findViewById(R.id.textView34);
+        imageView = (ImageView)findViewById(R.id.imageView5);
 
         edit = findViewById(R.id.view_post_edit);
         remove = findViewById(R.id.edit_post_cancel);
 
-        storageReference = FirebaseStorage.getInstance().getReference().child("images/"+ UUID.randomUUID().toString());
 
-        try {
-            final File localFile = File.createTempFile("images/"+ UUID.randomUUID().toString(),"jpg");
-            storageReference.getFile(localFile)
-                    .addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
-                        @Override
-                        public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
-                            Bitmap bitmap = BitmapFactory.decodeFile(localFile.getAbsolutePath());
-                            ((ImageView)findViewById(R.id.imageView5)).setImageBitmap(bitmap);
-                        }
-                    }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-                }
-            });
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        dbRef = FirebaseDatabase.getInstance().getReference();
 
-
-        DatabaseReference readRef = FirebaseDatabase.getInstance().getReference().child("Dog").child("");
-        readRef.addListenerForSingleValueEvent(new ValueEventListener() {
+        Query query = dbRef.child("Dog");
+        query.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(snapshot.hasChildren()){
@@ -90,6 +82,14 @@ public class woofcorner_view_post extends AppCompatActivity {
                     description.setText(snapshot.child("description").getValue().toString());
                     contactNo.setText(snapshot.child("contactNo").getValue().toString());
                     email.setText(snapshot.child("email").getValue().toString());
+
+                    String url = snapshot.child("url").getValue().toString();
+
+                    Log.d(TAG, "onDataChange : url :" +url);
+
+                    if (!url.isEmpty()){
+                        Picasso.get().load(url).into(imageView);
+                    }
                 }
                 else
                     Toast.makeText(getApplicationContext(),"No source to Display",Toast.LENGTH_SHORT).show();
