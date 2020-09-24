@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.preference.PreferenceGroup;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -76,7 +77,7 @@ public class login_activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                //display message to user
+                //display prgresss bar to user
                 loadingBar.setTitle("Login User");
                 loadingBar.setMessage("Please Wait while Validate the Details");
                 loadingBar.setCanceledOnTouchOutside(false);
@@ -138,7 +139,7 @@ public class login_activity extends AppCompatActivity {
         forgetpwd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               navigateToActivityHome();
+               navigateToforgetpassword();
             }
         });
 
@@ -154,14 +155,13 @@ public class login_activity extends AppCompatActivity {
     public boolean checkemail()
     {
         String emailInput = email.getText().toString();
-        String EmalFormat = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+        String EmalFormat = "^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
 
         if(Pattern.compile(EmalFormat).matcher(emailInput).matches())
         {
             return true;
         }
         else {
-            Toast.makeText(getApplicationContext(), "Please enter valid email", Toast.LENGTH_SHORT).show();
             return false;
         }
 
@@ -170,6 +170,7 @@ public class login_activity extends AppCompatActivity {
     public void navigateToActivityHome()
     {
         Intent intent = new Intent(login_activity.this, Home.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
     }
 
@@ -183,6 +184,12 @@ public class login_activity extends AppCompatActivity {
     public void navigateToActivityRegister()
     {
         Intent intent = new Intent(login_activity.this, Registratiion.class);
+        startActivity(intent);
+    }
+
+    public void navigateToforgetpassword()
+    {
+        Intent intent = new Intent(login_activity.this, user_forgetpassword.class);
         startActivity(intent);
     }
 

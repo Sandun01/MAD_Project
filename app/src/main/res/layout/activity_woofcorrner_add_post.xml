@@ -52,7 +52,11 @@
         android:layout_marginBottom="70dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="-3dp"
+        android:layout_marginRight="4dp">
 
         <TextView
             android:id="@+id/textView10"
@@ -70,7 +74,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView30" />
 
         <TextView
-            android:id="@+id/textView33"
+            android:id="@+id/viewPhone"
             android:layout_width="80dp"
             android:layout_height="27dp"
             android:layout_marginStart="50dp"

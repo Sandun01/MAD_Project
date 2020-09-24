@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
+        <activity android:name=".user_forgetpassword"></activity>
         <activity android:name=".woofadmin_account" />
         <activity android:name=".Registratiion" />
         <activity android:name=".woofadmin_addItem" />
@@ -22,7 +22,6 @@
         <activity android:name=".woofshop_view_product" />
         <activity android:name=".woofshop_show_products" />
         <activity android:name=".woofshop_show_orders" />
-
         <activity android:name=".woofadmin_orders" />
         <activity android:name=".woofcorrner_add_post" />
         <activity android:name=".woofcorner_edit_post" />
@@ -30,14 +29,9 @@
         <activity android:name=".woofcorner_myAds" />
         <activity android:name=".woofcorner_viewad" />
         <activity android:name=".woofcorner_show_ads" />
-
-
-
         <activity android:name=".Home" />
         <activity android:name=".woofcare_show_clinics" />
         <activity android:name=".woofcare_clinc_details" />
-
-
         <activity android:name=".woofadmin_org_addDetails" />
         <activity android:name=".woofadmin_org_update" />
         <activity android:name=".woofadmin_org_details" />

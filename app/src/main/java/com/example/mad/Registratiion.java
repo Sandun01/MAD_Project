@@ -125,7 +125,6 @@ public class Registratiion extends AppCompatActivity {
                                    user.setUsername(uname);
                                    user.setPhone(phone);
                                    user.setEmail(email);
-                                   user.setPassword(pwd);
 
                                    FirebaseDatabase.getInstance().getReference("Users")
                                            .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
@@ -137,8 +136,8 @@ public class Registratiion extends AppCompatActivity {
                                                loadBar.dismiss();
                                                Toast.makeText(getApplicationContext(), "User Registered Successfully", Toast.LENGTH_SHORT).show();
 
-                                               //navigate to homepage
-                                               navigateToHome();
+                                               //navigate to login
+                                               navigateToLogin();
                                            }
                                            else {
                                                loadBar.dismiss();
@@ -214,7 +213,7 @@ public class Registratiion extends AppCompatActivity {
     public boolean checkemail()
     {
         String email = emailInput.getText().toString();
-        String EmalFormat = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+        String EmalFormat = "^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
 
         if(Pattern.compile(EmalFormat).matcher(email).matches())
         {
@@ -230,12 +229,6 @@ public class Registratiion extends AppCompatActivity {
     public void navigateToLogin()
     {
         Intent intent = new Intent(Registratiion.this, login_activity.class);
-        startActivity(intent);
-    }
-
-    public void navigateToHome()
-    {
-        Intent intent = new Intent(Registratiion.this, Home.class);
         startActivity(intent);
     }
 
