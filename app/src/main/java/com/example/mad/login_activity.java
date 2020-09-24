@@ -116,7 +116,7 @@ public class login_activity extends AppCompatActivity {
                 {
                     if(emailInput.equals("admin") && pwdInput.equals("admin")) {
                         //login Session
-                        Admin admin = new Admin("Admin", "Admin");
+                        Admin admin = new Admin("Admin", "admin");
 
                         SessionManagement sessionManagement = new SessionManagement(login_activity.this);
                         sessionManagement.saveSession(admin);

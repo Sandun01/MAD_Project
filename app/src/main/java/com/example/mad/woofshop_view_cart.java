@@ -15,11 +15,17 @@ public class woofshop_view_cart extends AppCompatActivity {
 
     Button calculatebill;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_woofshop_view_cart);
+
+        calculatebill = findViewById(R.id.calcutalebill);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
 
         //bottom navigation bar begins
         BottomNavigationView bottomNavigationView = findViewById(R.id.app_bottom_navigationbar);
@@ -57,13 +63,6 @@ public class woofshop_view_cart extends AppCompatActivity {
             }
         });
         //bottom navigation bar ends
-
-        calculatebill = findViewById(R.id.calcutalebill);
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
 
         calculatebill.setOnClickListener(new View.OnClickListener() {
             @Override

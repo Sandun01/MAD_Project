@@ -20,6 +20,14 @@ public class woofshop_view_product extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_woofshop_view_product);
 
+
+        opencart = findViewById(R.id.btn_cart_prod);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
         //bottom navigation bar begins
         BottomNavigationView bottomNavigationView = findViewById(R.id.app_bottom_navigationbar);
         //set selected
@@ -57,12 +65,6 @@ public class woofshop_view_product extends AppCompatActivity {
         });
         //bottom navigation bar ends
 
-        opencart = findViewById(R.id.btn_cart_prod);
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
         opencart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

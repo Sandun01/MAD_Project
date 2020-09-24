@@ -6,7 +6,9 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,6 +19,7 @@ public class woofadmin_account extends AppCompatActivity {
 
     ImageView logo;
     Button logoutBtn;
+    TextView uname;
 
 
     @Override
@@ -27,7 +30,18 @@ public class woofadmin_account extends AppCompatActivity {
         //Initializing id's
         logo = findViewById(R.id.app_logo_top);
         logoutBtn = findViewById(R.id.admin_logoutbtn);
+        uname = findViewById(R.id.view_username);
 
+        SessionManagement sessionManagement = new SessionManagement(woofadmin_account.this);
+        String Uname = sessionManagement.getSession();
+        uname.setText(Uname);
+
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
 
         //bottom navigation bar begins
         BottomNavigationView bottomNavigationView = findViewById(R.id.app_admin_bottom_navigationbar);
@@ -64,11 +78,6 @@ public class woofadmin_account extends AppCompatActivity {
             }
         });
 
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
 
         logo.setOnClickListener(new View.OnClickListener() {
             @Override
