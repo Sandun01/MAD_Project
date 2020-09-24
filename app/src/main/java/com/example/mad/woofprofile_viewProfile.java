@@ -161,7 +161,7 @@ public class woofprofile_viewProfile extends AppCompatActivity {
                 //sign out
                 mAuth.signOut();
 
-                Intent intent = new Intent(woofprofile_viewProfile.this,login_activity.class);
+                Intent intent = new Intent(woofprofile_viewProfile.this, login.class);
                 Toast.makeText(getApplicationContext(), "Sucessfully Log out from the account", Toast.LENGTH_SHORT).show();
                 startActivity(intent);
 
@@ -182,7 +182,7 @@ public class woofprofile_viewProfile extends AppCompatActivity {
 
     public void navigateToActivityLogin()
     {
-        Intent intent = new Intent(woofprofile_viewProfile.this,login_activity.class);
+        Intent intent = new Intent(woofprofile_viewProfile.this, login.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
     }

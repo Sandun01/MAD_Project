@@ -3,8 +3,6 @@ package com.example.mad;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.preference.PreferenceGroup;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,6 +12,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.mad.mainclasses.Admin;
+import com.example.mad.mainclasses.SessionManagement;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -21,7 +21,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.regex.Pattern;
 
-public class login_activity extends AppCompatActivity {
+public class login extends AppCompatActivity {
 
     Button loginBtn;
     TextView forgetpwd,register;
@@ -34,7 +34,7 @@ public class login_activity extends AppCompatActivity {
         super.onStart();
 
         //session management for admin
-        SessionManagement sessionManagement = new SessionManagement(login_activity.this);
+        SessionManagement sessionManagement = new SessionManagement(login.this);
         String isLoginUname = sessionManagement.getSession();
 
         //if user already login
@@ -63,7 +63,7 @@ public class login_activity extends AppCompatActivity {
         pwd = findViewById(R.id.login_password);
         register = findViewById(R.id.login_btn_register);
 
-        loadingBar = new ProgressDialog(login_activity.this);
+        loadingBar = new ProgressDialog(login.this);
         mAuth = FirebaseAuth.getInstance();
 
     }
@@ -118,7 +118,7 @@ public class login_activity extends AppCompatActivity {
                         //login Session
                         Admin admin = new Admin("Admin", "admin");
 
-                        SessionManagement sessionManagement = new SessionManagement(login_activity.this);
+                        SessionManagement sessionManagement = new SessionManagement(login.this);
                         sessionManagement.saveSession(admin);
                         Toast.makeText(getApplicationContext(), "Admin Login success",Toast.LENGTH_SHORT).show();
 
@@ -169,27 +169,27 @@ public class login_activity extends AppCompatActivity {
 
     public void navigateToActivityHome()
     {
-        Intent intent = new Intent(login_activity.this, Home.class);
+        Intent intent = new Intent(login.this, Home.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
     }
 
     public void navigateToActivityAdmin()
     {
-        Intent intent = new Intent(login_activity.this, woofadmin_menu.class);
+        Intent intent = new Intent(login.this, woofadmin_menu.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
     }
 
     public void navigateToActivityRegister()
     {
-        Intent intent = new Intent(login_activity.this, Registratiion.class);
+        Intent intent = new Intent(login.this, Registratiion.class);
         startActivity(intent);
     }
 
     public void navigateToforgetpassword()
     {
-        Intent intent = new Intent(login_activity.this, user_forgetpassword.class);
+        Intent intent = new Intent(login.this, user_forgetpassword.class);
         startActivity(intent);
     }
 

@@ -37,7 +37,7 @@
         <activity android:name=".woofadmin_org_details" />
         <activity android:name=".woofadmin_organization_view" />
         <activity android:name=".woofadmin_menu" />
-        <activity android:name=".login_activity" />
+        <activity android:name=".login" />
         <activity android:name=".app_woofprofile_menu" />
         <activity android:name=".MainActivity">
             <intent-filter>

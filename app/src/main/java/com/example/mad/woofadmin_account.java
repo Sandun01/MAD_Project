@@ -1,18 +1,17 @@
 package com.example.mad;
 
 import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.mad.mainclasses.SessionManagement;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class woofadmin_account extends AppCompatActivity {
@@ -101,7 +100,7 @@ public class woofadmin_account extends AppCompatActivity {
 
     public void navigateToLogin()
     {
-        Intent intent = new Intent(woofadmin_account.this, login_activity.class);
+        Intent intent = new Intent(woofadmin_account.this, login.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
     }
