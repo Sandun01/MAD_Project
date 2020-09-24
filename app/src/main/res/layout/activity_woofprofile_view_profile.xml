@@ -83,7 +83,7 @@
             app:layout_constraintVertical_bias="0.409" />
 
         <TextView
-            android:id="@+id/textView28"
+            android:id="@+id/cName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/woofown_pro_usernameD"
