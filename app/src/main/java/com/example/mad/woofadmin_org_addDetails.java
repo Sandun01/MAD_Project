@@ -1,5 +1,6 @@
 package com.example.mad;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -77,6 +78,8 @@ public class woofadmin_org_addDetails extends AppCompatActivity {
                 } catch (NumberFormatException e){
                     Toast.makeText(getApplicationContext(), "Invalid Contact Number...", Toast.LENGTH_SHORT).show();
                 }
+                Intent intent = new Intent(woofadmin_org_addDetails.this, woofadmin_organization_view.class);
+                startActivity(intent);
             }
         });
     }
