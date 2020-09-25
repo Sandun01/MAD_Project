@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".woofcare_show_clinics">
+    tools:context=".woofadmin_addItem">
 
     <!--Top menue bar begis-->
     <LinearLayout
@@ -47,11 +47,12 @@
 
         <EditText
             android:id="@+id/EtinputProductname"
-            android:layout_width="300dp"
-            android:layout_height="48dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:ems="10"
             android:hint="@string/etproductname"
             android:inputType="textPersonName"
+            android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -60,7 +61,7 @@
 
         <EditText
             android:id="@+id/EtinputDescription"
-            android:layout_width="300dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="@string/etinputdescript"
@@ -89,7 +90,7 @@
             app:layout_constraintVertical_bias="0.97" />
 
         <ImageView
-            android:id="@+id/imageView9"
+            android:id="@+id/produt_image"
             android:layout_width="204dp"
             android:layout_height="182dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -109,6 +110,7 @@
             android:inputType="number"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.52"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.654" />
@@ -126,19 +128,6 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.826" />
 
-        <EditText
-            android:id="@+id/EtinputID"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="@string/etinputID"
-            android:inputType="number"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.474"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.473" />
     </androidx.constraintlayout.widget.ConstraintLayout>
     <!--body end-->
 

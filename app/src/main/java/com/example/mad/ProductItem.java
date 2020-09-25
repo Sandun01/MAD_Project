@@ -4,23 +4,24 @@ import android.widget.TextView;
 
 public class ProductItem {
 
-    private Integer ID;
-    private String ProductName;
-    private Integer Qty;
-    private String Description;
-    private Float UnitPrice;
+    String id;
+    String ProductName;
+    Integer Qty;
+    String Description;
+    Float UnitPrice;
+    String image;
+
 
     public ProductItem() {
     }
 
-    public Integer getID() {
-        return ID;
+    public String getId() {
+        return id;
     }
 
-    public void setID(Integer ID) {
-        this.ID = ID;
+    public void setId(String id) {
+        this.id = id;
     }
-
     public String getProductName() {
         return ProductName;
     }
@@ -51,5 +52,13 @@ public class ProductItem {
 
     public void setUnitPrice(Float unitPrice) {
         UnitPrice = unitPrice;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }
