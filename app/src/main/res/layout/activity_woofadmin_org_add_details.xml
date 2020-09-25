@@ -137,14 +137,14 @@
             android:id="@+id/woofadmin_org_update"
             android:layout_width="135dp"
             android:layout_height="71dp"
-            android:layout_marginBottom="40dp"
+            android:layout_marginTop="48dp"
             android:background="@color/colorPrimary"
             android:text="@string/woofadmin_orgadd_add"
             android:textColor="@color/colorTopMenueBackgroud"
             android:textSize="24sp"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/woofadmin_orgadd_owneretails_owner" />
 
         <EditText
             android:id="@+id/cName"
@@ -220,6 +220,15 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/app_admin_bottom_navigationbar"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/colorBtnblack"
+        app:itemIconSize="50dp"
+        app:itemIconTint="@drawable/app_bottom_navibar_selector"
+        app:menu="@menu/app_adminbottom_navibar_menue" />
 
 </RelativeLayout>
 

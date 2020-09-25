@@ -2,6 +2,7 @@ package com.example.mad;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -10,6 +11,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.mad.models.DogCare;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -82,6 +85,45 @@ public class woofadmin_org_update extends AppCompatActivity {
 
                     }
                 });
+            }
+        });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        //bottom navigation bar begins
+        BottomNavigationView bottomNavigationView = findViewById(R.id.app_admin_bottom_navigationbar);
+        //set selected
+        bottomNavigationView.setSelectedItemId(R.id.bottomNaviBar_adminProfile);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                switch(item.getItemId())
+                {
+                    case R.id.bottomNaviBar_adminOrganizations:
+                        startActivity(new Intent(getApplicationContext(), woofadmin_organization_view.class));
+                        overridePendingTransition(0,0);
+                        return true;
+
+                    case R.id.bottomNaviBar_adminItems:
+                        startActivity(new Intent(getApplicationContext(), woofadmin_addItem.class));
+                        overridePendingTransition(0,0);
+                        return true;
+
+                    case R.id.bottomNaviBar_adminOrders:
+                        startActivity(new Intent(getApplicationContext(), woofadmin_orders.class));
+                        overridePendingTransition(0,0);
+                        return true;
+
+                    case R.id.bottomNaviBar_adminProfile:
+                        return true;
+
+                }
+
+                return false;
             }
         });
     }

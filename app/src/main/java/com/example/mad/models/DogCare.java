@@ -1,6 +1,7 @@
-package com.example.mad;
+package com.example.mad.models;
 
 public class DogCare {
+    private String Id;
     private String ClinicName;
     private String ContactNo;
     private String Address;
@@ -9,6 +10,14 @@ public class DogCare {
     private String OwnerName;
 
     public DogCare() {
+    }
+
+    public String getId() {
+        return Id;
+    }
+
+    public void setId(String id) {
+        Id = id;
     }
 
     public String getClinicName() {
