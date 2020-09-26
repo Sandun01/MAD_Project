@@ -1,6 +1,5 @@
 package com.example.mad;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -28,7 +27,6 @@ import com.google.firebase.storage.UploadTask;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.HashMap;
 
 public class woofadmin_addItem extends AppCompatActivity {
 
@@ -57,7 +55,7 @@ public class woofadmin_addItem extends AppCompatActivity {
         txtProdDescription = findViewById(R.id.EtinputDescription);
         imageProductInput = findViewById(R.id.produt_image);
 
-        btnSave = findViewById(R.id.btnAddProduct);
+        btnSave = findViewById(R.id.btnProdViewUpdate);
 
         itemDBRef = FirebaseDatabase.getInstance().getReference().child("ProductItem");
         ImageRef = FirebaseStorage.getInstance().getReference().child("ProdutImages");

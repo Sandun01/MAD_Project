@@ -75,7 +75,7 @@ public class woofadmin_viewProduct extends AppCompatActivity {
                     {
                         holder.pnameTxt.setText(model.getProductName());
                         holder.priceTxt.setText("Price: Rs." + model.getUnitPrice().toString());
-                        holder.pdesTxt.setText("Description: " + model.getDescription());
+                        holder.pdesTxt.setText( model.getDescription());
                         Picasso.get().load(model.getImage()).into(holder.imageView);
 
                         holder.itemView.setOnClickListener(new View.OnClickListener() {

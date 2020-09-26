@@ -35,8 +35,8 @@ public class ProductItem_Adapter extends RecyclerView.Adapter<ProductItem_Adapte
     public void onBindViewHolder(@NonNull ViewProduct holder, int position) {
 
         ProductItem productItem=productItemList.get(position);
-        holder.desc.setText("name:"+productItem.getDescription());
-        holder.product.setText("description: "+productItem.getProductName());
+        holder.product.setText("name:"+productItem.getDescription());
+        holder.desc.setText("description: "+productItem.getProductName());
 
         String imageUri= null;
         imageUri=productItem.getImage();

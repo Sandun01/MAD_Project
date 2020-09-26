@@ -99,7 +99,7 @@
             android:layout_marginRight="20dp"
             android:text="@string/woofcorner_edit_post_cancel"
             android:textSize="14sp"
-            app:layout_constraintBaseline_toBaselineOf="@+id/button3"
+            app:layout_constraintBaseline_toBaselineOf="@+id/btnProdViewDel"
             app:layout_constraintEnd_toEndOf="parent" />
 
         <TextView
@@ -232,7 +232,7 @@
             app:layout_constraintStart_toEndOf="@+id/textView33" />
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/btnProdViewDel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="200dp"

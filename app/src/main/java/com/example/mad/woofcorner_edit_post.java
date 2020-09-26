@@ -52,7 +52,7 @@ public class woofcorner_edit_post extends AppCompatActivity {
                 return false;
             }
         });
-        save = findViewById(R.id.button3);
+        save = findViewById(R.id.btnProdViewDel);
         cancel = findViewById(R.id.edit_post_cancel);
     }
 

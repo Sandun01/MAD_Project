@@ -46,7 +46,7 @@
 
 
         <ImageView
-            android:id="@+id/imageView6"
+            android:id="@+id/productImage"
             android:layout_width="228dp"
             android:layout_height="234dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -57,19 +57,9 @@
             app:layout_constraintVertical_bias="0.081"
             app:srcCompat="@drawable/spikecollar" />
 
-        <TextView
-            android:id="@+id/textView36"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/woofadminItemID"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
         <EditText
             android:id="@+id/EtinputProductname"
-            android:layout_width="300dp"
+            android:layout_width="0dp"
             android:layout_height="48dp"
             android:ems="10"
             android:inputType="textPersonName"
@@ -81,8 +71,8 @@
             app:layout_constraintVertical_bias="0.563" />
 
         <EditText
-            android:id="@+id/editTextTextPersonName9"
-            android:layout_width="wrap_content"
+            android:id="@+id/EtinputUnitPrice"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPersonName"
@@ -95,12 +85,12 @@
 
         <EditText
             android:id="@+id/EtinputDescription"
-            android:layout_width="300dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPersonName"
             android:text="@string/woofshop_description"
-            android:textSize="12sp"
+            android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -108,8 +98,8 @@
             app:layout_constraintVertical_bias="0.746" />
 
         <EditText
-            android:id="@+id/editTextTextPersonName11"
-            android:layout_width="wrap_content"
+            android:id="@+id/EtinputQty"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPersonName"
@@ -121,7 +111,7 @@
             app:layout_constraintVertical_bias="0.835" />
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/btnProdViewDel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@color/colorTheme"
@@ -135,7 +125,7 @@
             app:layout_constraintVertical_bias="0.97" />
 
         <Button
-            android:id="@+id/btnAddProduct"
+            android:id="@+id/btnProdViewUpdate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="#4CAF50"
