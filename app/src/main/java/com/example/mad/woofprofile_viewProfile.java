@@ -28,17 +28,6 @@ public class woofprofile_viewProfile extends AppCompatActivity {
     String user_id;
     boolean emailVerified;
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        //if user already login
-
-        if(mAuth.getCurrentUser() == null)
-        {
-            //navigate to home
-            navigateToActivityLogin();
-        }
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +45,7 @@ public class woofprofile_viewProfile extends AppCompatActivity {
 
         //get user in auth
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
 
         emailVerified = user.isEmailVerified();
 
@@ -163,6 +153,7 @@ public class woofprofile_viewProfile extends AppCompatActivity {
 
                 Intent intent = new Intent(woofprofile_viewProfile.this, login.class);
                 Toast.makeText(getApplicationContext(), "Sucessfully Log out from the account", Toast.LENGTH_SHORT).show();
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
 
             }
