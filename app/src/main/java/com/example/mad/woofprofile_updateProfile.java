@@ -17,6 +17,11 @@ public class woofprofile_updateProfile extends AppCompatActivity {
         setContentView(R.layout.activity_woofprofile_update_profile);
 
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
 
         //bottom navigation bar begins
         BottomNavigationView bottomNavigationView = findViewById(R.id.app_bottom_navigationbar);
@@ -52,5 +57,7 @@ public class woofprofile_updateProfile extends AppCompatActivity {
                 return false;
             }
         });
+
+
     }
 }

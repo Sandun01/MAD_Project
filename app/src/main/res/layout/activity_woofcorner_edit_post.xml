@@ -83,7 +83,7 @@
             app:srcCompat="@drawable/labradorpup" />
 
         <TextView
-            android:id="@+id/textView33"
+            android:id="@+id/viewPhone"
             android:layout_width="80dp"
             android:layout_height="27dp"
             android:layout_marginStart="50dp"

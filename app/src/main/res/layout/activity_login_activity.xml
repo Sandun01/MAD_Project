@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".login_activity">
+    tools:context=".login">
 
     <TextView
         android:id="@+id/login_head_text"
@@ -40,10 +40,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login_username" />
+        app:layout_constraintTop_toBottomOf="@+id/login_email" />
 
     <EditText
-        android:id="@+id/login_username"
+        android:id="@+id/login_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
@@ -51,7 +51,7 @@
         android:layout_marginRight="30dp"
         android:background="@drawable/login_btn_layout_only"
         android:ems="10"
-        android:hint="@string/loginActivity_usernameInput"
+        android:hint="@string/signupemailTxt"
         android:inputType="textPersonName"
         android:padding="15dp"
         android:textSize="22sp"

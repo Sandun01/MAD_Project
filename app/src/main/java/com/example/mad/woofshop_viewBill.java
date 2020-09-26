@@ -20,6 +20,14 @@ public class woofshop_viewBill extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_woofshop_view_bill);
 
+        view_dil_form = findViewById(R.id.woofshop_confirm_order);
+    }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
         //bottom navigation bar begins
         BottomNavigationView bottomNavigationView = findViewById(R.id.app_bottom_navigationbar);
         //set selected
@@ -56,14 +64,6 @@ public class woofshop_viewBill extends AppCompatActivity {
             }
         });
         //bottom navigation bar ends
-
-        view_dil_form = findViewById(R.id.woofshop_confirm_order);
-    }
-
-
-    @Override
-    protected void onResume() {
-        super.onResume();
 
         view_dil_form.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -174,7 +174,7 @@
             app:layout_constraintEnd_toEndOf="parent" />
 
         <TextView
-            android:id="@+id/textView33"
+            android:id="@+id/viewPhone"
             android:layout_width="86dp"
             android:layout_height="26dp"
             android:layout_marginStart="50dp"
