@@ -12,8 +12,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.mad.mainclasses.Admin;
-import com.example.mad.mainclasses.SessionManagement;
+import com.example.mad.models.Admin;
+import com.example.mad.models.SessionManagement;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;

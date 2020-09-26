@@ -1,9 +1,7 @@
-package com.example.mad.mainclasses;
+package com.example.mad.models;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-
-import com.example.mad.mainclasses.Admin;
 
 public class SessionManagement {
 

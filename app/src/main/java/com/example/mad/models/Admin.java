@@ -1,4 +1,4 @@
-package com.example.mad.mainclasses;
+package com.example.mad.models;
 
 public class Admin {
 

@@ -11,7 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.mad.mainclasses.SessionManagement;
+import com.example.mad.models.SessionManagement;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class woofadmin_account extends AppCompatActivity {

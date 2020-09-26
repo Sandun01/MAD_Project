@@ -1,14 +1,25 @@
-package com.example.mad.mainclasses;
+package com.example.mad.models;
 
 
 
 public class ProductItem {
 
-    private String ProductName;
-    private String Description;
-    private Float UnitPrice;
+    String id;
+    String ProductName;
+    Integer Qty;
+    String Description;
+    Float UnitPrice;
+    String image;
 
     public ProductItem() {
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getProductName() {
@@ -17,6 +28,14 @@ public class ProductItem {
 
     public void setProductName(String productName) {
         ProductName = productName;
+    }
+
+    public Integer getQty() {
+        return Qty;
+    }
+
+    public void setQty(Integer qty) {
+        Qty = qty;
     }
 
     public String getDescription() {
@@ -34,4 +53,13 @@ public class ProductItem {
     public void setUnitPrice(Float unitPrice) {
         UnitPrice = unitPrice;
     }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
 }

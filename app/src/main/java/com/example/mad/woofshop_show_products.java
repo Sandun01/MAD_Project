@@ -14,17 +14,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.mad.mainclasses.ProductItem;
+import com.example.mad.models.ProductItem;
 import com.example.mad.viewholders.ProductViewholder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.squareup.picasso.Picasso;
 
 public class woofshop_show_products extends AppCompatActivity {
 
-    Button view;
     ImageView opencart;
     private DatabaseReference prRef;
     private RecyclerView recyclerView;
@@ -60,11 +60,23 @@ public class woofshop_show_products extends AppCompatActivity {
                 new FirebaseRecyclerAdapter<ProductItem, ProductViewholder>(options) {
 
                     @Override
-                    protected void onBindViewHolder(@NonNull ProductViewholder holder, int i, @NonNull ProductItem model)
+                    protected void onBindViewHolder(@NonNull ProductViewholder holder, int i, @NonNull final ProductItem model)
                     {
                         holder.pnameTxt.setText(model.getProductName());
                         holder.priceTxt.setText("Price: Rs." + model.getUnitPrice().toString());
                         holder.pdesTxt.setText("Description: " + model.getDescription());
+                        Picasso.get().load(model.getImage()).into(holder.imageView);
+
+                        holder.itemView.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                Intent intent = new Intent(woofshop_show_products.this, woofshop_view_product.class);
+                                intent.putExtra("itmID", model.getId());
+                                startActivity(intent);
+
+                            }
+                        });
+
                     }
 
                     @NonNull
@@ -88,6 +100,10 @@ public class woofshop_show_products extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+
+        //add to cart button
+
+
 
         //bottom navigation bar begins
         BottomNavigationView bottomNavigationView = findViewById(R.id.app_bottom_navigationbar);
