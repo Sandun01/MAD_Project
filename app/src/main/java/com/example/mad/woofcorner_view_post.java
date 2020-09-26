@@ -25,7 +25,7 @@ public class woofcorner_view_post extends AppCompatActivity {
 
     TextView type,price,description,contactNo,email;
     ImageView imageView;
-   // Button edit,remove;
+    Button edit,remove;
     DatabaseReference dbRef;
 
     String dogID = "";
@@ -50,8 +50,8 @@ public class woofcorner_view_post extends AppCompatActivity {
 
         getDogDetails(dogID);
 
-        //edit = findViewById(R.id.view_post_edit);
-        //remove = findViewById(R.id.edit_post_cancel);
+        edit = findViewById(R.id.view_post_edit);
+        remove = findViewById(R.id.edit_post_cancel);
 
     }
 
@@ -84,37 +84,41 @@ public class woofcorner_view_post extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
-//        edit.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(woofcorner_view_post.this, woofcorner_edit_post.class);
-//                startActivity(intent);
-//            }
-//        });
+        edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(woofcorner_view_post.this, woofcorner_edit_post.class);
+                startActivity(intent);
+            }
+        });
 
-//        remove.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                DatabaseReference delRef = FirebaseDatabase.getInstance().getReference().child("Dog");
-//                delRef.addListenerForSingleValueEvent(new ValueEventListener() {
-//                    @Override
-//                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                        if (snapshot.hasChild("")){
-//                            dbRef = FirebaseDatabase.getInstance().getReference().child("Dog").child("");
-//                            dbRef.removeValue();
-//                            Toast.makeText(getApplicationContext(),"Data Deleted Successfully",Toast.LENGTH_SHORT).show();
-//                        }
-//                        else
-//                            Toast.makeText(getApplicationContext(),"No Source to Delete",Toast.LENGTH_SHORT).show();
-//                    }
-//
-//                    @Override
-//                    public void onCancelled(@NonNull DatabaseError error) {
-//
-//                    }
-//                });
-//            }
-//        });
+        remove.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DatabaseReference delRef = FirebaseDatabase.getInstance().getReference().child("Dog");
+                delRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if (snapshot.hasChild(dogID)){
+                            dbRef = FirebaseDatabase.getInstance().getReference().child("Dog").child(dogID);
+                            dbRef.removeValue();
+                            Toast.makeText(getApplicationContext(),"Data Deleted Successfully",Toast.LENGTH_SHORT).show();
+
+                            Intent intent = new Intent(woofcorner_view_post.this, woofcorner_myAds.class);
+                            startActivity(intent);
+
+                        }
+                        else
+                            Toast.makeText(getApplicationContext(),"No Source to Delete",Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+            }
+        });
 
         //bottom navigation bar begins
         BottomNavigationView bottomNavigationView = findViewById(R.id.app_bottom_navigationbar);
