@@ -6,6 +6,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -21,20 +22,12 @@ import com.google.firebase.database.ValueEventListener;
 
 public class woofadmin_org_details extends AppCompatActivity {
 
-    EditText txtDelClinic, txtDelConNo, txtDelAddress, txtDelCity, txtDelDescription, txtDelOwner;
+    TextView txtDelClinic, txtDelConNo, txtDelAddress, txtDelCity, txtDelDescription, txtDelOwner;
     Button buttonDelete;
     DatabaseReference dbRef;
     DogCare deleteClinic;
     private String org_id = " ";
 
-    private void clearControls(){
-        txtDelClinic.setText("");
-        txtDelConNo.setText("");
-        txtDelAddress.setText("");
-        txtDelCity.setText("");
-        txtDelDescription.setText("");
-        txtDelOwner.setText("");
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +35,7 @@ public class woofadmin_org_details extends AppCompatActivity {
         setContentView(R.layout.activity_woofadmin_org_details);
 
         org_id = getIntent().getStringExtra("id");
+
 
         txtDelClinic = findViewById(R.id.deleteClinic);
         txtDelConNo = findViewById(R.id.deleteConNo);
@@ -59,14 +53,13 @@ public class woofadmin_org_details extends AppCompatActivity {
         buttonDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DatabaseReference delRef = FirebaseDatabase.getInstance().getReference().child("deleteClinic");
+                DatabaseReference delRef = FirebaseDatabase.getInstance().getReference().child("DogCare");
                 delRef.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        if (snapshot.hasChild("deleteClinic1")){
-                            dbRef = FirebaseDatabase.getInstance().getReference().child("DogCare").child("deleteClinic1");
+                        if (snapshot.hasChild("deleteClinic")){
+                            dbRef = FirebaseDatabase.getInstance().getReference().child("DogCare").child("deleteClinic");
                             dbRef.removeValue();
-                            clearControls();
                             Toast.makeText(getApplicationContext(), "Data Deleted Successfully...", Toast.LENGTH_SHORT).show();
                         }
                         else
@@ -91,19 +84,26 @@ public class woofadmin_org_details extends AppCompatActivity {
     }
 
     private void getOrgDetails(final String org_id) {
+
         DatabaseReference orgRef = FirebaseDatabase.getInstance().getReference().child("DogCare");
+
         orgRef.child(org_id).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(snapshot.exists()){
                     DogCare clinics = snapshot.getValue(DogCare.class);
 
-                    clinics.setClinicName(clinics.getClinicName());
-                    clinics.setContactNo(clinics.getContactNo());
-                    clinics.setAddress(clinics.getAddress());
-                    clinics.setCity(clinics.getCity());
-                    clinics.setDescription(clinics.getDescription());
-                    clinics.setOwnerName(clinics.getOwnerName());
+                    txtDelClinic.setText(clinics.getClinicName());
+                    txtDelAddress.setText(clinics.getAddress());
+                    txtDelConNo.setText(clinics.getContactNo());
+                    txtDelCity.setText(clinics.getCity());
+                    txtDelDescription.setText(clinics.getDescription());
+                    txtDelOwner.setText(clinics.getOwnerName());
+
+                }
+                else
+                {
+                    Toast.makeText(getApplicationContext(), "Data Not Found",Toast.LENGTH_LONG).show();
                 }
             }
 

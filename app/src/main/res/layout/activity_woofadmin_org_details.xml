@@ -161,7 +161,7 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/woofadmin_org_delete" />
 
-        <EditText
+        <TextView
             android:id="@+id/deleteClinic"
             android:layout_width="0dp"
             android:layout_height="40dp"
@@ -173,7 +173,7 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/woofadmin_orgadd_name" />
 
-        <EditText
+        <TextView
             android:id="@+id/deleteConNo"
             android:layout_width="0dp"
             android:layout_height="40dp"
@@ -185,7 +185,7 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/woofadmin_orgadd_number" />
 
-        <EditText
+        <TextView
             android:id="@+id/deleteAddress"
             android:layout_width="0dp"
             android:layout_height="40dp"
@@ -197,7 +197,7 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/woofadmin_orgadd_address" />
 
-        <EditText
+        <TextView
             android:id="@+id/deleteCity"
             android:layout_width="0dp"
             android:layout_height="40dp"
@@ -209,7 +209,7 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/woofadmin_orgadd_city" />
 
-        <EditText
+        <TextView
             android:id="@+id/deleteDescription"
             android:layout_width="0dp"
             android:layout_height="40dp"
@@ -221,7 +221,7 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/woofadmin_orgadd_description" />
 
-        <EditText
+        <TextView
             android:id="@+id/deleteOwner"
             android:layout_width="0dp"
             android:layout_height="40dp"
