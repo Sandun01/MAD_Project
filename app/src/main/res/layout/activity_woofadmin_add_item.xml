@@ -47,7 +47,7 @@
 
         <EditText
             android:id="@+id/EtinputProductname"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="@string/etproductname"
@@ -61,18 +61,18 @@
 
         <EditText
             android:id="@+id/EtinputDescription"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="@string/etinputdescript"
             android:inputType="textPersonName"
-            android:textSize="12sp"
+            android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.495"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.737" />
+            app:layout_constraintVertical_bias="0.746" />
 
         <Button
             android:id="@+id/btnAddProduct"
@@ -103,7 +103,7 @@
 
         <EditText
             android:id="@+id/EtinputQty"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="@string/etinputProductqty"
@@ -117,16 +117,17 @@
 
         <EditText
             android:id="@+id/EtinputUnitPrice"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="@string/etinputUP"
             android:inputType="numberDecimal"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.826" />
+            app:layout_constraintVertical_bias="0.839" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
     <!--body end-->
