@@ -1,25 +1,28 @@
-package com.example.mad;
+package com.example.mad.models;
 
 import android.widget.ImageView;
 
 public class Dog {
 
-    private String dogType;
+    private String type;
     private Double price;
     private String description;
     private Integer contactNo;
     private String email;
     private String image;
+    private String did;
+    private String date;
+    private String time;
 
     public Dog() {
     }
 
-    public String getDogType() {
-        return dogType;
+    public String getType() {
+        return type;
     }
 
-    public void setDogType(String dogType) {
-        this.dogType = dogType;
+    public void setType(String type) {
+        this.type = type;
     }
 
     public Double getPrice() {
@@ -60,5 +63,29 @@ public class Dog {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public String getDid() {
+        return did;
+    }
+
+    public void setDid(String did) {
+        this.did = did;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
     }
 }

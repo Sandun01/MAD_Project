@@ -1,38 +1,32 @@
 package com.example.mad;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.mad.models.Dog;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
-import java.io.IOException;
-import java.sql.Ref;
-import java.util.UUID;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 public class woofcorrner_add_post extends AppCompatActivity {
 
@@ -48,16 +42,9 @@ public class woofcorrner_add_post extends AppCompatActivity {
 
     Dog dog;
 
-    private final int REQUEST_CODE = 2;
+    String dogID, date, time;
 
-    private  void clearControls(){
-        type.setText("");
-        price.setText("");
-        description.setText("");
-        contactNo.setText("");
-        email.setText("");
-        imageSelect.setImageURI(Uri.parse(""));
-    }
+    private final int REQUEST_CODE = 2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -194,25 +181,52 @@ public class woofcorrner_add_post extends AppCompatActivity {
                                     public void onComplete(@NonNull Task<Uri> task) {
                                         String t = task.getResult().toString();
                                         //Inserting to database
-                                        DatabaseReference dog = dbRef.push();
-                                        dog.child("image").setValue(task.getResult().toString());
-                                        dog.child("type").setValue(dogType);
-                                        dog.child("price").setValue(amount);
-                                        dog.child("description").setValue(details);
-                                        dog.child("contactNo").setValue(phone);
-                                        dog.child("email").setValue(mail);
+
+                                        generateDogID();
+//
+//                                        dog.child("image").setValue(task.getResult().toString());
+//                                        dog.child("did").setValue(task.getResult().toString());
+//                                        dog.child("type").setValue(dogType);
+//                                        dog.child("price").setValue(amount);
+//                                        dog.child("description").setValue(details);
+//                                        dog.child("contactNo").setValue(phone);
+//                                        dog.child("email").setValue(mail);
+                                        dog.setDid(dogID);
+                                        dog.setContactNo(phone);
+                                        dog.setDate(date);
+                                        dog.setTime(time);
+                                        dog.setDescription(details);
+                                        dog.setEmail(mail);
+                                        dog.setImage(task.getResult().toString());
+                                        dog.setType(dogType);
+                                        dog.setPrice(amount);
+
+                                        dbRef.child(dogID).setValue(dog).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<Void> task) {
+
+                                                if(task.isSuccessful())
+                                                {
+                                                    //feedback to the user
+                                                    Toast.makeText(getApplicationContext(),"Data Saved Successfully",Toast.LENGTH_SHORT).show();
+
+                                                    Intent intent = new Intent(woofcorrner_add_post.this, woofcorner_myAds.class);
+                                                    startActivity(intent);
+                                                }
+                                                else
+                                                {
+
+                                                    Toast.makeText(getApplicationContext(),"Error: "+task.getException().toString(),Toast.LENGTH_SHORT).show();
+                                                }
+
+                                            }
+                                        });
 
                                     }
                                 });
                             }
                         });
 
-                        //feedback to the user
-                        Toast.makeText(getApplicationContext(),"Data Saved Successfully",Toast.LENGTH_SHORT).show();
-                        clearControls();
-
-                        Intent intent = new Intent(woofcorrner_add_post.this, woofcorner_myAds.class);
-                        startActivity(intent);
 
                     }
                 }
@@ -224,4 +238,19 @@ public class woofcorrner_add_post extends AppCompatActivity {
         });
 
     }
+
+    private void generateDogID() {
+
+        Calendar calendar = Calendar.getInstance();
+        SimpleDateFormat curDate = new SimpleDateFormat("MMM dd, yyyy");
+        date = curDate.format(calendar.getTime());
+
+        SimpleDateFormat curTime = new SimpleDateFormat("HH:mm:ss a");
+        time = curTime.format(calendar.getTime());
+
+        dogID = date+" "+time;
+
+    }
+
+
 }

@@ -3,37 +3,39 @@ package com.example.mad;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageButton;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.view.ViewGroup;
+
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.mad.models.Dog;
+import com.example.mad.viewholders.woofCornerAdViewHolder;
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 public class woofcorner_myAds extends AppCompatActivity {
-    TextView type,price,description;
-    //RecyclerView allAds;
-    ImageButton view,edit,delete;
+
     FloatingActionButton postAd;
     DatabaseReference dbRef;
+    RecyclerView recyclerView;
+    RecyclerView.LayoutManager layoutManager;
 
-    private void clearControls(){
-        type.setText("");
-        price.setText("");
-        description.setText("");
-    }
+
+
 
     @SuppressLint("WrongViewCast")
     @Override
@@ -41,17 +43,62 @@ public class woofcorner_myAds extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_woofcorner_my_ads);
 
-        type = (TextView)findViewById(R.id.textView5);
-        price=(TextView)findViewById(R.id.textView9);
-        description = (TextView)findViewById(R.id.textView6);
 
         dbRef = FirebaseDatabase.getInstance().getReference().child("Dog");
-        dbRef.keepSynced(true);
+
+        recyclerView = findViewById(R.id.post_recyclerview);
+        recyclerView.setHasFixedSize(true);
+        layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
 
 
+        postAd = findViewById(R.id.postAd_button);
+
+    }
+
+    protected void onStart() {
+        super.onStart();
+
+        FirebaseRecyclerOptions<Dog> options =
+                new FirebaseRecyclerOptions.Builder<Dog>()
+                        .setQuery(dbRef, Dog.class).build();
+
+        FirebaseRecyclerAdapter<Dog, woofCornerAdViewHolder> adapter = new FirebaseRecyclerAdapter<Dog, woofCornerAdViewHolder>(options) {
+            @Override
+            protected void onBindViewHolder(@NonNull woofCornerAdViewHolder woofCornerAdViewHolder, int i, @NonNull final Dog dog) {
+                woofCornerAdViewHolder.type.setText(dog.getType());
+                woofCornerAdViewHolder.description.setText(dog.getDescription());
+                woofCornerAdViewHolder.price.setText( "Rs."+String.valueOf(dog.getPrice()) );
+                Picasso.get().load(dog.getImage()).into(woofCornerAdViewHolder.imageView);
+
+                woofCornerAdViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(woofcorner_myAds.this,woofcorner_view_post.class);
+                        intent.putExtra( "did", dog.getDid());
+                        startActivity(intent);
+                    }
+                });
+            }
+
+            @NonNull
+            @Override
+            public woofCornerAdViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.woofcorner_ads_layout  ,parent, false);
+                woofCornerAdViewHolder woofCornerAdViewHolder = new woofCornerAdViewHolder(view);
+                return woofCornerAdViewHolder;
+            }
+        };
+        recyclerView.setAdapter(adapter);
+        adapter.startListening();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
 
 
-                //bottom navigation bar begins
+        //bottom navigation bar begins
         BottomNavigationView bottomNavigationView = findViewById(R.id.app_bottom_navigationbar);
         //set selected
         bottomNavigationView.setSelectedItemId(R.id.bottomNaviBar_woofCorner);
@@ -85,34 +132,7 @@ public class woofcorner_myAds extends AppCompatActivity {
             }
         });
         //bottom navigation bar ends
-        view = findViewById(R.id.ad_view);
-        edit = findViewById(R.id.ad_edit);
-        delete = findViewById(R.id.ad_delete);
-        postAd = findViewById(R.id.postAd_button);
 
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-
-
-
-        view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(woofcorner_myAds.this, woofcorner_view_post.class);
-                startActivity(intent);
-            }
-        });
-
-        edit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(woofcorner_myAds.this, woofcorner_edit_post.class);
-                startActivity(intent);
-            }
-        });
 
         postAd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -122,34 +142,9 @@ public class woofcorner_myAds extends AppCompatActivity {
             }
         });
 
-        delete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                DatabaseReference delRef = FirebaseDatabase.getInstance().getReference().child("Dog");
-                delRef.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        if (snapshot.hasChild("")){
-                            dbRef = FirebaseDatabase.getInstance().getReference().child("Dog").child("");
-                            dbRef.removeValue();
-                            clearControls();
-                            Toast.makeText(getApplicationContext(),"Data Deleted Successfully",Toast.LENGTH_SHORT).show();
-                        }
-                        else
-                            Toast.makeText(getApplicationContext(),"No Source to Delete",Toast.LENGTH_SHORT).show();
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                    }
-                });
-            }
-        });
-
-
 
     }
+
 
 
 

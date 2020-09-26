@@ -43,73 +43,70 @@
     <!--Bottom navigation bar begins-->
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/menu_top"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentStart="true"
-        android:layout_centerVertical="true"
+        android:layout_height="wrap_content"
         android:layout_marginTop="70dp"
-        android:layout_marginBottom="70dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent">
+        >
 
-        <androidx.cardview.widget.CardView
-            android:layout_width="409dp"
-            android:layout_height="150dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.185">
+<!--        <androidx.cardview.widget.CardView-->
+<!--            android:layout_width="409dp"-->
+<!--            android:layout_height="150dp"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent"-->
+<!--            app:layout_constraintVertical_bias="0.185">-->
 
-            <ImageView
-                android:id="@+id/imageView2"
-                android:layout_width="143dp"
-                android:layout_height="match_parent"
-                android:layout_margin="10dp"
-                app:srcCompat="@drawable/labradorpup" />
+<!--            <ImageView-->
+<!--                android:id="@+id/adImage"-->
+<!--                android:layout_width="143dp"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_margin="10dp"-->
+<!--                app:srcCompat="@drawable/labradorpup" />-->
 
-            <TextView
-                android:id="@+id/textView5"
-                android:layout_width="153dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="155dp"
-                android:layout_marginTop="5dp"
-                android:text="@string/woofcorner_showAd_description"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+<!--            <TextView-->
+<!--                android:id="@+id/adType"-->
+<!--                android:layout_width="153dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginLeft="155dp"-->
+<!--                android:layout_marginTop="5dp"-->
+<!--                android:text="@string/woofcorner_showAd_description"-->
+<!--                android:textSize="18sp"-->
+<!--                android:textStyle="bold" />-->
 
-            <TextView
-                android:id="@+id/textView6"
-                android:layout_width="140dp"
-                android:layout_height="58dp"
-                android:layout_marginLeft="155dp"
-                android:layout_marginTop="25dp"
-                android:text="@string/woofcorner_showAd_details"
-                android:textSize="16sp" />
+<!--            <TextView-->
+<!--                android:id="@+id/adDescription"-->
+<!--                android:layout_width="140dp"-->
+<!--                android:layout_height="58dp"-->
+<!--                android:layout_marginLeft="155dp"-->
+<!--                android:layout_marginTop="25dp"-->
+<!--                android:text="@string/woofcorner_showAd_details"-->
+<!--                android:textSize="16sp" />-->
 
-            <TextView
-                android:id="@+id/textView9"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="155dp"
-                android:layout_marginTop="75dp"
-                android:text="@string/woofcorner_showAd_price"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+<!--            <TextView-->
+<!--                android:id="@+id/adPrice"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginLeft="155dp"-->
+<!--                android:layout_marginTop="75dp"-->
+<!--                android:text="@string/woofcorner_showAd_price"-->
+<!--                android:textSize="18sp"-->
+<!--                android:textStyle="bold" />-->
 
-            <Button
-                android:id="@+id/woofcorner_view"
-                android:layout_width="110dp"
-                android:layout_height="40dp"
-                android:layout_marginLeft="290dp"
-                android:layout_marginTop="100dp"
-                android:background="#817979"
-                android:text="@string/woofshop_viewbtn"
-                android:textColor="#E8E8E8"
-                android:textStyle="bold" />
+<!--            <Button-->
+<!--                android:id="@+id/woofcorner_view"-->
+<!--                android:layout_width="110dp"-->
+<!--                android:layout_height="40dp"-->
+<!--                android:layout_marginLeft="290dp"-->
+<!--                android:layout_marginTop="100dp"-->
+<!--                android:background="#817979"-->
+<!--                android:text="@string/woofshop_viewbtn"-->
+<!--                android:textColor="#E8E8E8"-->
+<!--                android:textStyle="bold" />-->
 
-        </androidx.cardview.widget.CardView>
+<!--        </androidx.cardview.widget.CardView>-->
+
 
         <androidx.appcompat.widget.SearchView
             android:id="@+id/searchView"
@@ -121,7 +118,7 @@
             app:layout_constraintHorizontal_bias="0.089"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.029" />
+            app:layout_constraintVertical_bias="1.0" />
 
         <ImageButton
             android:id="@+id/imageButton2"
@@ -145,6 +142,14 @@
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_baseline_filter_list_24" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/ads_recyclerView"
+        android:layout_width="410dp"
+        android:layout_height="495dp"
+        android:layout_marginTop="144dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/app_bottom_navigationbar"
