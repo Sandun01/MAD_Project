@@ -1,5 +1,6 @@
 package com.example.mad;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.ContactsContract;
@@ -9,8 +10,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -19,6 +22,8 @@ import com.example.mad.models.Cart;
 import com.example.mad.viewholders.CartViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -60,15 +65,75 @@ public class woofshop_view_cart extends AppCompatActivity {
 
         FirebaseRecyclerOptions<Cart> options =
                 new FirebaseRecyclerOptions.Builder<Cart>()
-                        .setQuery(cartRef.child(userID).child("ProductItem"), Cart.class).build();
+                        .setQuery(cartRef.child("User").child(userID).child("ProductItem"), Cart.class).build();
 
         FirebaseRecyclerAdapter<Cart, CartViewHolder> adapter = new FirebaseRecyclerAdapter<Cart, CartViewHolder>(options) {
             @Override
-            protected void onBindViewHolder(@NonNull CartViewHolder cartViewHolder, int i, @NonNull Cart cart) {
+            protected void onBindViewHolder(@NonNull CartViewHolder cartViewHolder, int i, @NonNull final Cart cart) {
 
                 cartViewHolder.txtCartItmName.setText("Product Name: "+cart.getItemName());
                 cartViewHolder.txtCartItmPrice.setText("Price: Rs."+String.valueOf(cart.getPrice()));
                 cartViewHolder.txtCartItmQty.setText("Quantity: "+String.valueOf(cart.getQuantity()));
+
+                cartViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        CharSequence options[] = new CharSequence[]
+                                {
+                                  "Edit Item",
+                                  "Remove Item"
+                                };
+                        AlertDialog.Builder builder = new AlertDialog.Builder(woofshop_view_cart.this);
+                        builder.setTitle("Cart Options");
+
+                        builder.setItems(options, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                //user click on the edit button
+                                if(i == 0)
+                                {
+                                    Intent intent = new Intent(woofshop_view_cart.this, woofshop_view_product.class);
+                                    intent.putExtra("itmID", cart.getItemID());
+                                    startActivity(intent);
+                                }
+                                //user click on the remove button
+                                if(i == 1)
+                                {
+                                    cartRef.child("User").child(userID).child("ProductItem").child(cart.getItemID())
+                                            .removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+
+                                            if(task.isSuccessful())
+                                            {
+
+                                                cartRef.child("Admin").child(userID).child("ProductItem").child(cart.getItemID())
+                                                        .removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                    @Override
+                                                    public void onComplete(@NonNull Task<Void> task) {
+
+                                                        if(task.isSuccessful())
+                                                        {
+                                                            Toast.makeText(getApplicationContext(), "item removed Successfully", Toast.LENGTH_LONG).show();
+                                                            Intent intent = new Intent(woofshop_view_cart.this, woofshop_show_products.class);
+                                                            startActivity(intent);
+                                                        }
+
+                                                    }
+                                                });
+
+                                            }
+
+                                        }
+                                    });
+                                }
+                            }
+                        });
+
+                        //alert dialog finish - show dialog
+                        builder.show();
+                    }
+                });
 
             }
 

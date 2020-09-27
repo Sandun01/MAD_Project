@@ -103,9 +103,6 @@
 
     <!--    Woof admin profile-->
     <string name="adminUsernameTXT">Username :</string>
-    <string name="adminUsernameD">ADMIN 1</string>
-    <string name="adminPasswordTXT">Password :</string>
-    <string name="adminPasswordD">***********</string>
     <string name="adminBTNupdatepass">Update Password</string>
 
     <!-- woof shop cart & orders   -->
@@ -115,6 +112,8 @@
     <string name="woofshop_cart_table_columnTXTqty">qty.</string>
     <string name="woofshop_cart_table_columnTXTdelete">del.</string>
     <string name="woofshop_cart_btnCalculate">Calculate Bill</string>
+    <string name="woofshop_cart_Order_Deratils">Order Details</string>
+
 
     <string name="woofshop_billqty">1</string>
     <string name="woofshop_bill_txtBill">Bill</string>
@@ -122,8 +121,9 @@
 
     <string name="woofshop_txtplaceOrder">Oder Details</string>
     <string name="woofshop_order_name">Name</string>
-    <string name="woofshop_order_address">Address</string>
     <string name="woofshop_order_phone">Phone Number</string>
+    <string name="woofshop_order_address">Address</string>
+    <string name="woofshop_order_postal">Postal Code</string>
     <string name="woofshop_order_text">We deliver your order to your doorsteps....</string>
     <string name="woofshop_placeorder_btn">Place Order</string>
     <string name="woofshop_orders_delete">Cancel Order</string>

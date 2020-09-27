@@ -197,9 +197,9 @@ public class woofshop_view_product extends AppCompatActivity {
 
         else{
 
-            DatabaseReference cartRef = FirebaseDatabase.getInstance().getReference().child("CartList");
+            final DatabaseReference cartRef = FirebaseDatabase.getInstance().getReference().child("CartList");
 
-            Cart cart = new Cart();
+            final Cart cart = new Cart();
             cart.setItemID(itemID);
             cart.setDateAdded(date);
             cart.setTimeAdded(time);
@@ -207,16 +207,28 @@ public class woofshop_view_product extends AppCompatActivity {
             cart.setPrice(itmPrice);
             cart.setQuantity(userEnterdQty);
 
-            cartRef.child(userID).child("ProductItem").child(itemID).setValue(cart)
+            cartRef.child("User").child(userID).child("ProductItem").child(itemID).setValue(cart)
             .addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
 
                     if(task.isSuccessful())
                     {
-                        Toast.makeText(getApplicationContext(), "Item Added to cart", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(woofshop_view_product.this, woofshop_show_products.class);
-                        startActivity(intent);
+
+                        cartRef.child("Admin").child(userID).child("ProductItem").child(itemID).setValue(cart).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+
+                                if(task.isSuccessful())
+                                {
+                                    Toast.makeText(getApplicationContext(), "Item Added to cart", Toast.LENGTH_SHORT).show();
+                                    Intent intent = new Intent(woofshop_view_product.this, woofshop_show_products.class);
+                                    startActivity(intent);
+                                }
+
+                            }
+                        });
+
                     }
                     else
                     {
