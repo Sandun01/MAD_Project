@@ -111,7 +111,8 @@ public class woofshop_view_product extends AppCompatActivity {
                         return true;
 
                     case R.id.bottomNaviBar_woofShop:
-
+                        startActivity(new Intent(getApplicationContext(), woofshop_show_products.class));
+                        overridePendingTransition(0,0);
                         return true;
 
                     case R.id.bottomNaviBar_woofProfile:
@@ -196,7 +197,7 @@ public class woofshop_view_product extends AppCompatActivity {
 
         else{
 
-            DatabaseReference cartRef = FirebaseDatabase.getInstance().getReference().child("Cart List");
+            DatabaseReference cartRef = FirebaseDatabase.getInstance().getReference().child("CartList");
 
             Cart cart = new Cart();
             cart.setItemID(itemID);
@@ -206,7 +207,7 @@ public class woofshop_view_product extends AppCompatActivity {
             cart.setPrice(itmPrice);
             cart.setQuantity(userEnterdQty);
 
-            cartRef.child(userID).child("Items").child(itemID).setValue(cart)
+            cartRef.child(userID).child("ProductItem").child(itemID).setValue(cart)
             .addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {

@@ -6,9 +6,9 @@ public class ProductItem {
 
     String id;
     String ProductName;
-    Integer Qty;
+    int Qty;
     String Description;
-    Float UnitPrice;
+    float UnitPrice;
     String image;
 
     public ProductItem() {

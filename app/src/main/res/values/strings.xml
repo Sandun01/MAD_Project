@@ -109,7 +109,7 @@
     <string name="adminBTNupdatepass">Update Password</string>
 
     <!-- woof shop cart & orders   -->
-    <string name="woofshop_cart_txtCart">Cart</string>
+    <string name="woofshop_cart_txtCart">Woof Shop Cart</string>
     <string name="woofshop_cart_table_columnTXTproduct">Product</string>
     <string name="woofshop_cart_table_columnTXTprice">Price</string>
     <string name="woofshop_cart_table_columnTXTqty">qty.</string>

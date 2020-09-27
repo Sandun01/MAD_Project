@@ -4,7 +4,7 @@ public class Cart {
 
     String itemID;
     String itemName;
-    Float price;
+    float price;
     int quantity;
     String dateAdded;
     String timeAdded;

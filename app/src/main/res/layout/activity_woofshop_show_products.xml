@@ -32,17 +32,6 @@
             android:textColor="@color/colorTheme"
             android:textSize="50sp" />
 
-        <ImageView
-            android:id="@+id/btn_cart_prod"
-            android:layout_width="65dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="64dp"
-            android:layout_marginLeft="64dp"
-            android:layout_marginTop="16dp"
-            android:contentDescription="@string/woofshop_cart_txtCart"
-            app:layout_constraintStart_toEndOf="@+id/searchView"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_app_bottomnavibar_shop" />
 
     </LinearLayout>
 
@@ -60,6 +49,20 @@
     <!--body end-->
 
     <!--Bottom navigation bar begins-->
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btn_cart_prod"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="100dp"
+        android:layout_marginRight="20dp"
+        android:layout_alignParentRight="true"
+        android:clickable="true"
+        app:backgroundTint="#3249C5"
+        android:tint="@color/colorBtnwhite"
+        android:layout_alignParentBottom="true"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/ic_app_bottomnavibar_shop" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/app_bottom_navigationbar"

@@ -19,13 +19,14 @@ import com.example.mad.viewholders.ProductViewholder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
 public class woofshop_show_products extends AppCompatActivity {
 
-    ImageView opencart;
+    FloatingActionButton btn_cart_prod;
     private DatabaseReference prRef;
     private RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
@@ -38,7 +39,7 @@ public class woofshop_show_products extends AppCompatActivity {
         //initializing
         prRef = FirebaseDatabase.getInstance().getReference().child("ProductItem");
 
-        opencart = findViewById(R.id.btn_cart_prod);
+        btn_cart_prod = findViewById(R.id.btn_cart_prod);
         recyclerView = findViewById(R.id.product_itemview);
         recyclerView.setHasFixedSize(true);
 
@@ -141,7 +142,7 @@ public class woofshop_show_products extends AppCompatActivity {
         });
 //        bottom navigation bar ends
 
-        opencart.setOnClickListener(new View.OnClickListener() {
+        btn_cart_prod.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(woofshop_show_products.this,woofshop_view_cart.class);
