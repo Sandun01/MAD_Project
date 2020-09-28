@@ -4,24 +4,16 @@ import android.widget.TextView;
 
 public class ProductItem {
 
-    String id;
     String ProductName;
-    Integer Qty;
+    int Qty;
     String Description;
-    Float UnitPrice;
+    float UnitPrice;
     String image;
 
 
     public ProductItem() {
     }
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
     public String getProductName() {
         return ProductName;
     }

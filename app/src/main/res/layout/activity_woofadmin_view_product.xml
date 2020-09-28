@@ -73,7 +73,15 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
     <!--body end-->
-
+<!--    <com.google.android.material.bottomnavigation.BottomNavigationView-->
+<!--        android:id="@+id/app_admin_bottom_navigationbar"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="70dp"-->
+<!--        android:layout_alignParentBottom="true"-->
+<!--        android:background="@color/colorBtnblack"-->
+<!--        app:itemIconSize="50dp"-->
+<!--        app:itemIconTint="@drawable/app_bottom_navibar_selector"-->
+<!--        app:menu="@menu/app_adminbottom_navibar_menue" />-->
 
 
 </RelativeLayout>

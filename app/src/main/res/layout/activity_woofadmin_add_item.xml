@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -129,9 +130,18 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.839" />
 
+
     </androidx.constraintlayout.widget.ConstraintLayout>
     <!--body end-->
-
+<!--    <com.google.android.material.bottomnavigation.BottomNavigationView-->
+<!--        android:id="@+id/app_admin_bottom_navigationbar"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="70dp"-->
+<!--        android:layout_alignParentBottom="true"-->
+<!--        android:background="@color/colorBtnblack"-->
+<!--        app:itemIconSize="50dp"-->
+<!--        app:itemIconTint="@drawable/app_bottom_navibar_selector"-->
+<!--        app:menu="@menu/app_adminbottom_navibar_menue" />-->
 
 
 </RelativeLayout>

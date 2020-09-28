@@ -25,15 +25,13 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 
 public class woofadmin_addItem extends AppCompatActivity {
 
-    String saveCurrentDate, saveCurrentTime, itemName,itemDescription;
+    String itemName,itemDescription;
     float itemPrice;
     int itemQuantity;
-    private String productRandomKey, downloadImageUrl;
+    private String  downloadImageUrl;
 
     EditText txtProdName,txtProdDescription, txtID,txtQty,txtUnitPrice;
     Button btnSave;
@@ -137,17 +135,8 @@ public class woofadmin_addItem extends AppCompatActivity {
 
     private void storeAllInfo() {
 
-        Calendar calendar = Calendar.getInstance();
-        SimpleDateFormat currentDate = new SimpleDateFormat("MMM dd, yyyy");
-        saveCurrentDate = currentDate.format(calendar.getTime());
 
-        SimpleDateFormat currentTime = new SimpleDateFormat("HH:mm:ss a");
-        saveCurrentTime = currentTime.format(calendar.getTime());
-
-        //assign random product id
-        productRandomKey = saveCurrentDate + saveCurrentTime;
-
-        final StorageReference imageFilePath = ImageRef.child(ImageUri.getLastPathSegment() + productRandomKey + ".jpg");
+        final StorageReference imageFilePath = ImageRef.child(ImageUri.getLastPathSegment()  + ".jpg");
 
         final UploadTask uploadTask = imageFilePath.putFile(ImageUri);
 
@@ -202,14 +191,13 @@ public class woofadmin_addItem extends AppCompatActivity {
     private void saveProductDetailsToDatabase() {
 
         ProductItem item = new ProductItem();
-        item.setId(productRandomKey);
         item.setDescription(itemDescription);
         item.setImage(downloadImageUrl);
         item.setQty(itemQuantity);
         item.setUnitPrice(itemPrice);
         item.setProductName(itemName);
 
-        itemDBRef.child(productRandomKey).setValue(item)
+        itemDBRef.push().setValue(item)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
@@ -228,8 +216,43 @@ public class woofadmin_addItem extends AppCompatActivity {
 
                     }
                 });
+        //bottom navigation bar begins
+//        BottomNavigationView bottomNavigationView = findViewById(R.id.app_admin_bottom_navigationbar);
+//        //set selected
+//        bottomNavigationView.setSelectedItemId(R.id.bottomNaviBar_adminProfile);
+//
+//        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+//            @Override
+//            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+//
+//                switch(item.getItemId())
+//                {
+//                    case R.id.bottomNaviBar_adminOrganizations:
+//                        startActivity(new Intent(getApplicationContext(), woofadmin_organization_view.class));
+//                        overridePendingTransition(0,0);
+//                        return true;
+//
+//                    case R.id.bottomNaviBar_adminItems:
+//                        startActivity(new Intent(getApplicationContext(), woofadmin_addItem.class));
+//                        overridePendingTransition(0,0);
+//                        return true;
+//
+//                    case R.id.bottomNaviBar_adminOrders:
+//                        startActivity(new Intent(getApplicationContext(), woofadmin_orders.class));
+//                        overridePendingTransition(0,0);
+//                        return true;
+//
+//                    case R.id.bottomNaviBar_adminProfile:
+//                        return true;
+//
+//                }
+//
+//                return false;
+//            }
+//        });
 
     }
+
 
 
 }

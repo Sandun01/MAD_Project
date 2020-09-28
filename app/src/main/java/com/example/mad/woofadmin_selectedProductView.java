@@ -88,16 +88,52 @@ public class woofadmin_selectedProductView extends AppCompatActivity {
             public void onClick(View view) {
                 dbRef=FirebaseDatabase.getInstance().getReference();
                 dbRef.child("ProductItem").child(itemID).child("productName").setValue(name.getText().toString().trim());
-                dbRef.child("ProductItem").child(itemID).child("description").setValue(desc.getText().toString().trim());
-                dbRef.child("ProductItem").child(itemID).child("qty").setValue(qty.getText().toString().trim());
-                dbRef.child("ProductItem").child(itemID).child("unitPrice").setValue(price.getText().toString().trim());
+                dbRef.child("ProductItem").child(itemID).child("description").setValue(desc.getText().toString());
+                dbRef.child("ProductItem").child(itemID).child("qty").setValue(Integer.parseInt(qty.getText().toString()));
+                dbRef.child("ProductItem").child(itemID).child("unitPrice").setValue(Float.parseFloat(price.getText().toString()));
 
                 Toast.makeText(getApplicationContext(),"Item Updated successfully",Toast.LENGTH_SHORT).show();
                 navigateToViewProd();
 
+
+
             }
         });
 
+//        //bottom navigation bar begins
+//        BottomNavigationView bottomNavigationView = findViewById(R.id.app_admin_bottom_navigationbar);
+//        //set selected
+//        bottomNavigationView.setSelectedItemId(R.id.bottomNaviBar_adminProfile);
+//
+//        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+//            @Override
+//            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+//
+//                switch(item.getItemId())
+//                {
+//                    case R.id.bottomNaviBar_adminOrganizations:
+//                        startActivity(new Intent(getApplicationContext(), woofadmin_organization_view.class));
+//                        overridePendingTransition(0,0);
+//                        return true;
+//
+//                    case R.id.bottomNaviBar_adminItems:
+//                        startActivity(new Intent(getApplicationContext(), woofadmin_addItem.class));
+//                        overridePendingTransition(0,0);
+//                        return true;
+//
+//                    case R.id.bottomNaviBar_adminOrders:
+//                        startActivity(new Intent(getApplicationContext(), woofadmin_orders.class));
+//                        overridePendingTransition(0,0);
+//                        return true;
+//
+//                    case R.id.bottomNaviBar_adminProfile:
+//                        return true;
+//
+//                }
+//
+//                return false;
+//            }
+//        });
         }
     public void navigateToViewProd(){
         Intent intent = new Intent(this, woofadmin_viewProduct.class);

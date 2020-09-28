@@ -12,7 +12,7 @@
         android:layout_width="408dp"
         android:layout_height="187dp"
         android:layout_marginTop="2dp"
-        android:background="@color/colorBottomNavBar"
+        android:background="#EDE8E8"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
