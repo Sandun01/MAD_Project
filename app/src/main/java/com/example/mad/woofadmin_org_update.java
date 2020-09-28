@@ -25,6 +25,7 @@ public class woofadmin_org_update extends AppCompatActivity {
     Button btnUpdate;
     DatabaseReference upDbRef;
     DogCare updateClinic;
+    private String org_id = " ";
 
     //Method to clear all user inputs
     private void clearControls(){
@@ -41,6 +42,8 @@ public class woofadmin_org_update extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_woofadmin_org_update);
 
+        org_id = getIntent().getStringExtra("id");
+
         txtClinic = findViewById(R.id.updateClinic);
         txtConNo = findViewById(R.id.updateConNo);
         txtAddress = findViewById(R.id.updateAddress);
@@ -54,11 +57,11 @@ public class woofadmin_org_update extends AppCompatActivity {
         btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DatabaseReference updateRef = FirebaseDatabase.getInstance().getReference().child("DOgCare");
+                DatabaseReference updateRef = FirebaseDatabase.getInstance().getReference().child("DogCare");
                 updateRef.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        if (snapshot.hasChild("updateClinic1")){
+                        if (snapshot.hasChild(org_id)){
                             try{
                                 updateClinic.setClinicName(txtClinic.getText().toString().trim());
                                 updateClinic.setContactNo(txtConNo.getText().toString().trim());
@@ -66,8 +69,9 @@ public class woofadmin_org_update extends AppCompatActivity {
                                 updateClinic.setCity(txtCity.getText().toString().trim());
                                 updateClinic.setDescription(txtDescription.getText().toString().trim());
                                 updateClinic.setOwnerName(txtOwner.getText().toString().trim());
-                                upDbRef = FirebaseDatabase.getInstance().getReference().child("DogCare").child("updateClinic1");
-                                upDbRef.setValue(updateClinic);
+
+                                upDbRef = FirebaseDatabase.getInstance().getReference().child("DogCare").child(org_id);
+                                upDbRef.setValue(org_id);
                                 clearControls();
                                 //Feedback to the user via a Toast...
                                 Toast.makeText(getApplicationContext(), "Data Updated Successfully...", Toast.LENGTH_SHORT).show();

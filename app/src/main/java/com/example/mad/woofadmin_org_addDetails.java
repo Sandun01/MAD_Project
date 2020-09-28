@@ -88,8 +88,9 @@ public class woofadmin_org_addDetails extends AppCompatActivity {
                                         {
                                             Toast.makeText(getApplicationContext(), "Data Saved Successfully...", Toast.LENGTH_SHORT).show();
                                             Intent intent = new Intent(woofadmin_org_addDetails.this, woofadmin_organization_view.class);
+
                                             startActivity(intent);
-                                            finish();
+
                                         }
                                         else
                                         {
@@ -117,7 +118,7 @@ public class woofadmin_org_addDetails extends AppCompatActivity {
         //bottom navigation bar begins
         BottomNavigationView bottomNavigationView = findViewById(R.id.app_admin_bottom_navigationbar);
         //set selected
-        bottomNavigationView.setSelectedItemId(R.id.bottomNaviBar_adminProfile);
+        bottomNavigationView.setSelectedItemId(R.id.bottomNaviBar_adminOrganizations);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -126,8 +127,6 @@ public class woofadmin_org_addDetails extends AppCompatActivity {
                 switch(item.getItemId())
                 {
                     case R.id.bottomNaviBar_adminOrganizations:
-                        startActivity(new Intent(getApplicationContext(), woofadmin_organization_view.class));
-                        overridePendingTransition(0,0);
                         return true;
 
                     case R.id.bottomNaviBar_adminItems:
@@ -141,6 +140,8 @@ public class woofadmin_org_addDetails extends AppCompatActivity {
                         return true;
 
                     case R.id.bottomNaviBar_adminProfile:
+                        startActivity(new Intent(getApplicationContext(), admin_account.class));
+                        overridePendingTransition(0,0);
                         return true;
 
                 }

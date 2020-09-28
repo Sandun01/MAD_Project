@@ -23,7 +23,7 @@ import com.google.firebase.database.ValueEventListener;
 public class woofadmin_org_details extends AppCompatActivity {
 
     TextView txtDelClinic, txtDelConNo, txtDelAddress, txtDelCity, txtDelDescription, txtDelOwner;
-    Button buttonDelete;
+    Button buttonDelete, btnUpdate;
     DatabaseReference dbRef;
     DogCare deleteClinic;
     private String org_id = " ";
@@ -36,7 +36,6 @@ public class woofadmin_org_details extends AppCompatActivity {
 
         org_id = getIntent().getStringExtra("id");
 
-
         txtDelClinic = findViewById(R.id.deleteClinic);
         txtDelConNo = findViewById(R.id.deleteConNo);
         txtDelAddress = findViewById(R.id.deleteAddress);
@@ -44,43 +43,52 @@ public class woofadmin_org_details extends AppCompatActivity {
         txtDelDescription = findViewById(R.id.deleteDescription);
         txtDelOwner = findViewById(R.id.deleteOwner);
 
-        buttonDelete = findViewById(R.id.woofadmin_org_update);
+        buttonDelete = findViewById(R.id.woofadmin_org_delete);
+        btnUpdate = findViewById(R.id.woofadmin_org_update);
 
         deleteClinic = new DogCare();
 
         getOrgDetails(org_id);
 
-        buttonDelete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                DatabaseReference delRef = FirebaseDatabase.getInstance().getReference().child("DogCare");
-                delRef.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        if (snapshot.hasChild("deleteClinic")){
-                            dbRef = FirebaseDatabase.getInstance().getReference().child("DogCare").child("deleteClinic");
-                            dbRef.removeValue();
-                            Toast.makeText(getApplicationContext(), "Data Deleted Successfully...", Toast.LENGTH_SHORT).show();
-                        }
-                        else
-                            Toast.makeText(getApplicationContext(), "No source to Delete...", Toast.LENGTH_SHORT).show();
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                    }
-                });
-            }
-        });
+        //DELETE ORG
 
         buttonDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(woofadmin_org_details.this,woofadmin_org_update.class);
-                startActivity(intent);
+                deleteOrgdata();
             }
         });
+
+
+    }
+
+    private void deleteOrgdata() {
+
+        DatabaseReference delRef = FirebaseDatabase.getInstance().getReference().child("DogCare");
+        delRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.hasChild(org_id)){
+                    dbRef = FirebaseDatabase.getInstance().getReference().child("DogCare").child(org_id);
+                    dbRef.removeValue();
+
+                    Toast.makeText(getApplicationContext(), "Data Deleted Successfully...", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(woofadmin_org_details.this, woofadmin_organization_view.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(intent);
+
+                }
+                else{
+                    Toast.makeText(getApplicationContext(), "No source to Delete...", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
     }
 
     private void getOrgDetails(final String org_id) {
@@ -101,10 +109,7 @@ public class woofadmin_org_details extends AppCompatActivity {
                     txtDelOwner.setText(clinics.getOwnerName());
 
                 }
-                else
-                {
-                    Toast.makeText(getApplicationContext(), "Data Not Found",Toast.LENGTH_LONG).show();
-                }
+
             }
 
             @Override
@@ -117,6 +122,20 @@ public class woofadmin_org_details extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+
+        btnUpdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                navigateToviewDetails();
+            }
+
+            private void navigateToviewDetails() {
+                Intent intent = new Intent(woofadmin_org_details.this, woofadmin_org_update.class);
+                startActivity(intent);
+            }
+        });
+
+
         //bottom navigation bar begins
         BottomNavigationView bottomNavigationView = findViewById(R.id.app_admin_bottom_navigationbar);
         //set selected

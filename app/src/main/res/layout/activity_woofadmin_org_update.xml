@@ -164,7 +164,6 @@
             android:background="#FFFFFF"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="Name"
             app:layout_constraintBaseline_toBaselineOf="@+id/woofadmin_orgadd_name"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"

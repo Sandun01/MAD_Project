@@ -36,8 +36,9 @@
 
 <!--body start-->
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="70dp"
         android:layout_marginBottom="70dp"
         android:background="@color/colorTopMenueBackgroud"
@@ -79,66 +80,20 @@
             android:orientation="horizontal"
             app:layout_constraintGuide_begin="56dp" />
 
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:layout_marginTop="14dp"
-            android:background="#FBF1F1"
-            android:padding="15dp"
-            android:text="@string/woofcare_findclinic_clinic_name"
-            android:textColor="@color/colorWoofcareOrgName"
-            android:textSize="26sp"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/org_recycleviewUser"
+            android:layout_width="410dp"
+            android:layout_height="495dp"
+            android:layout_marginTop="5dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/woofcare_findclinic_search" />
-
-        <Button
-            android:id="@+id/woofadmin_org_selectbutton"
-            android:layout_width="120dp"
-            android:layout_height="50dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginBottom="8dp"
-            android:background="@drawable/btn_normal_common"
-            android:text="@string/woofcare_findclinic_clinic_viewButton"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/textView2"
-            app:layout_constraintEnd_toEndOf="@+id/textView2" />
-
-        <TextView
-            android:id="@+id/woofcare_findlocation"
-            android:layout_width="180dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="68dp"
-            android:text="@string/woofcare_findclinic_clinic_loc"
-            android:textColor="@color/colorBtnTheme"
-            android:textSize="18sp"
-            app:drawableLeftCompat="@drawable/ic_woofcare_locationicon"
-            app:layout_constraintStart_toStartOf="@+id/textView2"
-            app:layout_constraintTop_toTopOf="@+id/textView2" />
-
-        <TextView
-            android:id="@+id/woofcare_txtdescription"
-            android:layout_width="180dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="8dp"
-            android:text="@string/woofcare_findclinic_clinic_des"
-            app:drawableLeftCompat="@android:drawable/ic_menu_edit"
-            app:layout_constraintStart_toStartOf="@+id/textView2"
-            app:layout_constraintTop_toBottomOf="@+id/woofcare_findlocation" />
+            app:layout_constraintTop_toBottomOf="@+id/guideline"
+            tools:ignore="MissingConstraints" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 <!--body end-->
 
 
-<!--Bottom navigation bar begins-->
+    <!--Bottom navigation bar begins-->
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/app_bottom_navigationbar"
