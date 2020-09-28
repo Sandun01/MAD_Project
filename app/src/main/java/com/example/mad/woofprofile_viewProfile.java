@@ -35,7 +35,7 @@ public class woofprofile_viewProfile extends AppCompatActivity {
         setContentView(R.layout.activity_woofprofile_view_profile);
 
         //initialize id's
-        toUpdateOwner = findViewById(R.id.owner_update);
+        toUpdateOwner = findViewById(R.id.viewEditOwner);
         logoutBtn = findViewById(R.id.btnLogout);
 
         uname = findViewById(R.id.viewUsername);

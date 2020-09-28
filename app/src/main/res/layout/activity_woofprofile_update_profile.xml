@@ -62,12 +62,12 @@
             android:id="@+id/imageView"
             android:layout_width="183dp"
             android:layout_height="146dp"
-            app:srcCompat="@drawable/ic_app_bottomnavibar_profile"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.132" />
+            app:layout_constraintVertical_bias="0.132"
+            app:srcCompat="@drawable/ic_app_bottomnavibar_profile" />
 
         <TextView
             android:id="@+id/textView4"
@@ -108,34 +108,8 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.589" />
 
-        <TextView
-            android:id="@+id/textView34"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/woofown_pro_txtpassword"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.089"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.679" />
-
-        <Button
-            android:id="@+id/owner_update"
-            android:layout_width="121dp"
-            android:layout_height="59dp"
-            android:text="@string/woofown_pro_update_BTN_txt"
-            android:textSize="19sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.465"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.866" />
-
         <EditText
-            android:id="@+id/editTextTextPersonName4"
+            android:id="@+id/uname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -148,47 +122,43 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.404" />
 
-        <EditText
-            android:id="@+id/editTextTextPersonName5"
+        <TextView
+            android:id="@+id/userEmail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:ems="10"
             android:hint="@string/signupemailTxt"
-            android:inputType="textPersonName"
+            android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.777"
+            app:layout_constraintHorizontal_bias="0.588"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.497" />
+            app:layout_constraintVertical_bias="0.499" />
+
+        <Button
+            android:id="@+id/updateuserBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/woofown_pro_update_BTN_txt"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.767" />
 
         <EditText
-            android:id="@+id/editTextTextPersonName6"
+            android:id="@+id/userPhoneInput"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="@string/woofshop_order_phone"
-            android:inputType="textPersonName"
+            android:inputType="numberSigned"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.777"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.589" />
-
-        <EditText
-            android:id="@+id/editTextTextPersonName7"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="@string/signupPasswordTXT"
-            android:inputType="textPersonName"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.777"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.682" />
+            app:layout_constraintVertical_bias="0.604" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
     <!--body end-->

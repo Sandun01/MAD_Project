@@ -170,7 +170,7 @@
             app:layout_constraintVertical_bias="0.916" />
 
         <Button
-            android:id="@+id/owner_update"
+            android:id="@+id/viewEditOwner"
             android:layout_width="125dp"
             android:layout_height="52dp"
             android:text="@string/woofown_pro_update_BTN_txt"

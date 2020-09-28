@@ -61,7 +61,7 @@ public class woofshop_show_products extends AppCompatActivity {
                 new FirebaseRecyclerAdapter<ProductItem, ProductViewholder>(options) {
 
                     @Override
-                    protected void onBindViewHolder(@NonNull ProductViewholder holder, int i, @NonNull final ProductItem model)
+                    protected void onBindViewHolder(@NonNull ProductViewholder holder, final int i, @NonNull final ProductItem model)
                     {
                         holder.pnameTxt.setText(model.getProductName());
                         holder.priceTxt.setText("Price: Rs." + model.getUnitPrice().toString());
@@ -72,7 +72,7 @@ public class woofshop_show_products extends AppCompatActivity {
                             @Override
                             public void onClick(View view) {
                                 Intent intent = new Intent(woofshop_show_products.this, woofshop_view_product.class);
-                                intent.putExtra("itmID", model.getId());
+                                intent.putExtra("itmID", getRef(i).getKey());
                                 startActivity(intent);
 
                             }
@@ -101,10 +101,6 @@ public class woofshop_show_products extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-
-        //add to cart button
-
-
 
         //bottom navigation bar begins
         BottomNavigationView bottomNavigationView = findViewById(R.id.app_bottom_navigationbar);

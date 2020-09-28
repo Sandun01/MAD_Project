@@ -227,6 +227,7 @@ public class Registratiion extends AppCompatActivity {
     public void navigateToLogin()
     {
         Intent intent = new Intent(Registratiion.this, login.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
     }
 

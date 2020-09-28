@@ -4,7 +4,6 @@ package com.example.mad.models;
 
 public class ProductItem {
 
-    String id;
     String ProductName;
     int Qty;
     String Description;
@@ -12,14 +11,6 @@ public class ProductItem {
     String image;
 
     public ProductItem() {
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public String getProductName() {

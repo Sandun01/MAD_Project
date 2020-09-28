@@ -156,7 +156,7 @@
             app:layout_constraintTop_toBottomOf="@+id/imageView5" />
 
         <EditText
-            android:id="@+id/editTextTextPersonName4"
+            android:id="@+id/uname"
             android:layout_width="216dp"
             android:layout_height="39dp"
             android:layout_marginStart="4dp"
@@ -191,7 +191,7 @@
             app:layout_constraintStart_toEndOf="@+id/textView30" />
 
         <EditText
-            android:id="@+id/editTextTextPersonName6"
+            android:id="@+id/phone"
             android:layout_width="216dp"
             android:layout_height="39dp"
             android:layout_marginStart="4dp"

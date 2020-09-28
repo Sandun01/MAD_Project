@@ -68,28 +68,28 @@
             android:id="@+id/textView8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-smallcaps"
+            android:fontFamily="@font/baloo"
             android:text="@string/woofshop_cart_Order_Deratils"
-            android:textColor="#000000"
+            android:textColor="#810997"
             android:textSize="30sp"
-            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.276" />
+            app:layout_constraintVertical_bias="0.248" />
 
         <View
             android:id="@+id/view"
-            android:layout_width="366dp"
-            android:layout_height="66dp"
+            android:layout_width="364dp"
+            android:layout_height="54dp"
             android:background="@color/colorlistbackBlue"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.489"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView21"
-            app:layout_constraintVertical_bias="0.035" />
+            app:layout_constraintVertical_bias="0.02" />
 
         <TextView
             android:id="@+id/textView26"
@@ -107,7 +107,7 @@
             app:layout_constraintVertical_bias="0.141" />
 
         <TextView
-            android:id="@+id/textView27"
+            android:id="@+id/totalPrice_order"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/woofshop_price"
@@ -125,17 +125,16 @@
             android:id="@+id/woofshop_confirm_order"
             android:layout_width="226dp"
             android:layout_height="57dp"
+            android:layout_marginTop="16dp"
             android:background="@color/design_default_color_error"
             android:text="@string/woofshop_btn_confirmbuy"
             android:textColor="#FFFFFF"
             android:textSize="18sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.872" />
+            app:layout_constraintTop_toBottomOf="@+id/order_postal" />
 
         <EditText
             android:id="@+id/order_address"
@@ -160,6 +159,19 @@
             android:textColor="#000000"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView18" />
+
+        <TextView
+            android:id="@+id/textView18"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginLeft="32dp"
+            android:layout_marginTop="24dp"
+            android:text="@string/woofshop_orders_cusname"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
         <TextView
@@ -168,8 +180,21 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:layout_marginLeft="32dp"
-            android:layout_marginTop="36dp"
+            android:layout_marginTop="32dp"
             android:text="@string/woofshop_order_postal"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView16" />
+
+        <TextView
+            android:id="@+id/textView16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginLeft="32dp"
+            android:layout_marginTop="32dp"
+            android:text="@string/woofshop_order_phone"
             android:textColor="#000000"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
@@ -179,12 +204,36 @@
             android:id="@+id/order_postal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="40dp"
-            android:layout_marginRight="40dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
             android:ems="10"
             android:hint="@string/woofshop_order_postal"
-            android:inputType="number"
+            android:inputType="numberSigned"
             app:layout_constraintBaseline_toBaselineOf="@+id/textView14"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <EditText
+            android:id="@+id/phone_orders"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:ems="10"
+            android:hint="@string/woofshop_order_phone"
+            android:inputType="numberSigned"
+            app:layout_constraintBaseline_toBaselineOf="@+id/textView16"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <EditText
+            android:id="@+id/order_cusName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:ems="10"
+            android:hint="@string/woofshop_orders_cusname"
+            android:inputType="textPersonName"
+            app:layout_constraintBaseline_toBaselineOf="@+id/textView18"
             app:layout_constraintEnd_toEndOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 

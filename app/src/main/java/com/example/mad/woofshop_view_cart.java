@@ -36,6 +36,7 @@ public class woofshop_view_cart extends AppCompatActivity {
     RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
     private String userID;
+    float allTotal = 0, totalPtice=0;
 
 
     @Override
@@ -74,6 +75,12 @@ public class woofshop_view_cart extends AppCompatActivity {
                 cartViewHolder.txtCartItmName.setText("Product Name: "+cart.getItemName());
                 cartViewHolder.txtCartItmPrice.setText("Price: Rs."+String.valueOf(cart.getPrice()));
                 cartViewHolder.txtCartItmQty.setText("Quantity: "+String.valueOf(cart.getQuantity()));
+
+
+                //calculate total price
+                totalPtice = cart.getPrice() * cart.getQuantity();
+                allTotal = allTotal + totalPtice;
+
 
                 cartViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -199,6 +206,7 @@ public class woofshop_view_cart extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(woofshop_view_cart.this,woofshop_viewBill.class);
+                intent.putExtra("totalPrice", String.valueOf(allTotal));
                 startActivity(intent);
             }
         });
