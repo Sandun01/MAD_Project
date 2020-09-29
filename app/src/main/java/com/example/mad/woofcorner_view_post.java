@@ -74,7 +74,7 @@ public class woofcorner_view_post extends AppCompatActivity {
                     Dog dog = snapshot.getValue(Dog.class);
 
                     type.setText(dog.getType());
-                    price.setText(dog.getPrice().toString());
+                    price.setText("Rs "+dog.getPrice().toString());
                     description.setText(dog.getDescription());
                     contactNo.setText(dog.getContactNo().toString());
                     email.setText(dog.getEmail());

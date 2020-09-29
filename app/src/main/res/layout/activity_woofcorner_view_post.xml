@@ -101,8 +101,8 @@
 
         <TextView
             android:id="@+id/view_post_desc"
-            android:layout_width="223dp"
-            android:layout_height="24dp"
+            android:layout_width="312dp"
+            android:layout_height="55dp"
             android:layout_marginStart="50dp"
             android:layout_marginLeft="50dp"
             android:layout_marginTop="10dp"
@@ -152,10 +152,10 @@
 
         <TextView
             android:id="@+id/view_post_email"
-            android:layout_width="117dp"
-            android:layout_height="24dp"
-            android:layout_marginEnd="132dp"
-            android:layout_marginRight="132dp"
+            android:layout_width="197dp"
+            android:layout_height="18dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginRight="50dp"
             android:text="@string/woofcorner_view_post_mail"
             app:layout_constraintBaseline_toBaselineOf="@+id/viewPhone"
             app:layout_constraintEnd_toEndOf="parent" />

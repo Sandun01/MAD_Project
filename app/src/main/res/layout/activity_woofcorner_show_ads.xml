@@ -146,10 +146,11 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/ads_recyclerView"
         android:layout_width="410dp"
-        android:layout_height="495dp"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
         android:layout_marginTop="144dp"
         app:layout_constraintEnd_toEndOf="parent"
-        />
+        android:layout_alignParentLeft="true" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/app_bottom_navigationbar"
