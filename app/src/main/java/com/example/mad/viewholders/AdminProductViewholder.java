@@ -10,13 +10,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.mad.R;
 import com.example.mad.interfaces.ItemClicklistner;
 
-public class ProductViewholder extends RecyclerView.ViewHolder implements View.OnClickListener
+public class AdminProductViewholder extends RecyclerView.ViewHolder implements View.OnClickListener
 {
     public TextView pnameTxt, pdesTxt, priceTxt;
     public ImageView imageView;
     public ItemClicklistner listner;
 
-    public ProductViewholder(@NonNull View itemView) {
+    public AdminProductViewholder(@NonNull View itemView) {
         super(itemView);
 
         imageView = (ImageView) itemView.findViewById(R.id.RV_row_img);
