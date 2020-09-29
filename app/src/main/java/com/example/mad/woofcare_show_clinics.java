@@ -26,12 +26,63 @@ public class woofcare_show_clinics extends AppCompatActivity {
     private DatabaseReference woofcareRef;
     private RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
+    private String careId = " ";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_woofcare_show_clinics);
         woofcareRef = FirebaseDatabase.getInstance().getReference().child("DogCare");
+        careId = getIntent().getStringExtra("id");
+
+
+
+        //declaring variables
+        recyclerView = findViewById(R.id.org_recycleviewUser);
+        recyclerView.setHasFixedSize(true);
+        layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
+
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        FirebaseRecyclerOptions<DogCare> options = new FirebaseRecyclerOptions.Builder<DogCare>().setQuery(woofcareRef, DogCare.class).build();
+
+        FirebaseRecyclerAdapter<DogCare, org_view> adapter = new FirebaseRecyclerAdapter<DogCare, org_view>(options) {
+            @Override
+            protected void onBindViewHolder(@NonNull org_view holder, int i, @NonNull final DogCare org) {
+                holder.txtOrgName.setText("Organization:"+org.getClinicName());
+                holder.txtConNo.setText("Contact Number:"+org.getContactNo());
+                holder.txtLocation.setText("Address:"+org.getAddress());
+
+                holder.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(woofcare_show_clinics.this, woofcare_clinc_details.class);
+                        intent.putExtra("id", org.getId());
+                        startActivity(intent);
+                    }
+                });
+            }
+
+            @NonNull
+            @Override
+            public org_view onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.woofadmin_viewcard, parent, false);
+                org_view holder = new org_view(view);
+                return holder;
+            }
+        };
+
+        recyclerView.setAdapter(adapter);
+        adapter.startListening();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
 
         //bottom navigation bar begins
         BottomNavigationView bottomNavigationView = findViewById(R.id.app_bottom_navigationbar);
@@ -67,50 +118,6 @@ public class woofcare_show_clinics extends AppCompatActivity {
                 return false;
             }
         });
-    //bottom navigation bar ends
-
-        //declaring variables
-        recyclerView = findViewById(R.id.org_recycleviewUser);
-        recyclerView.setHasFixedSize(true);
-        layoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(layoutManager);
-
+        //bottom navigation bar ends
     }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        FirebaseRecyclerOptions<DogCare> options = new FirebaseRecyclerOptions.Builder<DogCare>().setQuery(woofcareRef, DogCare.class).build();
-
-        FirebaseRecyclerAdapter<DogCare, org_view> adapter = new FirebaseRecyclerAdapter<DogCare, org_view>(options) {
-            @Override
-            protected void onBindViewHolder(@NonNull org_view holder, int i, @NonNull final DogCare org) {
-                holder.txtOrgName.setText("Organization:"+org.getClinicName());
-                holder.txtConNo.setText("Contact Number:"+org.getContactNo());
-                holder.txtLocation.setText("Address:"+org.getAddress());
-
-//                holder.itemView.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View view) {
-//                        Intent intent = new Intent(woofcare_show_clinics.this, woofadmin_org_details.class);
-//                        intent.putExtra("id", org.getId());
-//                        startActivity(intent);
-//                    }
-//                });
-            }
-
-            @NonNull
-            @Override
-            public org_view onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.woofadmin_viewcard, parent, false);
-                org_view holder = new org_view(view);
-                return holder;
-            }
-        };
-
-        recyclerView.setAdapter(adapter);
-        adapter.startListening();
-    }
-
-
 }

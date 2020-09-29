@@ -27,15 +27,6 @@ public class woofadmin_org_update extends AppCompatActivity {
     DogCare updateClinic;
     private String org_id = " ";
 
-    //Method to clear all user inputs
-    private void clearControls(){
-        txtClinic.setText("");
-        txtConNo.setText("");
-        txtAddress.setText("");
-        txtCity.setText("");
-        txtDescription.setText("");
-        txtOwner.setText("");
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +44,7 @@ public class woofadmin_org_update extends AppCompatActivity {
         btnUpdate = findViewById(R.id.woofadmin_org_update);
 
         updateClinic = new DogCare();
+        getOrgDetails(org_id);
 
         btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,16 +55,15 @@ public class woofadmin_org_update extends AppCompatActivity {
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         if (snapshot.hasChild(org_id)){
                             try{
-                                updateClinic.setClinicName(txtClinic.getText().toString().trim());
-                                updateClinic.setContactNo(txtConNo.getText().toString().trim());
-                                updateClinic.setAddress(txtAddress.getText().toString().trim());
-                                updateClinic.setCity(txtCity.getText().toString().trim());
-                                updateClinic.setDescription(txtDescription.getText().toString().trim());
-                                updateClinic.setOwnerName(txtOwner.getText().toString().trim());
+                                updateClinic.setClinicName(txtClinic.getText().toString());
+                                updateClinic.setContactNo(txtConNo.getText().toString());
+                                updateClinic.setAddress(txtAddress.getText().toString());
+                                updateClinic.setCity(txtCity.getText().toString());
+                                updateClinic.setDescription(txtDescription.getText().toString());
+                                updateClinic.setOwnerName(txtOwner.getText().toString());
 
                                 upDbRef = FirebaseDatabase.getInstance().getReference().child("DogCare").child(org_id);
                                 upDbRef.setValue(org_id);
-                                clearControls();
                                 //Feedback to the user via a Toast...
                                 Toast.makeText(getApplicationContext(), "Data Updated Successfully...", Toast.LENGTH_SHORT).show();
                             }
@@ -89,6 +80,34 @@ public class woofadmin_org_update extends AppCompatActivity {
 
                     }
                 });
+            }
+        });
+    }
+
+
+    private void getOrgDetails(String org_id) {
+        DatabaseReference orgRef = FirebaseDatabase.getInstance().getReference().child("DogCare");
+
+        orgRef.child(org_id).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.exists()){
+                    DogCare clinics = snapshot.getValue(DogCare.class);
+
+                    txtClinic.setText(clinics.getClinicName());
+                    txtAddress.setText(clinics.getAddress());
+                    txtConNo.setText(clinics.getContactNo());
+                    txtCity.setText(clinics.getCity());
+                    txtDescription.setText(clinics.getDescription());
+                    txtOwner.setText(clinics.getOwnerName());
+
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
             }
         });
     }

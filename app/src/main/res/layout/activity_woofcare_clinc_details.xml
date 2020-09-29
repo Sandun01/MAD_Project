@@ -35,8 +35,7 @@
     <!--Top menue bar ends-->
 
 
-    <!--body start-->
-    <!--body end-->
+
 
 
     <!--Bottom navigation bar begins-->
@@ -73,94 +72,153 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/woofadmin_orgadd_name"
-            android:layout_width="360dp"
+            android:id="@+id/careClinic"
+            android:layout_width="0dp"
             android:layout_height="40dp"
+            android:background="#FFFFFF"
+            android:ems="10"
+            android:inputType="textPersonName"
+            app:layout_constraintBaseline_toBaselineOf="@+id/woofadmin_orgadd_name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/woofadmin_orgadd_name" />
+
+        <TextView
+            android:id="@+id/careConNo"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:background="#FFFFFF"
+            android:ems="10"
+            android:inputType="textPersonName"
+            app:layout_constraintBaseline_toBaselineOf="@+id/woofadmin_orgadd_number"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/woofadmin_orgadd_number" />
+
+        <TextView
+            android:id="@+id/careAddress"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:background="#FFFFFF"
+            android:ems="10"
+            android:inputType="textPersonName"
+            app:layout_constraintBaseline_toBaselineOf="@+id/woofadmin_orgadd_address"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/woofadmin_orgadd_address" />
+
+        <TextView
+            android:id="@+id/careCity"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:background="#FFFFFF"
+            android:ems="10"
+            android:inputType="textPersonName"
+            app:layout_constraintBaseline_toBaselineOf="@+id/woofadmin_orgadd_city"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/woofadmin_orgadd_city" />
+
+        <TextView
+            android:id="@+id/careDescription"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:background="#FFFFFF"
+            android:ems="10"
+            android:inputType="textPersonName"
+            app:layout_constraintBaseline_toBaselineOf="@+id/woofadmin_orgadd_description"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/woofadmin_orgadd_description" />
+
+        <TextView
+            android:id="@+id/careowner"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:background="#FFFFFF"
+            android:ems="10"
+            android:inputType="textPersonName"
+            app:layout_constraintBaseline_toBaselineOf="@+id/woofadmin_orgadd_owneretails_owner"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/woofadmin_orgadd_owneretails_owner" />
+
+        <!--body start-->
+
+
+        <TextView
+            android:id="@+id/woofadmin_orgadd_name"
+            android:layout_width="155dp"
+            android:layout_height="30dp"
             android:layout_marginStart="32dp"
             android:layout_marginLeft="32dp"
             android:layout_marginTop="28dp"
-            android:background="@drawable/btn_normal_common"
-            android:text="@string/woofcare_clinicdetails_name"
+            android:text="@string/woofadmin_org_name"
             android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/woofadmin_orgadd_headertxt" />
 
         <TextView
             android:id="@+id/woofadmin_orgadd_number"
-            android:layout_width="360dp"
-            android:layout_height="40dp"
+            android:layout_width="155dp"
+            android:layout_height="30dp"
             android:layout_marginStart="32dp"
             android:layout_marginLeft="32dp"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/btn_normal_common"
-            android:text="@string/woofcare_clinicdetails_contactnum"
+            android:layout_marginTop="24dp"
+            android:text="@string/woofadmin_orgdetails_contact"
             android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.157"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/woofadmin_orgadd_name" />
 
         <TextView
             android:id="@+id/woofadmin_orgadd_address"
-            android:layout_width="360dp"
-            android:layout_height="40dp"
+            android:layout_width="155dp"
+            android:layout_height="30dp"
             android:layout_marginStart="32dp"
             android:layout_marginLeft="32dp"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/btn_normal_common"
-            android:text="@string/woofcare_clinicdetails_address"
+            android:layout_marginTop="24dp"
+            android:text="@string/woofadmin_orgdetails_location"
             android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/woofadmin_orgadd_number" />
 
         <TextView
             android:id="@+id/woofadmin_orgadd_city"
-            android:layout_width="360dp"
-            android:layout_height="40dp"
+            android:layout_width="155dp"
+            android:layout_height="30dp"
             android:layout_marginStart="32dp"
             android:layout_marginLeft="32dp"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/btn_normal_common"
-            android:text="@string/woofcare_clinicdetails_city"
+            android:layout_marginTop="24dp"
+            android:text="@string/woofadmin_orgdetails_city"
             android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/woofadmin_orgadd_address" />
 
         <TextView
             android:id="@+id/woofadmin_orgadd_description"
-            android:layout_width="360dp"
-            android:layout_height="50dp"
+            android:layout_width="155dp"
+            android:layout_height="30dp"
             android:layout_marginStart="32dp"
             android:layout_marginLeft="32dp"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/btn_normal_common"
-            android:text="@string/woofcare_clinicdetails_description"
+            android:layout_marginTop="24dp"
+            android:text="@string/woofadmin_orgdetails_description"
             android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/woofadmin_orgadd_city" />
 
         <TextView
             android:id="@+id/woofadmin_orgadd_owneretails_owner"
-            android:layout_width="361dp"
-            android:layout_height="67dp"
+            android:layout_width="155dp"
+            android:layout_height="30dp"
             android:layout_marginStart="32dp"
             android:layout_marginLeft="32dp"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/btn_normal_common"
-            android:text="@string/woofcare_clinicdetails_owner"
+            android:layout_marginTop="24dp"
+            android:text="@string/woofadmin_orgdetails_owner"
             android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/woofadmin_orgadd_description" />
+
+        <!--body end-->
 
         <ImageButton
             android:id="@+id/imageButton3"
