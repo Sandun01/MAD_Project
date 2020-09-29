@@ -59,20 +59,6 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <TextView
-            android:id="@+id/adType"
-            android:layout_width="278dp"
-            android:layout_height="39dp"
-            android:layout_marginStart="4dp"
-            android:layout_marginLeft="4dp"
-            android:text="@string/woofcorner_viewAd_back"
-            android:textColor="#090909"
-            android:textSize="24sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.105"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
             android:id="@+id/view_post_price"
             android:layout_width="163dp"
             android:layout_height="35dp"
@@ -132,36 +118,10 @@
             android:layout_height="155dp"
             android:layout_marginStart="70dp"
             android:layout_marginLeft="70dp"
-            android:layout_marginTop="10dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/adType"
-            app:srcCompat="@drawable/labradorpup" />
-
-        <ImageButton
-            android:id="@+id/fav"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginEnd="9dp"
-            android:layout_marginRight="9dp"
-            app:layout_constraintEnd_toStartOf="@+id/share_ad"
-            app:layout_constraintStart_toEndOf="@+id/adType"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_baseline_favorite_border_24" />
-
-        <ImageButton
-            android:id="@+id/share_ad"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginStart="10dp"
-            android:layout_marginLeft="10dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/fav"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_baseline_share_24" />
+            app:srcCompat="@drawable/labradorpup"
+            tools:layout_editor_absoluteY="49dp"
+            tools:ignore="MissingConstraints" />
 
         <TextView
             android:id="@+id/view_post_phone"
@@ -194,10 +154,10 @@
             android:id="@+id/view_post_email"
             android:layout_width="117dp"
             android:layout_height="24dp"
-            android:layout_marginEnd="144dp"
-            android:layout_marginRight="144dp"
+            android:layout_marginEnd="132dp"
+            android:layout_marginRight="132dp"
             android:text="@string/woofcorner_view_post_mail"
-            app:layout_constraintBaseline_toBaselineOf="@+id/textView33"
+            app:layout_constraintBaseline_toBaselineOf="@+id/viewPhone"
             app:layout_constraintEnd_toEndOf="parent" />
 
         <Button

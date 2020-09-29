@@ -10,11 +10,17 @@ public class Dog {
     private Integer contactNo;
     private String email;
     private String image;
-    private String did;
-    private String date;
-    private String time;
+    private String uID;
 
     public Dog() {
+    }
+
+    public String getuID() {
+        return uID;
+    }
+
+    public void setuID(String uID) {
+        this.uID = uID;
     }
 
     public String getType() {
@@ -65,27 +71,4 @@ public class Dog {
         this.image = image;
     }
 
-    public String getDid() {
-        return did;
-    }
-
-    public void setDid(String did) {
-        this.did = did;
-    }
-
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
-    }
-
-    public String getTime() {
-        return time;
-    }
-
-    public void setTime(String time) {
-        this.time = time;
-    }
 }

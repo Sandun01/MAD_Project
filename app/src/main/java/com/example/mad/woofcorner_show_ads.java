@@ -53,7 +53,7 @@ public class woofcorner_show_ads extends AppCompatActivity {
 
         FirebaseRecyclerAdapter<Dog, woofCornerAdViewHolder> adapter = new FirebaseRecyclerAdapter<Dog, woofCornerAdViewHolder>(options) {
             @Override
-            protected void onBindViewHolder(@NonNull woofCornerAdViewHolder woofCornerAdViewHolder, int i, @NonNull final Dog dog) {
+            protected void onBindViewHolder(@NonNull woofCornerAdViewHolder woofCornerAdViewHolder, final int i, @NonNull final Dog dog) {
                 woofCornerAdViewHolder.type.setText(dog.getType());
                 woofCornerAdViewHolder.description.setText(dog.getDescription());
                 woofCornerAdViewHolder.price.setText( "Rs."+String.valueOf(dog.getPrice()) );
@@ -63,7 +63,7 @@ public class woofcorner_show_ads extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
                         Intent intent = new Intent(woofcorner_show_ads.this,woofcorner_viewad.class);
-                        intent.putExtra( "did", dog.getDid());
+                        intent.putExtra( "did", getRef(i).getKey());
                         startActivity(intent);
                     }
                 });

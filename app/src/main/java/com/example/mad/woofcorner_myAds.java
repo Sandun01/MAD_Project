@@ -20,8 +20,11 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.squareup.picasso.Picasso;
 
 import java.text.SimpleDateFormat;
@@ -33,9 +36,8 @@ public class woofcorner_myAds extends AppCompatActivity {
     DatabaseReference dbRef;
     RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
-
-
-
+    FirebaseAuth mAuth = FirebaseAuth.getInstance();
+    Query mQuery;
 
     @SuppressLint("WrongViewCast")
     @Override
@@ -44,7 +46,15 @@ public class woofcorner_myAds extends AppCompatActivity {
         setContentView(R.layout.activity_woofcorner_my_ads);
 
 
+        //get userID
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        String userID = user.getUid();
+
+        //filter ads by uer ID
+
         dbRef = FirebaseDatabase.getInstance().getReference().child("Dog");
+        mQuery = dbRef.orderByChild("uID").equalTo(userID);
+
 
         recyclerView = findViewById(R.id.post_recyclerview);
         recyclerView.setHasFixedSize(true);
@@ -61,11 +71,11 @@ public class woofcorner_myAds extends AppCompatActivity {
 
         FirebaseRecyclerOptions<Dog> options =
                 new FirebaseRecyclerOptions.Builder<Dog>()
-                        .setQuery(dbRef, Dog.class).build();
+                        .setQuery(mQuery, Dog.class).build();
 
         FirebaseRecyclerAdapter<Dog, woofCornerAdViewHolder> adapter = new FirebaseRecyclerAdapter<Dog, woofCornerAdViewHolder>(options) {
             @Override
-            protected void onBindViewHolder(@NonNull woofCornerAdViewHolder woofCornerAdViewHolder, int i, @NonNull final Dog dog) {
+            protected void onBindViewHolder(@NonNull woofCornerAdViewHolder woofCornerAdViewHolder, final int i, @NonNull final Dog dog) {
                 woofCornerAdViewHolder.type.setText(dog.getType());
                 woofCornerAdViewHolder.description.setText(dog.getDescription());
                 woofCornerAdViewHolder.price.setText( "Rs."+String.valueOf(dog.getPrice()) );
@@ -75,7 +85,7 @@ public class woofcorner_myAds extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
                         Intent intent = new Intent(woofcorner_myAds.this,woofcorner_view_post.class);
-                        intent.putExtra( "did", dog.getDid());
+                        intent.putExtra( "did", getRef(i).getKey());
                         startActivity(intent);
                     }
                 });

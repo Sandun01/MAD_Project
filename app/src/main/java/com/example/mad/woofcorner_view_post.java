@@ -14,11 +14,15 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.mad.models.Dog;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
 public class woofcorner_view_post extends AppCompatActivity {
@@ -27,6 +31,7 @@ public class woofcorner_view_post extends AppCompatActivity {
     ImageView imageView;
     Button edit,remove;
     DatabaseReference dbRef;
+    //Dog dog = new Dog();
 
     String dogID = "";
 
@@ -56,6 +61,10 @@ public class woofcorner_view_post extends AppCompatActivity {
     }
 
     private void getDogDetails(String dogID) {
+        //get userID
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        String userID = user.getUid();
+
         DatabaseReference dataRef = FirebaseDatabase.getInstance().getReference().child("Dog");
 
         dataRef.child(dogID).addValueEventListener(new ValueEventListener() {
@@ -88,6 +97,7 @@ public class woofcorner_view_post extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(woofcorner_view_post.this, woofcorner_edit_post.class);
+                intent.putExtra( "did", dogID);
                 startActivity(intent);
             }
         });
@@ -95,6 +105,8 @@ public class woofcorner_view_post extends AppCompatActivity {
         remove.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                FirebaseStorage storage = FirebaseStorage.getInstance();
+                StorageReference storageRef = storage.getReference();
                 DatabaseReference delRef = FirebaseDatabase.getInstance().getReference().child("Dog");
                 delRef.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
@@ -102,6 +114,8 @@ public class woofcorner_view_post extends AppCompatActivity {
                         if (snapshot.hasChild(dogID)){
                             dbRef = FirebaseDatabase.getInstance().getReference().child("Dog").child(dogID);
                             dbRef.removeValue();
+
+
                             Toast.makeText(getApplicationContext(),"Data Deleted Successfully",Toast.LENGTH_SHORT).show();
 
                             Intent intent = new Intent(woofcorner_view_post.this, woofcorner_myAds.class);
@@ -117,6 +131,8 @@ public class woofcorner_view_post extends AppCompatActivity {
 
                     }
                 });
+
+
             }
         });
 

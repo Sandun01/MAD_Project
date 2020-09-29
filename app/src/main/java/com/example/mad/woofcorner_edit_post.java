@@ -23,6 +23,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.StorageTask;
+import com.squareup.picasso.Picasso;
 
 public class woofcorner_edit_post extends AppCompatActivity {
 
@@ -32,19 +33,7 @@ public class woofcorner_edit_post extends AppCompatActivity {
     DatabaseReference dbRef;
     StorageReference storageReference;
 
-    Dog dog;
-
-    private static final int IMAGE_REQUEST = 1;
-    private Uri imageUri;
-    private StorageTask uploadTask;
-
-    private  void clearControls(){
-        type.setText("");
-        price.setText("");
-        description.setText("");
-        contactNo.setText("");
-        email.setText("");
-    }
+    String dogID = "";
 
 
     @Override
@@ -59,36 +48,12 @@ public class woofcorner_edit_post extends AppCompatActivity {
         email = (EditText)findViewById(R.id.editTextTextEmailAddress2);
         imageView = (ImageView)findViewById(R.id.view_post_image);
 
-        storageReference = FirebaseStorage.getInstance().getReference("images");
+        dbRef = FirebaseDatabase.getInstance().getReference();
 
-        DatabaseReference updRef = FirebaseDatabase.getInstance().getReference().child("Dog");
-        updRef.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.hasChild("")){
-//                    dog.setype(type.getText().toString().trim());
-//                    dog.setDogType(price.getText().toString().trim());
-//                    dog.setDogType(description.getText().toString().trim());
-//                    dog.setDogType(contactNo.getText().toString().trim());
-//                    dog.setDogType(email.getText().toString().trim());
+        dogID =  getIntent().getStringExtra("did");
 
-                    dbRef = FirebaseDatabase.getInstance().getReference().child("Dog").child("");
-                    dbRef.setValue(dog);
-                    clearControls();
-                }
-            }
+        getDogDetails(dogID);
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-
-      imageView.setOnClickListener(new View.OnClickListener() {
-           @Override public void onClick(View view) {
-              openImage();
-           }
-       });
 
         //bottom navigation bar begins
         BottomNavigationView bottomNavigationView = findViewById(R.id.app_bottom_navigationbar);
@@ -127,30 +92,30 @@ public class woofcorner_edit_post extends AppCompatActivity {
         cancel = findViewById(R.id.edit_post_cancel);
     }
 
-          private void openImage() {
-            Intent intent = new Intent();
-            intent.setType("image/*");
-           intent.setAction(Intent.ACTION_GET_CONTENT);
-           startActivityForResult(intent,IMAGE_REQUEST);
-       }
+    private void getDogDetails(String dogID) {
+        DatabaseReference dataRef = FirebaseDatabase.getInstance().getReference().child("Dog");
 
-//    private String getFileExtension(Uri uri){
-//        ContentResolver contentResolver = getContext().getContentResolver();
-//        MimeTypeMap mimeTypeMap = MimeTypeMap.getSingleton();
-//        return mimeTypeMap.getExtensionFromMimeType(contentResolver.getType(uri));
-//
-//    }
+        dataRef.child(dogID).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.exists()){
+                    Dog dog = snapshot.getValue(Dog.class);
 
-//    private void uploadImage(){
-//        final ProgressDialog pd = new ProgressDialog(getContext());
-//        pd.setMessage("Uploading");
-//        pd.show();
-//
-//        if (imageUri != null){
-//            final StorageReference fileReference = storageReference.child(System.currentTimeMillis());
-//
-//        }
-//    }
+                    type.setText(dog.getType());
+                    price.setText(dog.getPrice().toString());
+                    description.setText(dog.getDescription());
+                    contactNo.setText(dog.getContactNo().toString());
+                    email.setText(dog.getEmail());
+                    Picasso.get().load(dog.getImage()).into(imageView);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
 
     @Override
     protected void onResume() {
@@ -159,6 +124,12 @@ public class woofcorner_edit_post extends AppCompatActivity {
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                dbRef = FirebaseDatabase.getInstance().getReference();
+                dbRef.child("Dog").child(dogID).child("type").setValue(type.getText().toString().trim());
+                dbRef.child("Dog").child(dogID).child("price").setValue(Double.parseDouble(price.getText().toString()));
+                dbRef.child("Dog").child(dogID).child("description").setValue(description.getText().toString());
+                dbRef.child("Dog").child(dogID).child("contactNo").setValue(Integer.parseInt(contactNo.getText().toString()));
+                dbRef.child("Dog").child(dogID).child("email").setValue(email.getText().toString().trim());
                 Intent intent = new Intent(woofcorner_edit_post.this, woofcorner_view_post.class);
                 Toast.makeText(getApplicationContext(),"Data Updated Successfully",Toast.LENGTH_SHORT).show();
                 startActivity(intent);

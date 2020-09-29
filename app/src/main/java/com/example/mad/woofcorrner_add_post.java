@@ -19,14 +19,14 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 
 public class woofcorrner_add_post extends AppCompatActivity {
 
@@ -40,9 +40,8 @@ public class woofcorrner_add_post extends AppCompatActivity {
     StorageReference storageReference;
     FirebaseDatabase firebaseDatabase;
 
+    String userID;
     Dog dog;
-
-    String dogID, date, time;
 
     private final int REQUEST_CODE = 2;
 
@@ -171,6 +170,9 @@ public class woofcorrner_add_post extends AppCompatActivity {
                         final Integer phone = Integer.parseInt(contactNo.getText().toString().trim());
                         final String mail = email.getText().toString().trim();
 
+                        //get userID
+                        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                        userID = user.getUid();
 
                         StorageReference filepath = storageReference.child("imagePost").child(uri.getLastPathSegment());
                         filepath.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -181,27 +183,15 @@ public class woofcorrner_add_post extends AppCompatActivity {
                                     public void onComplete(@NonNull Task<Uri> task) {
                                         String t = task.getResult().toString();
                                         //Inserting to database
-
-                                        generateDogID();
-//
-//                                        dog.child("image").setValue(task.getResult().toString());
-//                                        dog.child("did").setValue(task.getResult().toString());
-//                                        dog.child("type").setValue(dogType);
-//                                        dog.child("price").setValue(amount);
-//                                        dog.child("description").setValue(details);
-//                                        dog.child("contactNo").setValue(phone);
-//                                        dog.child("email").setValue(mail);
-                                        dog.setDid(dogID);
+                                        dog.setuID(userID);
                                         dog.setContactNo(phone);
-                                        dog.setDate(date);
-                                        dog.setTime(time);
                                         dog.setDescription(details);
                                         dog.setEmail(mail);
                                         dog.setImage(task.getResult().toString());
                                         dog.setType(dogType);
                                         dog.setPrice(amount);
 
-                                        dbRef.child(dogID).setValue(dog).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        dbRef.push().setValue(dog).addOnCompleteListener(new OnCompleteListener<Void>() {
                                             @Override
                                             public void onComplete(@NonNull Task<Void> task) {
 
@@ -215,7 +205,6 @@ public class woofcorrner_add_post extends AppCompatActivity {
                                                 }
                                                 else
                                                 {
-
                                                     Toast.makeText(getApplicationContext(),"Error: "+task.getException().toString(),Toast.LENGTH_SHORT).show();
                                                 }
 
@@ -239,18 +228,6 @@ public class woofcorrner_add_post extends AppCompatActivity {
 
     }
 
-    private void generateDogID() {
-
-        Calendar calendar = Calendar.getInstance();
-        SimpleDateFormat curDate = new SimpleDateFormat("MMM dd, yyyy");
-        date = curDate.format(calendar.getTime());
-
-        SimpleDateFormat curTime = new SimpleDateFormat("HH:mm:ss a");
-        time = curTime.format(calendar.getTime());
-
-        dogID = date+" "+time;
-
-    }
 
 
 }
