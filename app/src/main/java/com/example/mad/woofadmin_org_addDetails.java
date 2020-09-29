@@ -127,6 +127,8 @@ public class woofadmin_org_addDetails extends AppCompatActivity {
                 switch(item.getItemId())
                 {
                     case R.id.bottomNaviBar_adminOrganizations:
+                        startActivity(new Intent(getApplicationContext(), woofadmin_organization_view.class));
+                        overridePendingTransition(0,0);
                         return true;
 
                     case R.id.bottomNaviBar_adminItems:
