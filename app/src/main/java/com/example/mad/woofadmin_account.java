@@ -93,6 +93,7 @@ public class woofadmin_account extends AppCompatActivity {
                 SessionManagement sessionManagement = new SessionManagement(woofadmin_account.this);
                 sessionManagement.removeSession();
                 navigateToLogin();
+                
             }
         });
 

@@ -124,7 +124,7 @@
         android:layout_alignParentBottom="true"
         android:background="@color/colorBtnblack"
         app:itemIconSize="50dp"
-        app:itemIconTint="@drawable/app_bottom_navibar_selector"
+        app:itemIconTint="@drawable/app_admin_bottom_navibar_selector"
         app:menu="@menu/app_adminbottom_navibar_menue" />
 
     <!--Bottom navigation bar Ends-->

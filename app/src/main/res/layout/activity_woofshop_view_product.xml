@@ -192,7 +192,7 @@
             android:layout_marginLeft="40dp"
             android:background="@color/colorOrderviewBtn"
             android:ems="10"
-            android:inputType="numberSigned"
+            android:inputType="number"
             android:textAlignment="center"
             android:text="01"
             app:layout_constraintBaseline_toBaselineOf="@+id/textView19"
