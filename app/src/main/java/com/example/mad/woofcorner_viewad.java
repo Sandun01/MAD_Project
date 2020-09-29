@@ -77,6 +77,7 @@ public class woofcorner_viewad extends AppCompatActivity {
                     contactNo.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
+                            //contactNo.setText(dog.getContactNo().toString());
                             Intent callIntent = new Intent(Intent.ACTION_CALL);
                             callIntent.setData(Uri.parse("contactNo"));
                             startActivity(callIntent);
@@ -120,6 +121,8 @@ public class woofcorner_viewad extends AppCompatActivity {
                 switch(item.getItemId())
                 {
                     case R.id.bottomNaviBar_woofCorner:
+                        startActivity(new Intent(getApplicationContext(), woofcorner_show_ads.class));
+                        overridePendingTransition(0, 0);
                         return true;
 
                     case R.id.bottomNaviBar_woofCare:

@@ -119,6 +119,8 @@ public class woofcorner_myAds extends AppCompatActivity {
 
                 switch (item.getItemId()) {
                     case R.id.bottomNaviBar_woofCorner:
+                        startActivity(new Intent(getApplicationContext(), woofcorner_show_ads.class));
+                        overridePendingTransition(0, 0);
                         return true;
 
                     case R.id.bottomNaviBar_woofCare:
