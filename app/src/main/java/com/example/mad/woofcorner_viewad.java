@@ -26,7 +26,7 @@ import com.squareup.picasso.Picasso;
 
 public class woofcorner_viewad extends AppCompatActivity {
 
-    TextView type,price,description;
+    TextView type,price,description,phone;
     ImageButton contactNo, email;
     ImageView imageView;
     DatabaseReference dbRef;
@@ -43,6 +43,7 @@ public class woofcorner_viewad extends AppCompatActivity {
         type = (TextView) findViewById(R.id.viewpost_type);
         price = (TextView) findViewById(R.id.view_post_price);
         description = (TextView) findViewById(R.id.view_post_desc);
+        phone = (TextView)findViewById(R.id.phone);
 
         contactNo = (ImageButton) findViewById(R.id.call);
         email = (ImageButton) findViewById(R.id.email);
@@ -72,16 +73,19 @@ public class woofcorner_viewad extends AppCompatActivity {
                     type.setText(dog.getType());
                     price.setText("Rs "+dog.getPrice().toString());
                     description.setText(dog.getDescription());
+                    phone.setText(dog.getContactNo().toString());
                     Picasso.get().load(dog.getImage()).into(imageView);
 
-                    contactNo.setOnClickListener(new View.OnClickListener() {
+                    contactNo.setOnClickListener(new View.OnClickListener(){
+
                         @Override
-                        public void onClick(View view) {
-                            //contactNo.setText(dog.getContactNo().toString());
+                        public void onClick(View arg0) {
+                            String number=phone.getText().toString();
                             Intent callIntent = new Intent(Intent.ACTION_CALL);
-                            callIntent.setData(Uri.parse("contactNo"));
+                            callIntent.setData(Uri.parse("tel:"+number));
                             startActivity(callIntent);
                         }
+
                     });
 
                     email.setOnClickListener(new View.OnClickListener() {

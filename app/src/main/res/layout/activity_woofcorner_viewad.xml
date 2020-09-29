@@ -93,7 +93,7 @@
             app:layout_constraintTop_toBottomOf="@+id/view_post_image" />
 
         <TextView
-            android:id="@+id/textView10"
+            android:id="@+id/phone"
             android:layout_width="225dp"
             android:layout_height="26dp"
             android:layout_marginStart="50dp"
@@ -108,9 +108,24 @@
             app:layout_constraintTop_toBottomOf="@+id/view_post_price" />
 
         <TextView
+            android:id="@+id/textView10"
+            android:layout_width="225dp"
+            android:layout_height="26dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="15dp"
+            android:text="@string/woofcorner_viewAd_description"
+            android:textColor="#090909"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/phone" />
+
+        <TextView
             android:id="@+id/view_post_desc"
-            android:layout_width="99dp"
-            android:layout_height="111dp"
+            android:layout_width="223dp"
+            android:layout_height="63dp"
             android:layout_marginStart="50dp"
             android:layout_marginLeft="50dp"
             android:layout_marginTop="10dp"

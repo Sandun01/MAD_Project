@@ -186,7 +186,7 @@ public class woofcorrner_add_post extends AppCompatActivity {
                     }
                 }
                 catch (NumberFormatException e){
-                    Toast.makeText(getApplicationContext(),"Invalid Data",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),"Invalid Contact Number",Toast.LENGTH_SHORT).show();
                 }
 
             }
