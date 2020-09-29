@@ -131,6 +131,7 @@ public class woofadmin_org_details extends AppCompatActivity {
 
             private void navigateToviewDetails() {
                 Intent intent = new Intent(woofadmin_org_details.this, woofadmin_org_update.class);
+                intent.putExtra("id", org_id);
                 startActivity(intent);
             }
         });
