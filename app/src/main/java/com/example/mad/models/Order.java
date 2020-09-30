@@ -3,6 +3,7 @@ package com.example.mad.models;
 public class Order {
 
     String address;
+    String currentUserID;
     String postalCode;
     String dateOrdered;
     String phone;
@@ -12,6 +13,14 @@ public class Order {
 
 
     public Order() {
+    }
+
+    public String getCurrentUserID() {
+        return currentUserID;
+    }
+
+    public void setCurrentUserID(String currentUserID) {
+        this.currentUserID = currentUserID;
     }
 
     public String getStatus() {

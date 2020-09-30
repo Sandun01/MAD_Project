@@ -35,10 +35,6 @@
 
 
     <!--body start-->
-    <!--body end-->
-
-
-    <!--Bottom navigation bar begins-->
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -116,6 +112,10 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.638" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!--body end-->
+
+    <!--Bottom navigation bar begins-->
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/app_admin_bottom_navigationbar"

@@ -161,19 +161,20 @@ public class woofshop_viewBill extends AppCompatActivity {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         final String userID = user.getUid();
 
-        final DatabaseReference ordRef = FirebaseDatabase.getInstance().getReference().child("Orders").child(userID);
+        final DatabaseReference ordRef = FirebaseDatabase.getInstance().getReference().child("Orders");
 
         Order order = new Order();
+        order.setCurrentUserID(userID);
         order.setAddress(inputAddress.getText().toString());
-        order.setPhone(inputPostal.getText().toString());
-        order.setPostalCode(inputPhone.getText().toString());
+        order.setPostalCode(inputPostal.getText().toString());
+        order.setPhone(inputPhone.getText().toString());
         order.setTotalAmount(Float.parseFloat(toalPrice));
         order.setName(inputcusName.getText().toString());
         order.setStatus("Pending");
         order.setDateOrdered(orderdDate);
 
         //add date to product
-        ordRef.setValue(order).addOnCompleteListener(new OnCompleteListener<Void>() {
+        ordRef.push().setValue(order).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
 
