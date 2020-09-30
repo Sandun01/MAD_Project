@@ -58,32 +58,35 @@ public class woofadmin_orders extends AppCompatActivity {
 
         FirebaseRecyclerAdapter<Order, OrdersViewHolder> adapter = new FirebaseRecyclerAdapter<Order, OrdersViewHolder>(options) {
             @Override
-            protected void onBindViewHolder(@NonNull OrdersViewHolder adminViewHolder, final int i, @NonNull final Order order) {
+            protected void onBindViewHolder(@NonNull final OrdersViewHolder adminViewHolder, final int i, @NonNull final Order order) {
 
                 String status = order.getStatus();
-                adminViewHolder.receiver.setText("Customer(Received): "+order.getName());
-                adminViewHolder.address.setText("Address : "+order.getAddress());
-                adminViewHolder.phone.setText("Phone: "+order.getPhone());
-                adminViewHolder.price.setText("Total Amount: "+order.getTotalAmount());
-                adminViewHolder.postal.setText("Postal Code: "+order.getPostalCode());
-                adminViewHolder.date.setText("Date: "+order.getDateOrdered());
-                adminViewHolder.status.setText("Status: "+status);
-
-                adminViewHolder.viewAllBtn.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        Intent intent = new Intent(woofadmin_orders.this, woofadmin_ordersViewItems.class);
-                        intent.putExtra("uID", order.getCurrentUserID());
-                        startActivity(intent);
-                    }
-                });
+                adminViewHolder.receiver.setText("Customer(Received): " + order.getName());
+                adminViewHolder.address.setText("Address : " + order.getAddress());
+                adminViewHolder.phone.setText("Phone: " + order.getPhone());
+                adminViewHolder.price.setText("Total Amount: " + order.getTotalAmount());
+                adminViewHolder.postal.setText("Postal Code: " + order.getPostalCode());
+                adminViewHolder.date.setText("Date: " + order.getDateOrdered());
+                adminViewHolder.status.setText("Status: " + status);
 
 
-                //update order status
-                adminViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        if (order.getStatus().equals("Pending")) {
+                if (order.getStatus().equals("Pending")) {
+
+                    adminViewHolder.viewAllBtn.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Intent intent = new Intent(woofadmin_orders.this, woofadmin_ordersViewItems.class);
+                            intent.putExtra("OrdID", getRef(i).getKey());
+                            startActivity(intent);
+                        }
+                    });
+
+
+                    //update order status
+                    adminViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(final View view) {
+
 
                             final String ordID = getRef(i).getKey();
 
@@ -100,13 +103,14 @@ public class woofadmin_orders extends AppCompatActivity {
                                 public void onClick(DialogInterface dialogInterface, int i) {
                                     //admin click on the confirm
                                     if (i == 0) {
+
+                                        //update order status
                                         final DatabaseReference dbUpdateRef = FirebaseDatabase.getInstance().getReference().child("Orders").child(ordID);
 
                                         dbUpdateRef.addListenerForSingleValueEvent(new ValueEventListener() {
                                             @Override
                                             public void onDataChange(@NonNull DataSnapshot snapshot) {
                                                 dbUpdateRef.child("status").setValue("Dilivered");
-
                                             }
 
                                             @Override
@@ -115,6 +119,9 @@ public class woofadmin_orders extends AppCompatActivity {
                                             }
                                         });
 
+                                        //disable view Button
+                                        adminViewHolder.viewAllBtn.setVisibility(view.GONE);
+
                                     }
                                 }
                             });
@@ -122,8 +129,13 @@ public class woofadmin_orders extends AppCompatActivity {
                             //alert dialog finish - show dialog
                             builder.show();
                         }
-                    }
-                });
+
+                    });
+                }
+                else
+                {
+                    adminViewHolder.viewAllBtn.setText("Order on Dilivery Status.");
+                }
             }
 
             @NonNull

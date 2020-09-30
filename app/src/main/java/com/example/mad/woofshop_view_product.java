@@ -214,21 +214,10 @@ public class woofshop_view_product extends AppCompatActivity {
 
                     if(task.isSuccessful())
                     {
-
-                        cartRef.child("Admin").child(userID).child("ProductItem").child(itemID).setValue(cart).addOnCompleteListener(new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Void> task) {
-
-                                if(task.isSuccessful())
-                                {
-                                    Toast.makeText(getApplicationContext(), "Item Added to cart", Toast.LENGTH_SHORT).show();
-                                    Intent intent = new Intent(woofshop_view_product.this, woofshop_show_products.class);
-                                    startActivity(intent);
-                                }
-
-                            }
-                        });
-
+                        Toast.makeText(getApplicationContext(), "Item Added to cart", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(woofshop_view_product.this, woofshop_show_products.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(intent);
                     }
                     else
                     {

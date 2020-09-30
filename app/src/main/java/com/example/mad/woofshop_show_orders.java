@@ -75,15 +75,20 @@ public class woofshop_show_orders extends AppCompatActivity {
                 adminViewHolder.date.setText("Date: "+order.getDateOrdered());
                 adminViewHolder.status.setText("Status: "+status);
 
-                adminViewHolder.viewAllBtn.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        Intent intent = new Intent(woofshop_show_orders.this, woofshop_vieworderItems.class);
-                        intent.putExtra("ordID", getRef(i).getKey());
-                        startActivity(intent);
-                    }
-                });
-
+                if(status.equals("Pending")) {
+                    adminViewHolder.viewAllBtn.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Intent intent = new Intent(woofshop_show_orders.this, woofshop_vieworderItems.class);
+                            intent.putExtra("ordID", getRef(i).getKey());
+                            startActivity(intent);
+                        }
+                    });
+                }
+                else
+                {
+                    adminViewHolder.viewAllBtn.setText("Order in Dilivery Stage.");
+                }
 
             }
 

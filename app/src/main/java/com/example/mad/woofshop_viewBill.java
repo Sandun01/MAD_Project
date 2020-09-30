@@ -18,8 +18,11 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -155,7 +158,7 @@ public class woofshop_viewBill extends AppCompatActivity {
         SimpleDateFormat currentTime = new SimpleDateFormat("HH:mm:ss a");
         time = currentTime.format(calendar.getTime());
 
-        String orderdDate = date + " " + time;
+        final String orderdDate = date + " " + time;
 
         //get user in auth
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -174,29 +177,43 @@ public class woofshop_viewBill extends AppCompatActivity {
         order.setDateOrdered(orderdDate);
 
         //add date to product
-        ordRef.push().setValue(order).addOnCompleteListener(new OnCompleteListener<Void>() {
+        ordRef.child(orderdDate).setValue(order).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
 
                 if(task.isSuccessful())
                 {
-                    //remove items from cart
-                    FirebaseDatabase.getInstance().getReference().child("CartList").child("User").child(userID).removeValue()
-                    .addOnCompleteListener(new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task) {
+                    //add to orders
+                    DatabaseReference dbUpdate = FirebaseDatabase.getInstance().getReference().child("CartList").child("User")
+                            .child(userID).child("ProductItem");
 
-                            if(task.isSuccessful())
+                    dbUpdate.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                            if(snapshot.exists())
                             {
-                                Toast.makeText(getApplicationContext(), "Order added Successfully", Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(woofshop_viewBill.this, woofshop_show_products.class);
-                                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                                startActivity(intent);
+                                for(DataSnapshot data : snapshot.getChildren())
+                                {
+                                    ordRef.child(orderdDate).child("Items").push().setValue(data.getValue());
+                                }
+
                             }
-                            else
-                            {
-                                Toast.makeText(getApplicationContext(), "Error:"+task.getException().toString(), Toast.LENGTH_SHORT).show();
-                            }
+
+                            //remove items from cart
+                            FirebaseDatabase.getInstance().getReference().child("CartList").child("User").child(userID).child("ProductItem").removeValue();
+
+
+                            Toast.makeText(getApplicationContext(), "Order Added Successfully", Toast.LENGTH_LONG).show();
+                            Intent intent = new Intent(woofshop_viewBill.this, woofshop_show_products.class);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                            startActivity(intent);
+
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
                         }
                     });
 

@@ -113,22 +113,9 @@ public class woofshop_view_cart extends AppCompatActivity {
 
                                             if(task.isSuccessful())
                                             {
-
-                                                cartRef.child("Admin").child(userID).child("ProductItem").child(cart.getItemID())
-                                                        .removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
-                                                    @Override
-                                                    public void onComplete(@NonNull Task<Void> task) {
-
-                                                        if(task.isSuccessful())
-                                                        {
-                                                            Toast.makeText(getApplicationContext(), "item removed Successfully", Toast.LENGTH_LONG).show();
-                                                            Intent intent = new Intent(woofshop_view_cart.this, woofshop_show_products.class);
-                                                            startActivity(intent);
-                                                        }
-
-                                                    }
-                                                });
-
+                                                Toast.makeText(getApplicationContext(), "item removed Successfully", Toast.LENGTH_LONG).show();
+                                                Intent intent = new Intent(woofshop_view_cart.this, woofshop_show_products.class);
+                                                startActivity(intent);
                                             }
 
                                         }

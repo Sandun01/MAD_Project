@@ -28,18 +28,22 @@ public class woofshop_vieworderItems extends AppCompatActivity {
     RecyclerView recyclerView;
     private DatabaseReference dbRef;
     RecyclerView.LayoutManager layoutManager;
+    String ordID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_woofshop_vieworder_items);
 
+        //get order ID
+        ordID = getIntent().getStringExtra("ordID");
+
         //get user in auth
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
         String userID = user.getUid();
 
-        dbRef = FirebaseDatabase.getInstance().getReference().child("CartList").child("Admin").child(userID).child("ProductItem");
+        dbRef = FirebaseDatabase.getInstance().getReference().child("Orders").child(ordID).child("Items");
 
         recyclerView = findViewById(R.id.showOrderedItemsView);
         recyclerView.setHasFixedSize(true);
