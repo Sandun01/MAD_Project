@@ -188,14 +188,14 @@ public class woofshop_viewBill extends AppCompatActivity {
 
                             if(task.isSuccessful())
                             {
-                                Toast.makeText(getApplicationContext(), "Order added Successfully", Toast.LENGTH_SHORT);
+                                Toast.makeText(getApplicationContext(), "Order added Successfully", Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(woofshop_viewBill.this, woofshop_show_products.class);
                                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                                 startActivity(intent);
                             }
                             else
                             {
-                                Toast.makeText(getApplicationContext(), "Error:"+task.getException().toString(), Toast.LENGTH_SHORT);
+                                Toast.makeText(getApplicationContext(), "Error:"+task.getException().toString(), Toast.LENGTH_SHORT).show();
                             }
                         }
                     });
