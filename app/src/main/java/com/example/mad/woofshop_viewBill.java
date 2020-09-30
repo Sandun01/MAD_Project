@@ -33,6 +33,7 @@ public class woofshop_viewBill extends AppCompatActivity {
     String toalPrice;
     TextView totalpriceTxt;
     EditText inputAddress, inputPostal, inputPhone, inputcusName;
+    String userID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -162,7 +163,7 @@ public class woofshop_viewBill extends AppCompatActivity {
 
         //get user in auth
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        final String userID = user.getUid();
+        userID = user.getUid();
 
         final DatabaseReference ordRef = FirebaseDatabase.getInstance().getReference().child("Orders");
 
@@ -200,6 +201,9 @@ public class woofshop_viewBill extends AppCompatActivity {
 
                             }
 
+                            //update stock quantity
+                            updateProductItemStock();
+
                             //remove items from cart
                             FirebaseDatabase.getInstance().getReference().child("CartList").child("User").child(userID).child("ProductItem").removeValue();
 
@@ -218,6 +222,63 @@ public class woofshop_viewBill extends AppCompatActivity {
                     });
 
                 }
+
+            }
+        });
+
+    }
+
+    public void updateProductItemStock()
+    {
+        //get items in cart and update
+        final DatabaseReference dbgetQtyNew = FirebaseDatabase.getInstance().getReference().child("CartList").child("User")
+                .child(userID).child("ProductItem");
+
+        final DatabaseReference dbUpdateQty = FirebaseDatabase.getInstance().getReference().child("ProductItem");
+
+        dbgetQtyNew.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                if(snapshot.exists())
+                {
+                    for(DataSnapshot data : snapshot.getChildren())
+                    {
+                        final String cartItemKey = data.getKey();
+                        final String addedQty = data.child("quantity").getValue().toString();
+
+                        //update new quantity
+                        dbUpdateQty.child(cartItemKey).addListenerForSingleValueEvent(new ValueEventListener() {
+
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                                if(snapshot.exists())
+                                {
+                                    String oldQty = snapshot.child("qty").getValue().toString();
+
+                                    int updatedQty = Integer.parseInt(oldQty) - Integer.parseInt(addedQty);
+
+                                    dbUpdateQty.child(cartItemKey).child("qty").setValue(updatedQty);
+
+                                }
+
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                            }
+                        });
+
+                    }
+
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
 
             }
         });

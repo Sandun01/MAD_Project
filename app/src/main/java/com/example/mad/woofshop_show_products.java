@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -63,20 +64,38 @@ public class woofshop_show_products extends AppCompatActivity {
                     @Override
                     protected void onBindViewHolder(@NonNull ProductViewholder holder, final int i, @NonNull final ProductItem model)
                     {
-                        holder.pnameTxt.setText(model.getProductName());
-                        holder.priceTxt.setText("Price: Rs." + model.getUnitPrice().toString());
-                        holder.pdesTxt.setText("Description: " + model.getDescription());
-                        Picasso.get().load(model.getImage()).into(holder.imageView);
+                        if(model.getQty() > 0)
+                        {
+                            holder.pnameTxt.setText(model.getProductName());
+                            holder.priceTxt.setText("Price: Rs." + model.getUnitPrice().toString());
+                            holder.pdesTxt.setText("Description: " + model.getDescription());
+                            Picasso.get().load(model.getImage()).into(holder.imageView);
 
-                        holder.itemView.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View view) {
-                                Intent intent = new Intent(woofshop_show_products.this, woofshop_view_product.class);
-                                intent.putExtra("itmID", getRef(i).getKey());
-                                startActivity(intent);
+                            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    Intent intent = new Intent(woofshop_show_products.this, woofshop_view_product.class);
+                                    intent.putExtra("itmID", getRef(i).getKey());
+                                    startActivity(intent);
 
-                            }
-                        });
+                                }
+                            });
+                        }
+                        else
+                        {
+                            holder.pnameTxt.setText(model.getProductName());
+                            holder.priceTxt.setText("Out of Stock");
+                            holder.pdesTxt.setText("Description: " + model.getDescription());
+                            Picasso.get().load(model.getImage()).into(holder.imageView);
+                            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+
+                            Toast.makeText(getApplicationContext(), "Sorry.Product is Out of Stock" , Toast.LENGTH_SHORT).show();
+
+                                }
+                            });
+                        }
 
                     }
 

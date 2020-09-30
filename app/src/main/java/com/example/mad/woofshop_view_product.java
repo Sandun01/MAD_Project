@@ -216,8 +216,8 @@ public class woofshop_view_product extends AppCompatActivity {
                     {
                         Toast.makeText(getApplicationContext(), "Item Added to cart", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(woofshop_view_product.this, woofshop_show_products.class);
-                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(intent);
+
                     }
                     else
                     {
