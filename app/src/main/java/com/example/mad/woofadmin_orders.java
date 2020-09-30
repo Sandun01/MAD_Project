@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mad.models.Order;
+import com.example.mad.viewholders.OrdersViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -55,9 +56,9 @@ public class woofadmin_orders extends AppCompatActivity {
         FirebaseRecyclerOptions<Order> options = new FirebaseRecyclerOptions.Builder<Order>()
                 .setQuery(dbRef, Order.class).build();
 
-        FirebaseRecyclerAdapter<Order,AdminViewHolder> adapter = new FirebaseRecyclerAdapter<Order, AdminViewHolder>(options) {
+        FirebaseRecyclerAdapter<Order, OrdersViewHolder> adapter = new FirebaseRecyclerAdapter<Order, OrdersViewHolder>(options) {
             @Override
-            protected void onBindViewHolder(@NonNull AdminViewHolder adminViewHolder, final int i, @NonNull final Order order) {
+            protected void onBindViewHolder(@NonNull OrdersViewHolder adminViewHolder, final int i, @NonNull final Order order) {
 
                 String status = order.getStatus();
                 adminViewHolder.receiver.setText("Customer(Received): "+order.getName());
@@ -127,11 +128,11 @@ public class woofadmin_orders extends AppCompatActivity {
 
             @NonNull
             @Override
-            public AdminViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            public OrdersViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
                 View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.view_ordrer_layout,parent,false);
 
-                return new AdminViewHolder(view);
+                return new OrdersViewHolder(view);
             }
         };
 
@@ -181,29 +182,6 @@ public class woofadmin_orders extends AppCompatActivity {
             }
         });
         //bottom navigation bar ends
-    }
-
-    //Admin product View Holder class
-
-    public static class AdminViewHolder extends RecyclerView.ViewHolder
-    {
-        TextView receiver, phone, address,postal, status,price, date,userCurrent;
-        Button viewAllBtn;
-
-        public AdminViewHolder(@NonNull View itemView) {
-            super(itemView);
-
-            receiver = itemView.findViewById(R.id.Orders_receiverName);
-            phone = itemView.findViewById(R.id.Orders_phone);
-            postal = itemView.findViewById(R.id.Orders_postal);
-            price = itemView.findViewById(R.id.Orders_price);
-            address = itemView.findViewById(R.id.Orders_address);
-            date = itemView.findViewById(R.id.Orders_date);
-            status = itemView.findViewById(R.id.Order_status);
-            viewAllBtn = itemView.findViewById(R.id.adminOdershowAll);
-
-        }
-
     }
 
 }

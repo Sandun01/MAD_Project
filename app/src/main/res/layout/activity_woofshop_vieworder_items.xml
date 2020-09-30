@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".woofshop_show_orders">
+    tools:context=".woofshop_vieworderItems">
 
     <!--Top menue bar begis-->
     <LinearLayout
@@ -26,16 +26,12 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="1dp"
             android:fontFamily="@font/baloo"
-            android:text="@string/app_top_txtShop"
+            android:text="@string/app_top_txtProfile"
             android:textColor="@color/colorTheme"
             android:textSize="50sp" />
 
     </LinearLayout>
     <!--Top menue bar ends-->
-
-    <!--body start-->
-
-    <!--Bottom navigation bar begins-->
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -55,26 +51,27 @@
             android:textSize="56sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_bias="0.503"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/showUserOrdersView"
+            android:id="@+id/showOrderedItemsView"
             android:layout_width="match_parent"
             android:layout_marginTop="100dp"
             android:layout_height="match_parent"
+            android:layout_marginEnd="1dp"
+            android:layout_marginRight="1dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView20" />
 
 
-        <!--body end-->
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
+    <!--body end-->
+
+    <!--Bottom navigation bar begins-->
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/app_bottom_navigationbar"
@@ -87,5 +84,6 @@
         app:menu="@menu/app_bottom_navibar_menue" />
 
     <!--Bottom navigation bar Ends-->
+
 
 </RelativeLayout>
