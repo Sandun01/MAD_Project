@@ -46,39 +46,12 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent">
 
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="14dp"
-            android:fontFamily="@font/cambay"
-            android:text="@string/woofcare_findclinic_headertxt"
-            android:textAllCaps="true"
-            android:textColor="#0F1F1F"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <SearchView
-            android:id="@+id/woofcare_findclinic_search"
-            android:layout_width="180dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            android:background="@drawable/button_login_fill"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_begin="56dp" />
+            app:layout_constraintGuide_begin="30dp" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/org_recycleviewUser"

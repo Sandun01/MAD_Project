@@ -1,9 +1,12 @@
 package com.example.mad;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -22,6 +25,7 @@ public class woofcare_clinc_details extends AppCompatActivity {
 
     TextView txtClinic, txtConNo, txtAddress, txtCity, txtDescription, txtOwner;
     DatabaseReference dbRef;
+    ImageButton careCall;
     DogCare careClinic;
     private String org_id = " ";
 
@@ -39,45 +43,13 @@ public class woofcare_clinc_details extends AppCompatActivity {
         txtDescription = findViewById(R.id.careDescription);
         txtOwner = findViewById(R.id.careowner);
 
+        careCall = findViewById(R.id.btnCall);
+
         careClinic = new DogCare();
 
         getOrgDetails(org_id);
 
-        //bottom navigation bar begins
-                BottomNavigationView bottomNavigationView = findViewById(R.id.app_bottom_navigationbar);
-                //set selected
-                bottomNavigationView.setSelectedItemId(R.id.bottomNaviBar_woofCare);
 
-                bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-                    @Override
-                    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
-                        switch(item.getItemId())
-                        {
-                            case R.id.bottomNaviBar_woofCorner:
-                                startActivity(new Intent(getApplicationContext(), woofcorner_show_ads.class));
-                                overridePendingTransition(0,0);
-                                return true;
-
-                            case R.id.bottomNaviBar_woofCare:
-                                return true;
-
-                            case R.id.bottomNaviBar_woofShop:
-                                startActivity(new Intent(getApplicationContext(), woofshop_show_products.class));
-                                overridePendingTransition(0,0);
-                                return true;
-
-                            case R.id.bottomNaviBar_woofProfile:
-                                startActivity(new Intent(getApplicationContext(), app_woofprofile_menu.class));
-                                overridePendingTransition(0,0);
-                                return true;
-
-                        }
-
-                        return false;
-                    }
-                });
-                //bottom navigation bar ends
 
 
     }
@@ -98,16 +70,68 @@ public class woofcare_clinc_details extends AppCompatActivity {
                     txtDescription.setText(clinics.getDescription());
                     txtOwner.setText(clinics.getOwnerName());
 
+                    careCall.setOnClickListener(new View.OnClickListener(){
+
+                        @Override
+                        public void onClick(View arg0) {
+                            String number=txtConNo.getText().toString();
+                            Intent callIntent = new Intent(Intent.ACTION_CALL);
+                            callIntent.setData(Uri.parse("tel:"+number));
+                            startActivity(callIntent);
+                        }
+
+                    });
                 }
 
-            }
 
-            @Override
+                }
+
+
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
         });
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
 
+        //bottom navigation bar begins
+        BottomNavigationView bottomNavigationView = findViewById(R.id.app_bottom_navigationbar);
+        //set selected
+        bottomNavigationView.setSelectedItemId(R.id.bottomNaviBar_woofCare);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                switch(item.getItemId())
+                {
+                    case R.id.bottomNaviBar_woofCorner:
+                        startActivity(new Intent(getApplicationContext(), woofcorner_show_ads.class));
+                        overridePendingTransition(0,0);
+                        return true;
+
+                    case R.id.bottomNaviBar_woofCare:
+                        return true;
+
+                    case R.id.bottomNaviBar_woofShop:
+                        startActivity(new Intent(getApplicationContext(), woofshop_show_products.class));
+                        overridePendingTransition(0,0);
+                        return true;
+
+                    case R.id.bottomNaviBar_woofProfile:
+                        startActivity(new Intent(getApplicationContext(), app_woofprofile_menu.class));
+                        overridePendingTransition(0,0);
+                        return true;
+
+                }
+
+                return false;
+            }
+        });
+        //bottom navigation bar ends
+
+    }
 }
