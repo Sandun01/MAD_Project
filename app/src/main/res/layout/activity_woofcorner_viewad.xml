@@ -53,20 +53,6 @@
         android:layout_alignParentRight="true">
 
         <TextView
-            android:id="@+id/adType"
-            android:layout_width="278dp"
-            android:layout_height="39dp"
-            android:layout_marginStart="4dp"
-            android:layout_marginLeft="4dp"
-            android:text="@string/woofcorner_viewAd_back"
-            android:textColor="#090909"
-            android:textSize="24sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.105"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
             android:id="@+id/view_post_price"
             android:layout_width="163dp"
             android:layout_height="35dp"
@@ -141,55 +127,21 @@
             android:layout_height="225dp"
             android:layout_marginStart="70dp"
             android:layout_marginLeft="70dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="50dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/adType"
+            app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/labradorpup" />
-
-        <ImageButton
-            android:id="@+id/fav"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            app:layout_constraintEnd_toStartOf="@+id/share_ad"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_baseline_favorite_border_24" />
-
-        <ImageButton
-            android:id="@+id/share_ad"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="1dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_baseline_share_24"
-            android:layout_alignParentRight="true" />
 
         <ImageButton
             android:id="@+id/call"
             android:layout_width="54dp"
             android:layout_height="52dp"
-            android:layout_marginEnd="36dp"
-            android:layout_marginRight="36dp"
-            android:layout_marginBottom="16dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/share_ad"
-            app:srcCompat="@drawable/ic_baseline_call_24" />
-
-        <ImageButton
-            android:id="@+id/email"
-            android:layout_width="58dp"
-            android:layout_height="50dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginRight="16dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginRight="50dp"
             android:layout_marginBottom="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:srcCompat="@drawable/ic_baseline_email_24" />
+            app:srcCompat="@drawable/ic_baseline_call_24" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

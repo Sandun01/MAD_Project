@@ -27,7 +27,7 @@ import com.squareup.picasso.Picasso;
 public class woofcorner_viewad extends AppCompatActivity {
 
     TextView type,price,description,phone;
-    ImageButton contactNo, email;
+    ImageButton contactNo;
     ImageView imageView;
     DatabaseReference dbRef;
 
@@ -46,7 +46,6 @@ public class woofcorner_viewad extends AppCompatActivity {
         phone = (TextView)findViewById(R.id.phone);
 
         contactNo = (ImageButton) findViewById(R.id.call);
-        email = (ImageButton) findViewById(R.id.email);
 
         imageView = (ImageView)findViewById(R.id.view_post_image);
 
@@ -88,13 +87,6 @@ public class woofcorner_viewad extends AppCompatActivity {
 
                     });
 
-                    email.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            Intent intent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts("email", "", null));
-                            startActivity(intent);
-                        }
-                    });
 
                     }
 
