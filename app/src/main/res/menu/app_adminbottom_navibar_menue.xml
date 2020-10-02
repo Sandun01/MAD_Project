@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/bottomNaviBar_adminOrganizations"
+        android:icon="@drawable/ic_admin_navbar_organizations"
+        android:title="" />
+
+    <item
+        android:id="@+id/bottomNaviBar_adminItems"
+        android:icon="@drawable/ic_admin_navbar_admin_items"
+        android:title="" />
+
+    <item
+        android:id="@+id/bottomNaviBar_adminOrders"
+        android:icon="@drawable/ic_admin_navbar_admin_orders"
+        android:title="" />
+
+    <item
+        android:id="@+id/bottomNaviBar_adminProfile"
+        android:icon="@drawable/ic_admin_navbar_adminprofile"
+        android:title=""/>
+
+
+</menu>
