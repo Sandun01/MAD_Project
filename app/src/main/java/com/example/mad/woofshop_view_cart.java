@@ -2,8 +2,8 @@ package com.example.mad;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mad.models.Cart;
+import com.example.mad.models.ProductItem;
 import com.example.mad.viewholders.CartViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
@@ -27,16 +28,24 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class woofshop_view_cart extends AppCompatActivity {
 
     Button calculatebill;
+    TextView title;
     RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
+
     private String userID;
     float allTotal = 0, totalPtice=0;
+
+    int itmQty;
+    String itemID;
 
 
     @Override
@@ -47,6 +56,7 @@ public class woofshop_view_cart extends AppCompatActivity {
         //initialize
         calculatebill = findViewById(R.id.calcutalebill);
 
+        title = findViewById(R.id.titleCart);
         recyclerView = findViewById(R.id.cart_itemview);
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
@@ -72,23 +82,25 @@ public class woofshop_view_cart extends AppCompatActivity {
             @Override
             protected void onBindViewHolder(@NonNull CartViewHolder cartViewHolder, int i, @NonNull final Cart cart) {
 
-                cartViewHolder.txtCartItmName.setText("Product Name: "+cart.getItemName());
-                cartViewHolder.txtCartItmPrice.setText("Price: Rs."+String.valueOf(cart.getPrice()));
-                cartViewHolder.txtCartItmQty.setText("Quantity: "+String.valueOf(cart.getQuantity()));
+                //get item id to update quantity when removing item from cart
+                itemID = getRef(i).getKey();
+                itmQty = cart.getQuantity();
 
+                cartViewHolder.txtCartItmName.setText("Product Name: "+cart.getItemName());
+                cartViewHolder.txtCartItmPrice.setText("Price: Rs."+cart.getPrice());
+                cartViewHolder.txtCartItmQty.setText("Quantity: "+itmQty);
 
                 //calculate total price
                 totalPtice = cart.getPrice() * cart.getQuantity();
                 allTotal = allTotal + totalPtice;
-
 
                 cartViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         CharSequence options[] = new CharSequence[]
                                 {
-                                  "Edit Item",
-                                  "Remove Item"
+                                        "Edit Item",
+                                        "Remove Item"
                                 };
                         AlertDialog.Builder builder = new AlertDialog.Builder(woofshop_view_cart.this);
                         builder.setTitle("Cart Options");
@@ -99,13 +111,16 @@ public class woofshop_view_cart extends AppCompatActivity {
                                 //user click on the edit button
                                 if(i == 0)
                                 {
-                                    Intent intent = new Intent(woofshop_view_cart.this, woofshop_view_product.class);
+                                    Intent intent = new Intent(woofshop_view_cart.this, woofshop_update_cartitem.class);
                                     intent.putExtra("itmID", cart.getItemID());
                                     startActivity(intent);
                                 }
                                 //user click on the remove button
                                 if(i == 1)
                                 {
+                                    //update quantity of item stock
+                                    updateProductItemStock();
+
                                     cartRef.child("User").child(userID).child("ProductItem").child(cart.getItemID())
                                             .removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
                                         @Override
@@ -131,6 +146,7 @@ public class woofshop_view_cart extends AppCompatActivity {
 
             }
 
+
             @NonNull
             @Override
             public CartViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -147,6 +163,7 @@ public class woofshop_view_cart extends AppCompatActivity {
 
     }
 
+
     @Override
     protected void onResume() {
         super.onResume();
@@ -160,26 +177,25 @@ public class woofshop_view_cart extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
-                switch(item.getItemId())
-                {
+                switch (item.getItemId()) {
                     case R.id.bottomNaviBar_woofCorner:
                         startActivity(new Intent(getApplicationContext(), woofcorner_show_ads.class));
-                        overridePendingTransition(0,0);
+                        overridePendingTransition(0, 0);
                         return true;
 
                     case R.id.bottomNaviBar_woofCare:
                         startActivity(new Intent(getApplicationContext(), woofcare_show_clinics.class));
-                        overridePendingTransition(0,0);
+                        overridePendingTransition(0, 0);
                         return true;
 
                     case R.id.bottomNaviBar_woofShop:
                         startActivity(new Intent(getApplicationContext(), woofshop_show_products.class));
-                        overridePendingTransition(0,0);
+                        overridePendingTransition(0, 0);
                         return true;
 
                     case R.id.bottomNaviBar_woofProfile:
                         startActivity(new Intent(getApplicationContext(), app_woofprofile_menu.class));
-                        overridePendingTransition(0,0);
+                        overridePendingTransition(0, 0);
                         return true;
 
                 }
@@ -189,13 +205,72 @@ public class woofshop_view_cart extends AppCompatActivity {
         });
         //bottom navigation bar ends
 
-        calculatebill.setOnClickListener(new View.OnClickListener() {
+        //if cart is empty
+        DatabaseReference cartRefChk = FirebaseDatabase.getInstance().getReference().child("CartList").child("User").child(userID).child("ProductItem");
+
+        cartRefChk.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(woofshop_view_cart.this,woofshop_viewBill.class);
-                intent.putExtra("totalPrice", String.valueOf(allTotal));
-                startActivity(intent);
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                if(snapshot.exists())
+                {
+                    calculatebill.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Intent intent = new Intent(woofshop_view_cart.this, woofshop_viewBill.class);
+                            intent.putExtra("totalPrice", String.valueOf(allTotal));
+                            startActivity(intent);
+                        }
+                    });
+                }
+                else
+                {
+//                    calculatebill.setVisibility(View.INVISIBLE);
+                        title.setText("Add items to cart.🐶🛒");
+                        calculatebill.setText("Bask To WoofShop");
+                        calculatebill.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(woofshop_view_cart.this, woofshop_show_products.class);
+                        startActivity(intent);
+
+                        }
+                    });
+
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
             }
         });
     }
+
+    public void updateProductItemStock()
+    {
+        final DatabaseReference dbUpdateQty = FirebaseDatabase.getInstance().getReference().child("ProductItem");
+
+        dbUpdateQty.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                if(snapshot.exists())
+                {
+                    int stock = Integer.parseInt(snapshot.child(itemID).child("qty").getValue().toString());
+                    int qtyNew = stock + itmQty;
+                    dbUpdateQty.child(itemID).child("qty").setValue(qtyNew);
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+    }
+
 }

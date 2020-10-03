@@ -201,9 +201,6 @@ public class woofshop_viewBill extends AppCompatActivity {
 
                             }
 
-                            //update stock quantity
-                            updateProductItemStock();
-
                             //remove items from cart
                             FirebaseDatabase.getInstance().getReference().child("CartList").child("User").child(userID).child("ProductItem").removeValue();
 

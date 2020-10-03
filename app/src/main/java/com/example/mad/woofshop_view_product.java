@@ -35,22 +35,13 @@ public class woofshop_view_product extends AppCompatActivity {
 
     private String itemID, userID;
     Button addTocart;
-    ImageView opencart, itemPic;
+    ImageView itemPic;
     TextView itemNameTxt, itemPriceTxt, itemDesTxt, itemQtytxt;
     String itmName, itemDes;
     int itmQty;
     float itmPrice;
     EditText inputQty;
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-
-        //get user in auth
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        userID = user.getUid();
-
-    }
+    int stock,userEnterdQty;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +49,6 @@ public class woofshop_view_product extends AppCompatActivity {
         setContentView(R.layout.activity_woofshop_view_product);
 
         //initializing id
-        opencart = findViewById(R.id.btn_cart_prod);
         inputQty = findViewById(R.id.viewItem_inputqty);
         itemNameTxt = findViewById(R.id.viewItem_name);
         itemQtytxt = findViewById(R.id.viewItem_qty);
@@ -72,6 +62,10 @@ public class woofshop_view_product extends AppCompatActivity {
         itemID = getIntent().getStringExtra("itmID");
         getItemDetails(itemID);
 
+        //get user in auth
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        userID = user.getUid();
+
     }
 
     @Override
@@ -82,8 +76,36 @@ public class woofshop_view_product extends AppCompatActivity {
         addTocart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //add item to cart list
-                addItemTocart();
+
+                //check item in the cart
+                DatabaseReference cartRef = FirebaseDatabase.getInstance().getReference().child("CartList").child("User")
+                        .child(userID).child("ProductItem");
+
+                cartRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                        if(snapshot.hasChild(itemID))
+                        {
+                            Toast.makeText(getApplicationContext(), "Item already in the cart", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(woofshop_view_product.this, woofshop_show_products.class);
+                            startActivity(intent);
+
+                        }
+                        else
+                        {
+                            //add item to cart list
+                            addItemTocart();
+                        }
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+
 
             }
         });
@@ -127,13 +149,6 @@ public class woofshop_view_product extends AppCompatActivity {
         });
         //bottom navigation bar ends
 
-        opencart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(woofshop_view_product.this,woofshop_view_cart.class);
-                startActivity(intent);
-            }
-        });
 
     }
 
@@ -187,8 +202,8 @@ public class woofshop_view_product extends AppCompatActivity {
         time = currentTime.format(calendar.getTime());
 
         //check the auantity is grater than the stock
-        int stock = itmQty;
-        int userEnterdQty = Integer.parseInt(inputQty.getText().toString());
+        stock = itmQty;
+        userEnterdQty = Integer.parseInt(inputQty.getText().toString());
 
         if(userEnterdQty > stock)
         {
@@ -214,6 +229,9 @@ public class woofshop_view_product extends AppCompatActivity {
 
                     if(task.isSuccessful())
                     {
+                        //update item quantity
+                        updateProductItemStock();
+
                         Toast.makeText(getApplicationContext(), "Item Added to cart", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(woofshop_view_product.this, woofshop_show_products.class);
                         startActivity(intent);
@@ -229,7 +247,30 @@ public class woofshop_view_product extends AppCompatActivity {
 
         }
 
+    }
 
+
+    public void updateProductItemStock()
+    {
+        final DatabaseReference dbUpdateQty = FirebaseDatabase.getInstance().getReference().child("ProductItem");
+
+        dbUpdateQty.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                if(snapshot.exists())
+                {
+                    int qtyNew = stock - userEnterdQty;
+                    dbUpdateQty.child(itemID).child("qty").setValue(qtyNew);
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
     }
 

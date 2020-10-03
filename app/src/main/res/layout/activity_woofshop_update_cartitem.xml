@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".woofshop_view_product">
+    tools:context=".woofshop_update_cartitem">
 
     <!--Top menue bar begis-->
     <LinearLayout
@@ -171,35 +171,34 @@
             app:layout_constraintTop_toBottomOf="@+id/viewItem_description" />
 
         <EditText
-            android:id="@+id/viewItem_inputqty"
+            android:id="@+id/updateCart_inputqty"
             android:layout_width="114dp"
             android:layout_height="39dp"
             android:layout_marginStart="40dp"
             android:layout_marginLeft="40dp"
             android:background="@color/colorOrderviewBtn"
             android:ems="10"
-            android:gravity="center_horizontal"
             android:inputType="number"
-            android:text="01"
             android:textAlignment="center"
+            android:text="01"
             app:layout_constraintBaseline_toBaselineOf="@+id/textView19"
-            app:layout_constraintStart_toEndOf="@+id/textView19" />
+            app:layout_constraintStart_toEndOf="@+id/textView19"
+            android:gravity="center_horizontal" />
 
 
         <Button
-            android:id="@+id/button_addtocart"
+            android:id="@+id/button_updateCartQty"
             android:layout_width="179dp"
             android:layout_height="50dp"
-            android:layout_marginTop="32dp"
-            android:background="@color/design_default_color_error"
-            android:text="@string/woofshop_btn_addtocart"
+            android:layout_marginTop="16dp"
+            android:background="@color/design_default_color_secondary_variant"
+            android:text="Update Quantity"
             android:textColor="@color/design_default_color_background"
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.517"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/viewItem_inputqty" />
+            app:layout_constraintTop_toBottomOf="@+id/updateCart_inputqty" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -217,5 +216,6 @@
         app:menu="@menu/app_bottom_navibar_menue" />
 
     <!--Bottom navigation bar Ends-->
+
 
 </RelativeLayout>
