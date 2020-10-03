@@ -44,9 +44,6 @@ public class woofshop_view_cart extends AppCompatActivity {
     private String userID;
     float allTotal = 0, totalPtice=0;
 
-    int itmQty;
-    String itemID;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,13 +79,9 @@ public class woofshop_view_cart extends AppCompatActivity {
             @Override
             protected void onBindViewHolder(@NonNull CartViewHolder cartViewHolder, int i, @NonNull final Cart cart) {
 
-                //get item id to update quantity when removing item from cart
-                itemID = getRef(i).getKey();
-                itmQty = cart.getQuantity();
-
                 cartViewHolder.txtCartItmName.setText("Product Name: "+cart.getItemName());
                 cartViewHolder.txtCartItmPrice.setText("Price: Rs."+cart.getPrice());
-                cartViewHolder.txtCartItmQty.setText("Quantity: "+itmQty);
+                cartViewHolder.txtCartItmQty.setText("Quantity: "+cart.getQuantity());
 
                 //calculate total price
                 totalPtice = cart.getPrice() * cart.getQuantity();
@@ -113,13 +106,14 @@ public class woofshop_view_cart extends AppCompatActivity {
                                 {
                                     Intent intent = new Intent(woofshop_view_cart.this, woofshop_update_cartitem.class);
                                     intent.putExtra("itmID", cart.getItemID());
+                                    intent.putExtra("itmQty", String.valueOf(cart.getQuantity()));
                                     startActivity(intent);
                                 }
                                 //user click on the remove button
                                 if(i == 1)
                                 {
                                     //update quantity of item stock
-                                    updateProductItemStock();
+                                    updateProductItemStock(cart.getItemID(), cart.getQuantity());
 
                                     cartRef.child("User").child(userID).child("ProductItem").child(cart.getItemID())
                                             .removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -248,7 +242,7 @@ public class woofshop_view_cart extends AppCompatActivity {
         });
     }
 
-    public void updateProductItemStock()
+    public void updateProductItemStock(final String itemID, final int qty)
     {
         final DatabaseReference dbUpdateQty = FirebaseDatabase.getInstance().getReference().child("ProductItem");
 
@@ -259,7 +253,7 @@ public class woofshop_view_cart extends AppCompatActivity {
                 if(snapshot.exists())
                 {
                     int stock = Integer.parseInt(snapshot.child(itemID).child("qty").getValue().toString());
-                    int qtyNew = stock + itmQty;
+                    int qtyNew = stock + qty;
                     dbUpdateQty.child(itemID).child("qty").setValue(qtyNew);
                 }
 

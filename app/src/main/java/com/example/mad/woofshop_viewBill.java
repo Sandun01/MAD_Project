@@ -196,6 +196,7 @@ public class woofshop_viewBill extends AppCompatActivity {
                             {
                                 for(DataSnapshot data : snapshot.getChildren())
                                 {
+                                    //pass all the cart items to order
                                     ordRef.child(orderdDate).child("Items").push().setValue(data.getValue());
                                 }
 
@@ -225,61 +226,5 @@ public class woofshop_viewBill extends AppCompatActivity {
 
     }
 
-    public void updateProductItemStock()
-    {
-        //get items in cart and update
-        final DatabaseReference dbgetQtyNew = FirebaseDatabase.getInstance().getReference().child("CartList").child("User")
-                .child(userID).child("ProductItem");
-
-        final DatabaseReference dbUpdateQty = FirebaseDatabase.getInstance().getReference().child("ProductItem");
-
-        dbgetQtyNew.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-
-                if(snapshot.exists())
-                {
-                    for(DataSnapshot data : snapshot.getChildren())
-                    {
-                        final String cartItemKey = data.getKey();
-                        final String addedQty = data.child("quantity").getValue().toString();
-
-                        //update new quantity
-                        dbUpdateQty.child(cartItemKey).addListenerForSingleValueEvent(new ValueEventListener() {
-
-                            @Override
-                            public void onDataChange(@NonNull DataSnapshot snapshot) {
-
-                                if(snapshot.exists())
-                                {
-                                    String oldQty = snapshot.child("qty").getValue().toString();
-
-                                    int updatedQty = Integer.parseInt(oldQty) - Integer.parseInt(addedQty);
-
-                                    dbUpdateQty.child(cartItemKey).child("qty").setValue(updatedQty);
-
-                                }
-
-                            }
-
-                            @Override
-                            public void onCancelled(@NonNull DatabaseError error) {
-
-                            }
-                        });
-
-                    }
-
-                }
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-
-    }
 
 }
