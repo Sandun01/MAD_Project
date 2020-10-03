@@ -129,7 +129,7 @@ public class woofadmin_org_update extends AppCompatActivity {
                         return true;
 
                     case R.id.bottomNaviBar_adminProfile:
-                        startActivity(new Intent(getApplicationContext(), admin_account.class));
+                        startActivity(new Intent(getApplicationContext(), woofadmin_account.class));
                         overridePendingTransition(0,0);
                         return true;
 
