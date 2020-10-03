@@ -20,7 +20,7 @@ public class woofadmin_viewProduct extends AppCompatActivity {
         setContentView(R.layout.activity_woofadmin_view_product);
 
         toViewProduct = findViewById(R.id.btnviewitem);
-        addItem = findViewById(R.id.btnAdmin_addItem);
+        addItem = findViewById(R.id.btnLogout);
     }
 
     @Override

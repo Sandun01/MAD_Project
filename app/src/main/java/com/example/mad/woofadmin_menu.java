@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class woofadmin_menu extends AppCompatActivity {
 
-    Button carebtn,itemMng,toAdminpro,ordersbtn;
+    Button carebtn, itemMng, toAdminpro, ordersbtn,logout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +20,7 @@ public class woofadmin_menu extends AppCompatActivity {
         itemMng = findViewById(R.id.woofprofile_menu_items);
         toAdminpro = findViewById(R.id.woofprofile_menu_adsbtn);
         ordersbtn = findViewById(R.id.woofprofile_menu_profilebtn);
+
     }
 
     @Override
@@ -54,10 +55,11 @@ public class woofadmin_menu extends AppCompatActivity {
         toAdminpro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(woofadmin_menu.this, admin_account.class);
+                Intent intent = new Intent(woofadmin_menu.this, woofadmin_account.class);
                 startActivity(intent);
             }
         });
 
     }
+
 }

@@ -92,7 +92,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/woofprofile_menu_adsbtn" />
+            app:layout_constraintTop_toBottomOf="@+id/woofprofile_menu_ordersbtn" />
 
         <Button
             android:id="@+id/woofprofile_menu_ordersbtn"
@@ -105,7 +105,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/woofprofile_menu_profilebtn" />
+            app:layout_constraintTop_toBottomOf="@+id/woofprofile_menu_adsbtn" />
     </androidx.constraintlayout.widget.ConstraintLayout>
     <!--body end-->
 
