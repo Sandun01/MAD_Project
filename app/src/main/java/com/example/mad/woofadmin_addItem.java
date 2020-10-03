@@ -85,6 +85,7 @@ public class woofadmin_addItem extends AppCompatActivity {
                 try{
 
                     //get details
+
                     itemName = txtProdName.getText().toString();
                     itemDescription = txtProdDescription.getText().toString();
                     itemPrice = Float.parseFloat(txtUnitPrice.getText().toString());
@@ -97,7 +98,7 @@ public class woofadmin_addItem extends AppCompatActivity {
                     else if (TextUtils.isEmpty(txtProdName.getText().toString()))
                         Toast.makeText(getApplicationContext(),"Enter product name",Toast.LENGTH_SHORT).show();
                     else if (TextUtils.isEmpty(txtProdDescription.getText().toString()))
-                        Toast.makeText(getApplicationContext(),"Enter product name",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(),"Enter product description",Toast.LENGTH_SHORT).show();
                     else {
 
                         //store information of image
