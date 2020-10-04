@@ -20,15 +20,12 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 
 public class woofadmin_org_addDetails extends AppCompatActivity {
 
     EditText txtClinickName, txtContactNo, txtAddress, txtCity, txtDescription, txtOwner;
     Button btnAdd;
     DatabaseReference dbRef;
-    String orgID;
     ImageView logo;
 
     @Override
@@ -73,42 +70,38 @@ public class woofadmin_org_addDetails extends AppCompatActivity {
                     else if (TextUtils.isEmpty(txtOwner.getText().toString()))
                         Toast.makeText(getApplicationContext(), "Please Enter an Owner Name...", Toast.LENGTH_SHORT).show();
                     else{
-                        //genarate ID
-                        genareateRandomID();
 
-                        //Take inputs from the user and assigning them to this instance(clinic) of the DogCare...
-                        DogCare clinic = new DogCare();
-                        clinic.setId(orgID);
-                        clinic.setClinicName(txtClinickName.getText().toString());
-                        clinic.setContactNo(txtContactNo.getText().toString());
-                        clinic.setAddress(txtAddress.getText().toString());
-                        clinic.setCity(txtCity.getText().toString());
-                        clinic.setDescription(txtDescription.getText().toString());
-                        clinic.setOwnerName(txtOwner.getText().toString());
+                        if(checkphonenumber()) {
+                            //Take inputs from the user and assigning them to this instance(clinic) of the DogCare...
+                            DogCare clinic = new DogCare();
+                            clinic.setClinicName(txtClinickName.getText().toString());
+                            clinic.setContactNo(txtContactNo.getText().toString());
+                            clinic.setAddress(txtAddress.getText().toString());
+                            clinic.setCity(txtCity.getText().toString());
+                            clinic.setDescription(txtDescription.getText().toString());
+                            clinic.setOwnerName(txtOwner.getText().toString());
 
 
-                        //Insert into the database
-                        dbRef.child(orgID).setValue(clinic)
-                                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                            //Insert into the database
+                            dbRef.push().setValue(clinic)
+                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
 
 
-                                    @Override
-                                    public void onComplete(@NonNull Task<Void> task) {
-                                        if(task.isSuccessful())
-                                        {
-                                            Toast.makeText(getApplicationContext(), "Data Saved Successfully...", Toast.LENGTH_SHORT).show();
-                                            Intent intent = new Intent(woofadmin_org_addDetails.this, woofadmin_organization_view.class);
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+                                            if (task.isSuccessful()) {
+                                                Toast.makeText(getApplicationContext(), "Data Saved Successfully...", Toast.LENGTH_SHORT).show();
+                                                Intent intent = new Intent(woofadmin_org_addDetails.this, woofadmin_organization_view.class);
 
-                                            startActivity(intent);
+                                                startActivity(intent);
 
+                                            } else {
+                                                String msg = task.getException().toString();
+                                                Toast.makeText(getApplicationContext(), "Error:" + msg, Toast.LENGTH_SHORT).show();
+                                            }
                                         }
-                                        else
-                                        {
-                                            String msg = task.getException().toString();
-                                            Toast.makeText(getApplicationContext(), "Error:"+msg,Toast.LENGTH_SHORT).show();
-                                        }
-                                    }
-                                });
+                                    });
+                        }
 
 
                     }
@@ -163,20 +156,18 @@ public class woofadmin_org_addDetails extends AppCompatActivity {
         });
     }
 
+    public boolean checkphonenumber()
+    {
+        String phone = txtContactNo.getText().toString();
 
-    private void genareateRandomID() {
-
-        String currentDate, currentTime;
-
-        Calendar calendar = Calendar.getInstance();
-        SimpleDateFormat date = new SimpleDateFormat("MMM dd, yyyy");
-        currentDate = date.format(calendar.getTime());
-
-        SimpleDateFormat time = new SimpleDateFormat("HH:mm:ss a");
-        currentTime = time.format(calendar.getTime());
-
-        //assign random product id
-        orgID =  currentDate+" "+currentTime;
+        if(phone.length() == 10)
+        {
+            return true;
+        }
+        else {
+            Toast.makeText(getApplicationContext(), "Please enter valid phone number", Toast.LENGTH_SHORT).show();
+            return false;
+        }
 
     }
 
