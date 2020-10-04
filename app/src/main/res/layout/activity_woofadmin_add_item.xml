@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -45,23 +46,14 @@
         app:layout_constraintStart_toStartOf="parent">
 
 
-        <TextView
-            android:id="@+id/textView36"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/woofadminItemID"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
         <EditText
-            android:id="@+id/editTextTextPersonName8"
-            android:layout_width="300dp"
-            android:layout_height="48dp"
+            android:id="@+id/EtinputProductname"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:ems="10"
+            android:hint="@string/etproductname"
             android:inputType="textPersonName"
-            android:text="@string/woofshop_txtProductname"
+            android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -69,47 +61,22 @@
             app:layout_constraintVertical_bias="0.563" />
 
         <EditText
-            android:id="@+id/editTextTextPersonName9"
-            android:layout_width="wrap_content"
+            android:id="@+id/EtinputDescription"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:hint="@string/etinputdescript"
             android:inputType="textPersonName"
-            android:text="@string/woofshop_txtQuantity"
+            android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.654" />
-
-        <EditText
-            android:id="@+id/editTextTextPersonName10"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="@string/woofshop_txtDescription"
-            android:textSize="12sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.746" />
 
-        <EditText
-            android:id="@+id/editTextTextPersonName11"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="@string/woofshop_txtprice"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.835" />
-
         <Button
-            android:id="@+id/button4"
+            android:id="@+id/btnProdViewUpdate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="#4CAF50"
@@ -124,7 +91,7 @@
             app:layout_constraintVertical_bias="0.97" />
 
         <ImageView
-            android:id="@+id/imageView9"
+            android:id="@+id/produt_image"
             android:layout_width="204dp"
             android:layout_height="182dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -134,9 +101,47 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.126"
             app:srcCompat="@drawable/ic_baseline_add_photo_alternate_24" />
+
+        <EditText
+            android:id="@+id/EtinputQty"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/etinputProductqty"
+            android:inputType="number"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.52"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.654" />
+
+        <EditText
+            android:id="@+id/EtinputUnitPrice"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/etinputUP"
+            android:inputType="numberDecimal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.839" />
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
     <!--body end-->
-
+<!--    <com.google.android.material.bottomnavigation.BottomNavigationView-->
+<!--        android:id="@+id/app_admin_bottom_navigationbar"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="70dp"-->
+<!--        android:layout_alignParentBottom="true"-->
+<!--        android:background="@color/colorBtnblack"-->
+<!--        app:itemIconSize="50dp"-->
+<!--        app:itemIconTint="@drawable/app_bottom_navibar_selector"-->
+<!--        app:menu="@menu/app_adminbottom_navibar_menue" />-->
 
 
 </RelativeLayout>
