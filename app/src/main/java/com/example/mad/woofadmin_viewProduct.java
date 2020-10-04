@@ -35,7 +35,7 @@ public class woofadmin_viewProduct extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_woofadmin_view_product);
 
-        addItem = findViewById(R.id.btnAdmin_addItem);
+        addItem = findViewById(R.id.woofAdminAddITem);
 
                 //initializing
         prRef = FirebaseDatabase.getInstance().getReference().child("ProductItem");

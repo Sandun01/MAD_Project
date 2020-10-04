@@ -54,7 +54,7 @@ public class woofcorner_edit_post extends AppCompatActivity {
 
         getDogDetails(dogID);
 
-        save = findViewById(R.id.button3);
+        save = findViewById(R.id.btnProdViewDel);
         cancel = findViewById(R.id.edit_post_cancel);
     }
 
