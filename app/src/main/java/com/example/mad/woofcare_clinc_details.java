@@ -5,9 +5,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -114,6 +112,8 @@ public class woofcare_clinc_details extends AppCompatActivity {
                         return true;
 
                     case R.id.bottomNaviBar_woofCare:
+                        startActivity(new Intent(getApplicationContext(), woofcare_show_clinics.class));
+                        overridePendingTransition(0,0);
                         return true;
 
                     case R.id.bottomNaviBar_woofShop:
@@ -122,7 +122,7 @@ public class woofcare_clinc_details extends AppCompatActivity {
                         return true;
 
                     case R.id.bottomNaviBar_woofProfile:
-                        startActivity(new Intent(getApplicationContext(), app_woofprofile_menu.class));
+                        startActivity(new Intent(getApplicationContext(), woofprofile_menu.class));
                         overridePendingTransition(0,0);
                         return true;
 

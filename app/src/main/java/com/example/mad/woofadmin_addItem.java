@@ -15,6 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.mad.models.ProductItem;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -39,7 +40,7 @@ public class woofadmin_addItem extends AppCompatActivity {
     Button btnSave;
     DatabaseReference itemDBRef;
     ProductItem productItem;
-    ImageView imageProductInput;
+    ImageView imageProductInput,logo;
     private static final int GalleryPick = 1;
     private Uri ImageUri;
     private StorageReference ImageRef;
@@ -48,6 +49,16 @@ public class woofadmin_addItem extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_woofadmin_add_item);
+
+
+        logo = findViewById(R.id.app_logo_top);
+        logo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(woofadmin_addItem.this, woofadmin_menu.class);
+                startActivity(intent);
+            }
+        });
 
         txtQty = findViewById(R.id.EtinputQty);
         txtUnitPrice = findViewById(R.id.EtinputUnitPrice);

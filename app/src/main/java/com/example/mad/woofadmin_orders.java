@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,12 +37,22 @@ public class woofadmin_orders extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private DatabaseReference dbRef;
+    ImageView logo;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_woofadmin_orders);
+
+        logo = findViewById(R.id.app_logo_top);
+        logo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(woofadmin_orders.this, woofadmin_menu.class);
+                startActivity(intent);
+            }
+        });
 
         dbRef = FirebaseDatabase.getInstance().getReference().child("Orders");
         recyclerView = findViewById(R.id.showAdminOrdersView);
@@ -174,7 +185,7 @@ public class woofadmin_orders extends AppCompatActivity {
                         return true;
 
                     case R.id.bottomNaviBar_adminItems:
-                        startActivity(new Intent(getApplicationContext(), woofadmin_addItem.class));
+                        startActivity(new Intent(getApplicationContext(), woofadmin_viewProduct.class));
                         overridePendingTransition(0,0);
                         return true;
 

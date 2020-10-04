@@ -2,7 +2,6 @@ package com.example.mad;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -19,7 +18,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mad.models.Cart;
-import com.example.mad.models.ProductItem;
 import com.example.mad.viewholders.CartViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
@@ -188,7 +186,7 @@ public class woofshop_view_cart extends AppCompatActivity {
                         return true;
 
                     case R.id.bottomNaviBar_woofProfile:
-                        startActivity(new Intent(getApplicationContext(), app_woofprofile_menu.class));
+                        startActivity(new Intent(getApplicationContext(), woofprofile_menu.class));
                         overridePendingTransition(0, 0);
                         return true;
 

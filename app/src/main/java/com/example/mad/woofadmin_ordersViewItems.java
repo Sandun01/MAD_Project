@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.example.mad.models.Cart;
 import com.example.mad.viewholders.CartViewHolder;
@@ -26,11 +27,21 @@ public class woofadmin_ordersViewItems extends AppCompatActivity {
     RecyclerView.LayoutManager layoutManager;
     private DatabaseReference itemRef;
     private String OrderID;
+    ImageView logo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_woofadmin_view_user_orders);
+
+        logo = findViewById(R.id.app_logo_top);
+        logo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(woofadmin_ordersViewItems.this, woofadmin_menu.class);
+                startActivity(intent);
+            }
+        });
 
         //get userID
         OrderID = getIntent().getStringExtra("OrdID");
@@ -97,7 +108,7 @@ public class woofadmin_ordersViewItems extends AppCompatActivity {
                         return true;
 
                     case R.id.bottomNaviBar_adminItems:
-                        startActivity(new Intent(getApplicationContext(), woofadmin_addItem.class));
+                        startActivity(new Intent(getApplicationContext(), woofadmin_viewProduct.class));
                         overridePendingTransition(0,0);
                         return true;
 

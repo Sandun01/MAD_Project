@@ -7,6 +7,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -14,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.mad.models.ProductItem;
 import com.example.mad.viewholders.AdminProductViewholder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
@@ -30,12 +32,22 @@ public class woofadmin_viewProduct extends AppCompatActivity {
     private DatabaseReference prRef;
     private RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
+    ImageView logo;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_woofadmin_view_product);
+
+        logo = findViewById(R.id.app_logo_top);
+        logo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(woofadmin_viewProduct.this, woofadmin_menu.class);
+                startActivity(intent);
+            }
+        });
 
         addItem = findViewById(R.id.woofAdminAddITem);
 

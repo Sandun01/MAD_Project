@@ -27,9 +27,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.squareup.picasso.Picasso;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-
 public class woofcorner_myAds extends AppCompatActivity {
 
     FloatingActionButton postAd;
@@ -134,7 +131,7 @@ public class woofcorner_myAds extends AppCompatActivity {
                         return true;
 
                     case R.id.bottomNaviBar_woofProfile:
-                        startActivity(new Intent(getApplicationContext(), app_woofprofile_menu.class));
+                        startActivity(new Intent(getApplicationContext(), woofprofile_menu.class));
                         overridePendingTransition(0, 0);
                         return true;
 

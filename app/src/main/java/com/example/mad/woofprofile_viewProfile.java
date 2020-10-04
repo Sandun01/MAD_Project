@@ -112,6 +112,8 @@ public class woofprofile_viewProfile extends AppCompatActivity {
                         return true;
 
                     case R.id.bottomNaviBar_woofProfile:
+                        startActivity(new Intent(getApplicationContext(), woofprofile_menu.class));
+                        overridePendingTransition(0,0);
                         return true;
 
                 }

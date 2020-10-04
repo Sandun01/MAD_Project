@@ -1,7 +1,6 @@
 package com.example.mad;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,9 +19,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.StorageTask;
 import com.squareup.picasso.Picasso;
 
 public class woofcorner_edit_post extends AppCompatActivity {
@@ -136,7 +133,7 @@ public class woofcorner_edit_post extends AppCompatActivity {
                         return true;
 
                     case R.id.bottomNaviBar_woofProfile:
-                        startActivity(new Intent(getApplicationContext(), app_woofprofile_menu.class));
+                        startActivity(new Intent(getApplicationContext(), woofprofile_menu.class));
                         overridePendingTransition(0, 0);
                         return true;
 

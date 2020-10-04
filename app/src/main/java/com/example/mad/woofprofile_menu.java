@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class app_woofprofile_menu extends AppCompatActivity {
+public class woofprofile_menu extends AppCompatActivity {
 
     Button orders,profile,myAd;
 
@@ -57,6 +57,8 @@ public class app_woofprofile_menu extends AppCompatActivity {
                         return true;
 
                     case R.id.bottomNaviBar_woofProfile:
+                        startActivity(new Intent(getApplicationContext(), woofprofile_menu.class));
+                        overridePendingTransition(0,0);
                         return true;
 
                 }
@@ -69,7 +71,7 @@ public class app_woofprofile_menu extends AppCompatActivity {
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(app_woofprofile_menu.this, woofprofile_viewProfile.class);
+                Intent intent = new Intent(woofprofile_menu.this, woofprofile_viewProfile.class);
                 startActivity(intent);
             }
         });
@@ -77,7 +79,7 @@ public class app_woofprofile_menu extends AppCompatActivity {
         orders.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(app_woofprofile_menu.this, woofshop_show_orders.class);
+                Intent intent = new Intent(woofprofile_menu.this, woofshop_show_orders.class);
                 startActivity(intent);
             }
         });
@@ -85,7 +87,7 @@ public class app_woofprofile_menu extends AppCompatActivity {
         myAd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(app_woofprofile_menu.this, woofcorner_myAds.class);
+                Intent intent = new Intent(woofprofile_menu.this, woofcorner_myAds.class);
                 startActivity(intent);
             }
         });

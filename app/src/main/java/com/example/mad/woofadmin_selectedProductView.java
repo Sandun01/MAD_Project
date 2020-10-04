@@ -13,6 +13,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.mad.models.ProductItem;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -27,12 +28,21 @@ public class woofadmin_selectedProductView extends AppCompatActivity {
     TextView name,price,desc,qty;
     DatabaseReference dbRef;
     Button delete,update;
-    ImageView image;
+    ImageView image,logo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_woofadmin_selected_product_view);
+
+        logo = findViewById(R.id.app_logo_top);
+        logo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(woofadmin_selectedProductView.this, woofadmin_menu.class);
+                startActivity(intent);
+            }
+        });
 
         itemID =  getIntent().getStringExtra("itmID");
 
@@ -142,6 +152,8 @@ public class woofadmin_selectedProductView extends AppCompatActivity {
                         return true;
 
                     case R.id.bottomNaviBar_adminProfile:
+                        startActivity(new Intent(getApplicationContext(), woofadmin_account.class));
+                        overridePendingTransition(0,0);
                         return true;
 
                 }

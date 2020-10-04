@@ -4,12 +4,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class woofadmin_menu extends AppCompatActivity {
 
     Button carebtn, itemMng, toAdminpro, ordersbtn,logout;
+    ImageView logo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +22,15 @@ public class woofadmin_menu extends AppCompatActivity {
         itemMng = findViewById(R.id.woofprofile_menu_items);
         toAdminpro = findViewById(R.id.woofprofile_menu_adsbtn);
         ordersbtn = findViewById(R.id.woofprofile_menu_profilebtn);
+
+        logo = findViewById(R.id.app_logo_top);
+        logo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(woofadmin_menu.this, woofadmin_menu.class);
+                startActivity(intent);
+            }
+        });
 
     }
 

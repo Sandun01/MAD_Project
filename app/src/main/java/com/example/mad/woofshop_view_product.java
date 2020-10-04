@@ -1,7 +1,6 @@
 package com.example.mad;
 
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -138,7 +137,7 @@ public class woofshop_view_product extends AppCompatActivity {
                         return true;
 
                     case R.id.bottomNaviBar_woofProfile:
-                        startActivity(new Intent(getApplicationContext(), app_woofprofile_menu.class));
+                        startActivity(new Intent(getApplicationContext(), woofprofile_menu.class));
                         overridePendingTransition(0,0);
                         return true;
 

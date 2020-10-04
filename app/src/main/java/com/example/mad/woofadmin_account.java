@@ -59,7 +59,7 @@ public class woofadmin_account extends AppCompatActivity {
                         return true;
 
                     case R.id.bottomNaviBar_adminItems:
-                        startActivity(new Intent(getApplicationContext(), woofadmin_addItem.class));
+                        startActivity(new Intent(getApplicationContext(), woofadmin_viewProduct.class));
                         overridePendingTransition(0,0);
                         return true;
 
@@ -69,6 +69,8 @@ public class woofadmin_account extends AppCompatActivity {
                         return true;
 
                     case R.id.bottomNaviBar_adminProfile:
+                        startActivity(new Intent(getApplicationContext(), woofadmin_account.class));
+                        overridePendingTransition(0,0);
                         return true;
 
                 }

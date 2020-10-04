@@ -1,11 +1,13 @@
 package com.example.mad;
 
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -27,11 +29,21 @@ public class woofadmin_organization_view extends AppCompatActivity {
     private DatabaseReference orgRef;
     private RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
+    ImageView logo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_woofadmin_organization_view);
+
+        logo = findViewById(R.id.app_logo_top);
+        logo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(woofadmin_organization_view.this, woofadmin_menu.class);
+                startActivity(intent);
+            }
+        });
 
         add_org = findViewById(R.id.add_new_org);
         orgRef = FirebaseDatabase.getInstance().getReference().child("DogCare");
@@ -93,7 +105,7 @@ public class woofadmin_organization_view extends AppCompatActivity {
         //bottom navigation bar begins
         BottomNavigationView bottomNavigationView = findViewById(R.id.app_admin_bottom_navigationbar);
         //set selected
-        bottomNavigationView.setSelectedItemId(R.id.bottomNaviBar_adminProfile);
+        bottomNavigationView.setSelectedItemId(R.id.bottomNaviBar_adminOrganizations);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -107,7 +119,7 @@ public class woofadmin_organization_view extends AppCompatActivity {
                         return true;
 
                     case R.id.bottomNaviBar_adminItems:
-                        startActivity(new Intent(getApplicationContext(), woofadmin_addItem.class));
+                        startActivity(new Intent(getApplicationContext(), woofadmin_viewProduct.class));
                         overridePendingTransition(0,0);
                         return true;
 

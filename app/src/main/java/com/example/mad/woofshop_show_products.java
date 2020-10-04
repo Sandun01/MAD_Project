@@ -6,8 +6,6 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -143,10 +141,12 @@ public class woofshop_show_products extends AppCompatActivity {
                         return true;
 
                     case R.id.bottomNaviBar_woofShop:
+                        startActivity(new Intent(getApplicationContext(), woofshop_show_products.class));
+                        overridePendingTransition(0,0);
                         return true;
 
                     case R.id.bottomNaviBar_woofProfile:
-                        startActivity(new Intent(getApplicationContext(), app_woofprofile_menu.class));
+                        startActivity(new Intent(getApplicationContext(), woofprofile_menu.class));
                         overridePendingTransition(0,0);
                         return true;
 

@@ -6,6 +6,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,12 +28,22 @@ public class woofadmin_org_details extends AppCompatActivity {
     DatabaseReference dbRef;
     DogCare deleteClinic;
     private String org_id = " ";
+    ImageView logo;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_woofadmin_org_details);
+
+        logo = findViewById(R.id.app_logo_top);
+        logo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(woofadmin_org_details.this, woofadmin_menu.class);
+                startActivity(intent);
+            }
+        });
 
         org_id = getIntent().getStringExtra("id");
 
@@ -140,7 +151,7 @@ public class woofadmin_org_details extends AppCompatActivity {
         //bottom navigation bar begins
         BottomNavigationView bottomNavigationView = findViewById(R.id.app_admin_bottom_navigationbar);
         //set selected
-        bottomNavigationView.setSelectedItemId(R.id.bottomNaviBar_adminProfile);
+        bottomNavigationView.setSelectedItemId(R.id.bottomNaviBar_adminOrganizations);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -154,7 +165,7 @@ public class woofadmin_org_details extends AppCompatActivity {
                         return true;
 
                     case R.id.bottomNaviBar_adminItems:
-                        startActivity(new Intent(getApplicationContext(), woofadmin_addItem.class));
+                        startActivity(new Intent(getApplicationContext(), woofadmin_viewProduct.class));
                         overridePendingTransition(0,0);
                         return true;
 
