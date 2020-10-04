@@ -28,7 +28,7 @@ import com.squareup.picasso.Picasso;
 public class woofcorner_view_post extends AppCompatActivity {
 
     TextView type,price,description,contactNo,email;
-    ImageView imageView;
+    ImageView imageView,logo;
     Button edit,remove;
     DatabaseReference dbRef;
     //Dog dog = new Dog();
@@ -41,6 +41,15 @@ public class woofcorner_view_post extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_woofcorner_view_post);
+
+        logo = findViewById(R.id.app_logo_top);
+        logo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(woofcorner_view_post.this, Home.class);
+                startActivity(intent);
+            }
+        });
 
         type = (TextView)findViewById(R.id.viewpost_type);
         price = (TextView)findViewById(R.id.view_post_price);

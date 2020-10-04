@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.example.mad.models.Cart;
 import com.example.mad.viewholders.UserOrderItemViewHolder;
@@ -28,11 +29,21 @@ public class woofshop_vieworderItems extends AppCompatActivity {
     private DatabaseReference dbRef;
     RecyclerView.LayoutManager layoutManager;
     String ordID;
+    ImageView logo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_woofshop_vieworder_items);
+
+        logo = findViewById(R.id.app_logo_top);
+        logo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(woofshop_vieworderItems.this, Home.class);
+                startActivity(intent);
+            }
+        });
 
         //get order ID
         ordID = getIntent().getStringExtra("ordID");

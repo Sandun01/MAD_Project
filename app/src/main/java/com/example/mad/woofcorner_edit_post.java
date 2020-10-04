@@ -26,7 +26,7 @@ public class woofcorner_edit_post extends AppCompatActivity {
 
     EditText type,price,description,contactNo,email;
     Button save,cancel;
-    ImageView imageView;
+    ImageView imageView,logo;
     DatabaseReference dbRef;
     StorageReference storageReference;
 
@@ -37,6 +37,15 @@ public class woofcorner_edit_post extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_woofcorner_edit_post);
+
+        logo = findViewById(R.id.app_logo_top);
+        logo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(woofcorner_edit_post.this, Home.class);
+                startActivity(intent);
+            }
+        });
 
         type = (EditText)findViewById(R.id.phone);
         price = (EditText)findViewById(R.id.editTextTextPersonName5);

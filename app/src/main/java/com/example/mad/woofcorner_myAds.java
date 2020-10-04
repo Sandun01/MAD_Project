@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 
 import androidx.annotation.NonNull;
@@ -35,12 +36,22 @@ public class woofcorner_myAds extends AppCompatActivity {
     RecyclerView.LayoutManager layoutManager;
     FirebaseAuth mAuth = FirebaseAuth.getInstance();
     Query mQuery;
+    ImageView logo;
 
     @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_woofcorner_my_ads);
+
+        logo = findViewById(R.id.app_logo_top);
+        logo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(woofcorner_myAds.this, Home.class);
+                startActivity(intent);
+            }
+        });
 
 
         //get userID

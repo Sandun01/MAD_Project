@@ -43,11 +43,26 @@ public class woofprofile_updateProfile extends AppCompatActivity {
         email = findViewById(R.id.userEmail);
         updateBtn = findViewById(R.id.updateuserBtn);
 
+        //get user in auth
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        userID = user.getUid();
+
+        //getuser Details
+        getUserDetails();
+
     }
 
     @Override
     protected void onResume() {
         super.onResume();
+
+        updateBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //update userdetails
+                updateDetails();
+            }
+        });
 
         //bottom navigation bar begins
         BottomNavigationView bottomNavigationView = findViewById(R.id.app_bottom_navigationbar);
@@ -76,8 +91,6 @@ public class woofprofile_updateProfile extends AppCompatActivity {
                         return true;
 
                     case R.id.bottomNaviBar_woofProfile:
-                        startActivity(new Intent(getApplicationContext(), woofprofile_menu.class));
-                        overridePendingTransition(0,0);
                         return true;
 
                 }
@@ -85,6 +98,82 @@ public class woofprofile_updateProfile extends AppCompatActivity {
                 return false;
             }
         });
+
+    }
+
+    public void getUserDetails()
+    {
+        DatabaseReference refDB = FirebaseDatabase.getInstance().getReference().child("Users").child(userID);
+        refDB.addListenerForSingleValueEvent(new ValueEventListener() {
+
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                if(snapshot.hasChildren())
+                {
+                    name.setText(snapshot.child("username").getValue().toString());
+                    phone.setText(snapshot.child("phone").getValue().toString());
+                    email.setText(snapshot.child("email").getValue().toString());
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+    }
+
+    public void updateDetails()
+    {
+        //validate userdetails
+        if(valideateDetails())
+        {
+            //validate userdetails
+            if(valideateDetails())
+            {
+                dbRef = FirebaseDatabase.getInstance().getReference().child("Users").child(userID);
+
+                dbRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                        dbRef.child("username").setValue(name.getText().toString().trim());
+                        dbRef.child("phone").setValue(phone.getText().toString());
+
+                        //
+                        Toast.makeText(getApplicationContext(), "Succefully updated detils", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(woofprofile_updateProfile.this, woofprofile_viewProfile.class);
+                        startActivity(intent);
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+
+            }
+
+        }
+
+    }
+
+    public boolean valideateDetails()
+    {
+        String usetPhone = phone.getText().toString();
+
+        if(usetPhone.length() == 10)
+        {
+            return true;
+        }
+        else {
+            Toast.makeText(getApplicationContext(), "Please enter valid phone number", Toast.LENGTH_SHORT).show();
+            return false;
+        }
 
     }
 

@@ -34,7 +34,7 @@ public class woofshop_view_product extends AppCompatActivity {
 
     private String itemID, userID;
     Button addTocart;
-    ImageView itemPic;
+    ImageView itemPic,logo;
     TextView itemNameTxt, itemPriceTxt, itemDesTxt, itemQtytxt;
     String itmName, itemDes;
     int itmQty;
@@ -46,6 +46,15 @@ public class woofshop_view_product extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_woofshop_view_product);
+
+        logo = findViewById(R.id.app_logo_top);
+        logo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(woofshop_view_product.this, Home.class);
+                startActivity(intent);
+            }
+        });
 
         //initializing id
         inputQty = findViewById(R.id.viewItem_inputqty);

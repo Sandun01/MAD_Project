@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -29,11 +30,21 @@ public class woofshop_show_orders extends AppCompatActivity {
     private DatabaseReference dbRef;
     String userID;
     private Query mQuery;
+    ImageView logo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_woofshop_show_orders);
+
+        logo = findViewById(R.id.app_logo_top);
+        logo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(woofshop_show_orders.this, Home.class);
+                startActivity(intent);
+            }
+        });
 
         dbRef = FirebaseDatabase.getInstance().getReference().child("Orders");
 

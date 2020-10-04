@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -26,11 +27,21 @@ public class woofcare_clinc_details extends AppCompatActivity {
     ImageButton careCall;
     DogCare careClinic;
     private String org_id = " ";
+    ImageView logo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_woofcare_clinc_details);
+
+        logo = findViewById(R.id.app_logo_top);
+        logo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(woofcare_clinc_details.this, Home.class);
+                startActivity(intent);
+            }
+        });
 
         org_id = getIntent().getStringExtra("id");
 

@@ -29,7 +29,7 @@ public class woofshop_update_cartitem extends AppCompatActivity {
     EditText newQtyInput;
     Button updateQtyBtn;
     String itmID,itmName, itemDes, userID;
-    ImageView itemPic;
+    ImageView itemPic,logo;
     TextView itemNameTxt, itemPriceTxt, itemDesTxt, itemQtytxt;
     int itmQty,oldQty,newInputQty;
     float itmPrice;
@@ -38,6 +38,15 @@ public class woofshop_update_cartitem extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_woofshop_update_cartitem);
+
+        logo = findViewById(R.id.app_logo_top);
+        logo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(woofshop_update_cartitem.this, Home.class);
+                startActivity(intent);
+            }
+        });
 
         //initializing id
         itemNameTxt = findViewById(R.id.viewItem_name);

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,12 +28,21 @@ public class woofprofile_viewProfile extends AppCompatActivity {
     TextView uname, email, phone, verfyEmail;
     String user_id;
     boolean emailVerified;
-
+    ImageView logo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_woofprofile_view_profile);
+
+        logo = findViewById(R.id.app_logo_top);
+        logo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(woofprofile_viewProfile.this, Home.class);
+                startActivity(intent);
+            }
+        });
 
         //initialize id's
         toUpdateOwner = findViewById(R.id.viewEditOwner);

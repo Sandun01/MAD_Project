@@ -57,16 +57,52 @@
             app:srcCompat="@drawable/ic_app_bottomnavibar_profile" />
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/userneame_woofmenu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
-            android:fontFamily="sans-serif-medium"
+            android:layout_marginTop="2dp"
+            android:fontFamily="serif"
+            android:text="unametxt"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="24sp"
+            app:layout_constraintStart_toEndOf="@+id/imageView"
+            app:layout_constraintTop_toBottomOf="@+id/userneame_woofmenu2" />
+
+        <TextView
+            android:id="@+id/userneame_woofmenu3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:fontFamily="serif"
+            android:text="Email"
+            android:textColor="@color/colorBtnblack"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/imageView"
+            app:layout_constraintTop_toBottomOf="@+id/userneame_woofmenu" />
+
+        <TextView
+            android:id="@+id/userneame_woofmenu2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:fontFamily="serif"
             android:text="@string/loginActivity_usernameInput"
             android:textColor="@color/colorBtnblack"
-            android:textSize="34sp"
+            android:textSize="24sp"
             app:layout_constraintStart_toEndOf="@+id/imageView"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/email_woofmenu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:fontFamily="serif-monospace"
+            android:text="Emailtxt"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/imageView"
+            app:layout_constraintTop_toBottomOf="@+id/userneame_woofmenu3" />
 
         <Button
             android:id="@+id/woofprofile_menu_adsbtn"

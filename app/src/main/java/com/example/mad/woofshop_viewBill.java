@@ -6,6 +6,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,11 +35,21 @@ public class woofshop_viewBill extends AppCompatActivity {
     TextView totalpriceTxt;
     EditText inputAddress, inputPostal, inputPhone, inputcusName;
     String userID;
+    ImageView logo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_woofshop_view_bill);
+
+        logo = findViewById(R.id.app_logo_top);
+        logo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(woofshop_viewBill.this, Home.class);
+                startActivity(intent);
+            }
+        });
 
         inputAddress = findViewById(R.id.order_address);
         inputPostal = findViewById(R.id.order_postal);

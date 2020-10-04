@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -38,7 +39,7 @@ public class woofshop_view_cart extends AppCompatActivity {
     TextView title;
     RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
-
+    ImageView logo;
     private String userID;
     float allTotal = 0, totalPtice=0;
 
@@ -47,6 +48,15 @@ public class woofshop_view_cart extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_woofshop_view_cart);
+
+        logo = findViewById(R.id.app_logo_top);
+        logo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(woofshop_view_cart.this, Home.class);
+                startActivity(intent);
+            }
+        });
 
         //initialize
         calculatebill = findViewById(R.id.calcutalebill);

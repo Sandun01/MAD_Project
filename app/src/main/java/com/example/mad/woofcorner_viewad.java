@@ -25,17 +25,24 @@ public class woofcorner_viewad extends AppCompatActivity {
 
     TextView type,price,description,phone;
     ImageButton contactNo;
-    ImageView imageView;
+    ImageView imageView,logo;
     DatabaseReference dbRef;
 
     String dogID = "";
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_woofcorner_viewad);
+
+        logo = findViewById(R.id.app_logo_top);
+        logo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(woofcorner_viewad.this, Home.class);
+                startActivity(intent);
+            }
+        });
 
         type = (TextView) findViewById(R.id.viewpost_type);
         price = (TextView) findViewById(R.id.view_post_price);

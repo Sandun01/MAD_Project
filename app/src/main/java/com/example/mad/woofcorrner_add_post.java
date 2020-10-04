@@ -32,7 +32,7 @@ public class woofcorrner_add_post extends AppCompatActivity {
 
     EditText type,price,description,contactNo, email;
     Button post,cancel;
-    ImageButton imageSelect;
+    ImageButton imageSelect,logo;
     Uri uri=null;
     DatabaseReference dbRef;
 
@@ -50,6 +50,14 @@ public class woofcorrner_add_post extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_woofcorrner_add_post);
 
+        logo = findViewById(R.id.app_logo_top);
+        logo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(woofcorrner_add_post.this, Home.class);
+                startActivity(intent);
+            }
+        });
 
         type = (EditText)findViewById(R.id.editTextTextPersonName);
         price = (EditText)findViewById(R.id.editTextTextPersonName2);

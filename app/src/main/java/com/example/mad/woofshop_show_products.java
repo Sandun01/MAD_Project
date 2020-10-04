@@ -1,11 +1,13 @@
 package com.example.mad;
 
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -29,11 +31,21 @@ public class woofshop_show_products extends AppCompatActivity {
     private DatabaseReference prRef;
     private RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
+    ImageView logo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_woofshop_show_products);
+
+        logo = findViewById(R.id.app_logo_top);
+        logo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(woofshop_show_products.this, Home.class);
+                startActivity(intent);
+            }
+        });
 
         //initializing
         prRef = FirebaseDatabase.getInstance().getReference().child("ProductItem");
