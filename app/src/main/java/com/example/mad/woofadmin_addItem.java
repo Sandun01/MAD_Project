@@ -60,6 +60,43 @@ public class woofadmin_addItem extends AppCompatActivity {
         itemDBRef = FirebaseDatabase.getInstance().getReference().child("ProductItem");
         ImageRef = FirebaseStorage.getInstance().getReference().child("ProdutImages");
 
+        //bottom navigation bar begins
+        BottomNavigationView bottomNavigationView = findViewById(R.id.app_admin_bottom_navigationbar);
+        //set selected
+        bottomNavigationView.setSelectedItemId(R.id.bottomNaviBar_adminItems);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                switch(item.getItemId())
+                {
+                    case R.id.bottomNaviBar_adminOrganizations:
+                        startActivity(new Intent(getApplicationContext(), woofadmin_organization_view.class));
+                        overridePendingTransition(0,0);
+                        return true;
+
+                    case R.id.bottomNaviBar_adminItems:
+                        startActivity(new Intent(getApplicationContext(), woofadmin_viewProduct.class));
+                        overridePendingTransition(0,0);
+                        return true;
+
+                    case R.id.bottomNaviBar_adminOrders:
+                        startActivity(new Intent(getApplicationContext(), woofadmin_orders.class));
+                        overridePendingTransition(0,0);
+                        return true;
+
+                    case R.id.bottomNaviBar_adminProfile:
+                        startActivity(new Intent(getApplicationContext(), woofadmin_account.class));
+                        overridePendingTransition(0,0);
+                        return true;
+
+                }
+
+                return false;
+            }
+        });
+
     }
 
     @Override
@@ -109,43 +146,6 @@ public class woofadmin_addItem extends AppCompatActivity {
                 catch (NumberFormatException e){
                     Toast.makeText(getApplicationContext(),"Enter valid price or quantity",Toast.LENGTH_SHORT).show();
                 }
-            }
-        });
-
-        //bottom navigation bar begins
-        BottomNavigationView bottomNavigationView = findViewById(R.id.app_admin_bottom_navigationbar);
-        //set selected
-        bottomNavigationView.setSelectedItemId(R.id.bottomNaviBar_adminItems);
-
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
-                switch(item.getItemId())
-                {
-                    case R.id.bottomNaviBar_adminOrganizations:
-                        startActivity(new Intent(getApplicationContext(), woofadmin_organization_view.class));
-                        overridePendingTransition(0,0);
-                        return true;
-
-                    case R.id.bottomNaviBar_adminItems:
-                        startActivity(new Intent(getApplicationContext(), woofadmin_viewProduct.class));
-                        overridePendingTransition(0,0);
-                        return true;
-
-                    case R.id.bottomNaviBar_adminOrders:
-                        startActivity(new Intent(getApplicationContext(), woofadmin_orders.class));
-                        overridePendingTransition(0,0);
-                        return true;
-
-                    case R.id.bottomNaviBar_adminProfile:
-                        startActivity(new Intent(getApplicationContext(), admin_account.class));
-                        overridePendingTransition(0,0);
-                        return true;
-
-                }
-
-                return false;
             }
         });
 
