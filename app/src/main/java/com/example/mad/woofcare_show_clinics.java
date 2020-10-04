@@ -52,7 +52,7 @@ public class woofcare_show_clinics extends AppCompatActivity {
 
         FirebaseRecyclerAdapter<DogCare, org_view> adapter = new FirebaseRecyclerAdapter<DogCare, org_view>(options) {
             @Override
-            protected void onBindViewHolder(@NonNull org_view holder, int i, @NonNull final DogCare org) {
+            protected void onBindViewHolder(@NonNull org_view holder, final int i, @NonNull final DogCare org) {
                 holder.txtOrgName.setText("Organization:"+org.getClinicName());
                 holder.txtConNo.setText("Contact Number:"+org.getContactNo());
                 holder.txtLocation.setText("Address:"+org.getAddress());
@@ -61,7 +61,7 @@ public class woofcare_show_clinics extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
                         Intent intent = new Intent(woofcare_show_clinics.this, woofcare_clinc_details.class);
-                        intent.putExtra("id", org.getId());
+                        intent.putExtra("id", getRef(i).getKey());
                         startActivity(intent);
                     }
                 });

@@ -109,12 +109,6 @@ public class woofadmin_org_addDetails extends AppCompatActivity {
             }
         });
 
-
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
         //bottom navigation bar begins
         BottomNavigationView bottomNavigationView = findViewById(R.id.app_admin_bottom_navigationbar);
         //set selected
@@ -142,7 +136,7 @@ public class woofadmin_org_addDetails extends AppCompatActivity {
                         return true;
 
                     case R.id.bottomNaviBar_adminProfile:
-                        startActivity(new Intent(getApplicationContext(), admin_account.class));
+                        startActivity(new Intent(getApplicationContext(), woofadmin_account.class));
                         overridePendingTransition(0,0);
                         return true;
 
@@ -151,6 +145,15 @@ public class woofadmin_org_addDetails extends AppCompatActivity {
                 return false;
             }
         });
+
+        //bottom navigation ends
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
     }
 
 

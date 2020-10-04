@@ -59,7 +59,7 @@ public class woofadmin_organization_view extends AppCompatActivity {
 
         FirebaseRecyclerAdapter<DogCare, org_view> adapter = new FirebaseRecyclerAdapter<DogCare, org_view>(options) {
             @Override
-            protected void onBindViewHolder(@NonNull org_view holder, int i, @NonNull final DogCare org) {
+            protected void onBindViewHolder(@NonNull org_view holder, final int i, @NonNull final DogCare org) {
                 holder.txtOrgName.setText("Organization:"+org.getClinicName());
                 holder.txtConNo.setText("Contact Number:"+org.getContactNo());
                 holder.txtLocation.setText("Address:"+org.getAddress());
@@ -68,7 +68,7 @@ public class woofadmin_organization_view extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
                         Intent intent = new Intent(woofadmin_organization_view.this, woofadmin_org_details.class);
-                        intent.putExtra("id", org.getId());
+                        intent.putExtra("id", getRef(i).getKey());
                         startActivity(intent);
                     }
                 });
@@ -117,7 +117,7 @@ public class woofadmin_organization_view extends AppCompatActivity {
                         return true;
 
                     case R.id.bottomNaviBar_adminProfile:
-                        startActivity(new Intent(getApplicationContext(), admin_account.class));
+                        startActivity(new Intent(getApplicationContext(), woofadmin_account.class));
                         overridePendingTransition(0,0);
                         return true;
 
