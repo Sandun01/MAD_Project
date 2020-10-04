@@ -36,7 +36,7 @@ public class woofprofile_viewProfile extends AppCompatActivity {
 
         //initialize id's
         toUpdateOwner = findViewById(R.id.viewEditOwner);
-        logoutBtn = findViewById(R.id.btnLogout);
+        logoutBtn = findViewById(R.id.woofAdminAddITem);
 
         uname = findViewById(R.id.viewUsername);
         email = findViewById(R.id.viewEmail);
