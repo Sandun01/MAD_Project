@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -27,14 +28,17 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import java.util.regex.Pattern;
+
 
 public class woofcorrner_add_post extends AppCompatActivity {
 
     EditText type,price,description,contactNo, email;
     Button post,cancel;
-    ImageButton imageSelect,logo;
+    ImageButton imageSelect;
     Uri uri=null;
     DatabaseReference dbRef;
+    ImageView logo;
 
     //Firebase
     StorageReference storageReference;
@@ -174,58 +178,61 @@ public class woofcorrner_add_post extends AppCompatActivity {
                     else if (TextUtils.isEmpty(email.getText().toString()))
                         Toast.makeText(getApplicationContext(),"Please enter email",Toast.LENGTH_SHORT).show();
                     else{
-                        final String dogType=type.getText().toString().trim();
-                        final Double amount = Double.parseDouble(price.getText().toString().trim());
-                        final String details = description.getText().toString().trim();
-                        final Integer phone = Integer.parseInt(contactNo.getText().toString().trim());
-                        final String mail = email.getText().toString().trim();
 
-                        //get userID
-                        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                        userID = user.getUid();
+                        if(checkemail() || checkphonenumber()) if(checkemail() || checkphonenumber())
+                        {
+                            final String dogType=type.getText().toString().trim();
+                            final Double amount = Double.parseDouble(price.getText().toString().trim());
+                            final String details = description.getText().toString().trim();
+                            final Integer phone = Integer.parseInt(contactNo.getText().toString().trim());
+                            final String mail = email.getText().toString().trim();
 
-                        StorageReference filepath = storageReference.child("imagePost").child(uri.getLastPathSegment());
-                        filepath.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                            @Override
-                            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                                Task<Uri> task = taskSnapshot.getMetadata().getReference().getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
-                                    @Override
-                                    public void onComplete(@NonNull Task<Uri> task) {
-                                        String t = task.getResult().toString();
-                                        //Inserting to database
-                                        dog.setuID(userID);
-                                        dog.setContactNo(phone);
-                                        dog.setDescription(details);
-                                        dog.setEmail(mail);
-                                        dog.setImage(task.getResult().toString());
-                                        dog.setType(dogType);
-                                        dog.setPrice(amount);
+                            //get userID
+                            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                            userID = user.getUid();
 
-                                        dbRef.push().setValue(dog).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                            @Override
-                                            public void onComplete(@NonNull Task<Void> task) {
+                            StorageReference filepath = storageReference.child("imagePost").child(uri.getLastPathSegment());
+                            filepath.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                                @Override
+                                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                                    Task<Uri> task = taskSnapshot.getMetadata().getReference().getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Uri> task) {
+                                            String t = task.getResult().toString();
+                                            //Inserting to database
+                                            dog.setuID(userID);
+                                            dog.setContactNo(phone);
+                                            dog.setDescription(details);
+                                            dog.setEmail(mail);
+                                            dog.setImage(task.getResult().toString());
+                                            dog.setType(dogType);
+                                            dog.setPrice(amount);
 
-                                                if(task.isSuccessful())
-                                                {
-                                                    //feedback to the user
-                                                    Toast.makeText(getApplicationContext(),"Data Saved Successfully",Toast.LENGTH_SHORT).show();
+                                            dbRef.push().setValue(dog).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                @Override
+                                                public void onComplete(@NonNull Task<Void> task) {
 
-                                                    Intent intent = new Intent(woofcorrner_add_post.this, woofcorner_myAds.class);
-                                                    startActivity(intent);
+                                                    if(task.isSuccessful())
+                                                    {
+                                                        //feedback to the user
+                                                        Toast.makeText(getApplicationContext(),"Data Saved Successfully",Toast.LENGTH_SHORT).show();
+
+                                                        Intent intent = new Intent(woofcorrner_add_post.this, woofcorner_myAds.class);
+                                                        startActivity(intent);
+                                                    }
+                                                    else
+                                                    {
+                                                        Toast.makeText(getApplicationContext(),"Error: "+task.getException().toString(),Toast.LENGTH_SHORT).show();
+                                                    }
+
                                                 }
-                                                else
-                                                {
-                                                    Toast.makeText(getApplicationContext(),"Error: "+task.getException().toString(),Toast.LENGTH_SHORT).show();
-                                                }
+                                            });
 
-                                            }
-                                        });
-
-                                    }
-                                });
-                            }
-                        });
-
+                                        }
+                                    });
+                                }
+                            });
+                        }
 
                     }
                 }
@@ -239,6 +246,36 @@ public class woofcorrner_add_post extends AppCompatActivity {
 
     }
 
+    public boolean checkphonenumber()
+    {
+        String phone = contactNo.getText().toString();
+
+        if(phone.length() == 10)
+        {
+            return true;
+        }
+        else {
+            Toast.makeText(getApplicationContext(), "Please enter valid phone number", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+    }
+
+    public boolean checkemail()
+    {
+        String emailval = email.getText().toString();
+        String EmalFormat = "^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)(\\.[A-Za-z]{2,})$";
+
+        if(Pattern.compile(EmalFormat).matcher(emailval).matches())
+        {
+            return true;
+        }
+        else {
+            Toast.makeText(getApplicationContext(), "Please enter valid email", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+    }
 
 
 }

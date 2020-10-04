@@ -22,11 +22,13 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
+import java.util.regex.Pattern;
+
 public class woofcorner_edit_post extends AppCompatActivity {
 
-    EditText type,price,description,contactNo,email;
-    Button save,cancel;
-    ImageView imageView,logo;
+    EditText type, price, description, contactNo, email;
+    Button save, cancel;
+    ImageView imageView, logo;
     DatabaseReference dbRef;
     StorageReference storageReference;
 
@@ -47,16 +49,16 @@ public class woofcorner_edit_post extends AppCompatActivity {
             }
         });
 
-        type = (EditText)findViewById(R.id.phone);
-        price = (EditText)findViewById(R.id.editTextTextPersonName5);
-        description = (EditText)findViewById(R.id.uname);
-        contactNo = (EditText)findViewById(R.id.editTextPhone2);
-        email = (EditText)findViewById(R.id.editTextTextEmailAddress2);
-        imageView = (ImageView)findViewById(R.id.view_post_image);
+        type = (EditText) findViewById(R.id.phone);
+        price = (EditText) findViewById(R.id.editTextTextPersonName5);
+        description = (EditText) findViewById(R.id.uname);
+        contactNo = (EditText) findViewById(R.id.editTextPhone2);
+        email = (EditText) findViewById(R.id.editTextTextEmailAddress2);
+        imageView = (ImageView) findViewById(R.id.view_post_image);
 
         dbRef = FirebaseDatabase.getInstance().getReference();
 
-        dogID =  getIntent().getStringExtra("did");
+        dogID = getIntent().getStringExtra("did");
 
         getDogDetails(dogID);
 
@@ -70,7 +72,7 @@ public class woofcorner_edit_post extends AppCompatActivity {
         dataRef.child(dogID).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(snapshot.exists()){
+                if (snapshot.exists()) {
                     Dog dog = snapshot.getValue(Dog.class);
 
                     type.setText(dog.getType());
@@ -96,19 +98,21 @@ public class woofcorner_edit_post extends AppCompatActivity {
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                dbRef = FirebaseDatabase.getInstance().getReference();
-                dbRef.child("Dog").child(dogID).child("type").setValue(type.getText().toString().trim());
-                dbRef.child("Dog").child(dogID).child("price").setValue(Double.parseDouble(price.getText().toString()));
-                dbRef.child("Dog").child(dogID).child("description").setValue(description.getText().toString());
-                dbRef.child("Dog").child(dogID).child("contactNo").setValue(Integer.parseInt(contactNo.getText().toString()));
-                dbRef.child("Dog").child(dogID).child("email").setValue(email.getText().toString().trim());
-                Intent intent = new Intent(woofcorner_edit_post.this, woofcorner_view_post.class);
-                Toast.makeText(getApplicationContext(),"Data Updated Successfully",Toast.LENGTH_SHORT).show();
-                startActivity(intent);
+                if (checkemail() || checkphonenumber()) {
+                    dbRef = FirebaseDatabase.getInstance().getReference();
+                    dbRef.child("Dog").child(dogID).child("type").setValue(type.getText().toString().trim());
+                    dbRef.child("Dog").child(dogID).child("price").setValue(Double.parseDouble(price.getText().toString()));
+                    dbRef.child("Dog").child(dogID).child("description").setValue(description.getText().toString());
+                    dbRef.child("Dog").child(dogID).child("contactNo").setValue(Integer.parseInt(contactNo.getText().toString()));
+                    dbRef.child("Dog").child(dogID).child("email").setValue(email.getText().toString().trim());
+                    Intent intent = new Intent(woofcorner_edit_post.this, woofcorner_view_post.class);
+                    Toast.makeText(getApplicationContext(), "Data Updated Successfully", Toast.LENGTH_SHORT).show();
+                    startActivity(intent);
+                }
             }
         });
 
-       cancel.setOnClickListener(new View.OnClickListener() {
+        cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(woofcorner_edit_post.this, woofcorner_myAds.class);
@@ -151,5 +155,29 @@ public class woofcorner_edit_post extends AppCompatActivity {
                 return false;
             }
         });
+    }
+
+    public boolean checkphonenumber() {
+        String phone = contactNo.getText().toString();
+
+        if (phone.length() == 10) {
+            return true;
+        } else {
+            Toast.makeText(getApplicationContext(), "Please enter valid phone number", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+    }
+
+    public boolean checkemail() {
+        String emailval = email.getText().toString();
+        String EmalFormat = "^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)(\\.[A-Za-z]{2,})$";
+
+        if (Pattern.compile(EmalFormat).matcher(emailval).matches()) {
+            return true;
+        } else {
+            Toast.makeText(getApplicationContext(), "Please enter valid email", Toast.LENGTH_SHORT).show();
+            return false;
+        }
     }
 }

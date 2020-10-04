@@ -59,33 +59,20 @@
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="-3dp">
 
-        <androidx.appcompat.widget.SearchView
-            android:id="@+id/searchView"
-            android:layout_width="299dp"
-            android:layout_height="31dp"
-            android:layout_marginTop="2dp"
-            android:background="@drawable/login_btn_layout_only"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.029" />
-
         <TextView
             android:id="@+id/textView29"
             android:layout_width="411dp"
             android:layout_height="34dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="20dp"
             android:fontFamily="@font/baloo"
+            android:gravity="center_horizontal"
             android:text="@string/woofcorner_myAds_headerText"
             android:textAlignment="center"
             android:textColor="#403A3A"
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/searchView"
-            android:gravity="center_horizontal" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/postAd_button"
