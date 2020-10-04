@@ -9,7 +9,7 @@
 
     <item
         android:state_selected="false"
-        android:color="@color/colorBottomNavBar"
+        android:color="@color/colorBtnTheme"
         />
 
 </selector>
