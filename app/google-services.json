@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "12133321599",
+    "firebase_url": "https://woof-d266c.firebaseio.com",
+    "project_id": "woof-d266c",
+    "storage_bucket": "woof-d266c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:12133321599:android:239a5f412f9e50f17da84a",
+        "android_client_info": {
+          "package_name": "com.example.mad"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "12133321599-tc6sggv5b939r0ro37ika0mf4jtq0ajj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAiC_MgP1f1h6XhvI7ugLvw5ZyQoEWf2H0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "12133321599-tc6sggv5b939r0ro37ika0mf4jtq0ajj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

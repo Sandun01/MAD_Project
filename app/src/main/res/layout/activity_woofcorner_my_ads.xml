@@ -55,108 +55,24 @@
         android:layout_marginBottom="9dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardView"
-            android:layout_width="409dp"
-            android:layout_height="150dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.8"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView29"
-            app:layout_constraintVertical_bias="0.029">
-
-            <ImageView
-                android:id="@+id/imageView2"
-                android:layout_width="143dp"
-                android:layout_height="match_parent"
-                android:layout_margin="10dp"
-                app:srcCompat="@drawable/labradorpup" />
-
-            <TextView
-                android:id="@+id/textView5"
-                android:layout_width="153dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="155dp"
-                android:layout_marginTop="5dp"
-                android:text="@string/woofcorner_showAd_description"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/textView6"
-                android:layout_width="140dp"
-                android:layout_height="58dp"
-                android:layout_marginLeft="155dp"
-                android:layout_marginTop="25dp"
-                android:text="@string/woofcorner_showAd_details"
-                android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/textView9"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="155dp"
-                android:layout_marginTop="75dp"
-                android:text="@string/woofcorner_showAd_price"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <ImageButton
-                android:id="@+id/ad_edit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="300dp"
-                android:layout_marginTop="100dp"
-                app:srcCompat="@drawable/ic_baseline_edit_24" />
-
-            <ImageButton
-                android:id="@+id/ad_delete"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="350dp"
-                android:layout_marginTop="100dp"
-                app:srcCompat="@drawable/ic_baseline_delete_24" />
-
-            <ImageButton
-                android:id="@+id/ad_view"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="250dp"
-                android:layout_marginTop="100dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:srcCompat="@drawable/ic_baseline_remove_red_eye_24" />
-
-        </androidx.cardview.widget.CardView>
-
-        <androidx.appcompat.widget.SearchView
-            android:id="@+id/searchView"
-            android:layout_width="299dp"
-            android:layout_height="31dp"
-            android:layout_marginTop="2dp"
-            android:background="@drawable/login_btn_layout_only"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.029" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="-3dp">
 
         <TextView
             android:id="@+id/textView29"
             android:layout_width="411dp"
             android:layout_height="34dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="20dp"
             android:fontFamily="@font/baloo"
+            android:gravity="center_horizontal"
             android:text="@string/woofcorner_myAds_headerText"
             android:textAlignment="center"
             android:textColor="#403A3A"
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/searchView" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/postAd_button"
@@ -171,6 +87,15 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="1.0"
             app:srcCompat="@drawable/ic_baseline_add_circle_24" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/post_recyclerview"
+            android:layout_width="410dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="100dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView29"
+            tools:ignore="MissingConstraints" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

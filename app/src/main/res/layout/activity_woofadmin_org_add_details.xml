@@ -74,16 +74,6 @@
             app:layout_constraintTop_toBottomOf="@+id/woofadmin_orgadd_headertxt" />
 
         <TextView
-            android:id="@+id/textView28"
-            android:layout_width="200dp"
-            android:layout_height="30dp"
-            android:background="@color/colorTopMenueBackgroud"
-            app:layout_constraintBaseline_toBaselineOf="@+id/woofadmin_orgadd_name"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/woofadmin_orgadd_name" />
-
-        <TextView
             android:id="@+id/woofadmin_orgadd_number"
             android:layout_width="155dp"
             android:layout_height="30dp"
@@ -94,16 +84,6 @@
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/woofadmin_orgadd_name" />
-
-        <TextView
-            android:id="@+id/textView33"
-            android:layout_width="200dp"
-            android:layout_height="30dp"
-            android:background="@color/colorTopMenueBackgroud"
-            app:layout_constraintBaseline_toBaselineOf="@+id/woofadmin_orgadd_number"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/woofadmin_orgadd_number" />
 
         <TextView
             android:id="@+id/woofadmin_orgadd_address"
@@ -118,16 +98,6 @@
             app:layout_constraintTop_toBottomOf="@+id/woofadmin_orgadd_number" />
 
         <TextView
-            android:id="@+id/textView35"
-            android:layout_width="200dp"
-            android:layout_height="30dp"
-            android:background="@color/colorTopMenueBackgroud"
-            app:layout_constraintBaseline_toBaselineOf="@+id/woofadmin_orgadd_address"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/woofadmin_orgadd_address" />
-
-        <TextView
             android:id="@+id/woofadmin_orgadd_city"
             android:layout_width="155dp"
             android:layout_height="30dp"
@@ -138,16 +108,6 @@
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/woofadmin_orgadd_address" />
-
-        <TextView
-            android:id="@+id/textView37"
-            android:layout_width="200dp"
-            android:layout_height="30dp"
-            android:background="@color/colorTopMenueBackgroud"
-            app:layout_constraintBaseline_toBaselineOf="@+id/woofadmin_orgadd_city"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/woofadmin_orgadd_city" />
 
         <TextView
             android:id="@+id/woofadmin_orgadd_description"
@@ -162,16 +122,6 @@
             app:layout_constraintTop_toBottomOf="@+id/woofadmin_orgadd_city" />
 
         <TextView
-            android:id="@+id/textView39"
-            android:layout_width="200dp"
-            android:layout_height="30dp"
-            android:background="@color/colorTopMenueBackgroud"
-            app:layout_constraintBaseline_toBaselineOf="@+id/woofadmin_orgadd_description"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/woofadmin_orgadd_description" />
-
-        <TextView
             android:id="@+id/woofadmin_orgadd_owneretails_owner"
             android:layout_width="155dp"
             android:layout_height="30dp"
@@ -183,34 +133,102 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/woofadmin_orgadd_description" />
 
-        <TextView
-            android:id="@+id/textView41"
-            android:layout_width="200dp"
-            android:layout_height="30dp"
-            android:background="@color/colorTopMenueBackgroud"
+        <Button
+            android:id="@+id/woofadmin_org_update"
+            android:layout_width="135dp"
+            android:layout_height="71dp"
+            android:layout_marginTop="48dp"
+            android:background="@color/colorPrimary"
+            android:text="@string/woofadmin_orgadd_add"
+            android:textColor="@color/colorTopMenueBackgroud"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/woofadmin_orgadd_owneretails_owner" />
+
+        <EditText
+            android:id="@+id/cName"
+            android:layout_width="211dp"
+            android:layout_height="31dp"
+            android:background="#FFFFFF"
+            android:ems="10"
+            android:inputType="textPersonName"
+            app:layout_constraintBaseline_toBaselineOf="@+id/woofadmin_orgadd_name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/woofadmin_orgadd_name" />
+
+        <EditText
+            android:id="@+id/Cadd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#FFFFFF"
+            android:ems="10"
+            android:inputType="textPersonName"
+            app:layout_constraintBaseline_toBaselineOf="@+id/woofadmin_orgadd_address"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/woofadmin_orgadd_address" />
+
+        <EditText
+            android:id="@+id/Ccity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#FFFFFF"
+            android:ems="10"
+            android:inputType="textPersonName"
+            app:layout_constraintBaseline_toBaselineOf="@+id/woofadmin_orgadd_city"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/woofadmin_orgadd_city" />
+
+        <EditText
+            android:id="@+id/cDes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#FFFFFF"
+            android:ems="10"
+            android:inputType="textPersonName"
+            app:layout_constraintBaseline_toBaselineOf="@+id/woofadmin_orgadd_description"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/woofadmin_orgadd_description" />
+
+        <EditText
+            android:id="@+id/cOwner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#FFFFFF"
+            android:ems="10"
+            android:inputType="textPersonName"
             app:layout_constraintBaseline_toBaselineOf="@+id/woofadmin_orgadd_owneretails_owner"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/woofadmin_orgadd_owneretails_owner" />
 
-        <Button
-            android:id="@+id/woofadmin_org_update"
-            android:layout_width="135dp"
-            android:layout_height="71dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginBottom="40dp"
-            android:background="@color/colorPrimary"
-            android:text="@string/woofadmin_orgadd_add"
-            android:textColor="@color/colorTopMenueBackgroud"
-            android:textSize="24sp"
-            app:layout_constraintBottom_toBottomOf="parent"
+        <EditText
+            android:id="@+id/ConNo"
+            android:layout_width="211dp"
+            android:layout_height="31dp"
+            android:background="#FFFFFF"
+            android:ems="10"
+            android:inputType="numberSigned"
+            app:layout_constraintBaseline_toBaselineOf="@+id/woofadmin_orgadd_number"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView41"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/woofadmin_orgadd_number" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/app_admin_bottom_navigationbar"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/colorBtnblack"
+        app:itemIconSize="50dp"
+        app:itemIconTint="@drawable/app_bottom_navibar_selector"
+        app:menu="@menu/app_adminbottom_navibar_menue" />
 
 </RelativeLayout>
 

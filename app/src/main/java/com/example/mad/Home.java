@@ -59,7 +59,7 @@ public class Home extends AppCompatActivity {
         woofprofile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Home.this,app_woofprofile_menu.class);
+                Intent intent = new Intent(Home.this, woofprofile_menu.class);
                 startActivity(intent);
             }
         });

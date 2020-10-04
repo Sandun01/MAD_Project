@@ -44,11 +44,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
         android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
-        android:layout_marginStart="-3dp"
+        android:layout_marginStart="-1dp"
+        android:layout_marginLeft="-1dp"
         android:layout_marginTop="70dp"
-        android:layout_marginEnd="4dp"
+        android:layout_marginEnd="2dp"
+        android:layout_marginRight="2dp"
         android:layout_marginBottom="70dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -60,7 +64,7 @@
             android:layout_height="26dp"
             android:layout_marginStart="50dp"
             android:layout_marginLeft="50dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             android:text="@string/woofcorner_edit_post_description"
             android:textColor="#090909"
             android:textSize="14sp"
@@ -75,7 +79,7 @@
             android:layout_height="27dp"
             android:layout_marginStart="50dp"
             android:layout_marginLeft="50dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="24dp"
             android:text="@string/woofcorner_edit_post_email"
             android:textColor="#090909"
             android:textSize="14sp"
@@ -99,45 +103,36 @@
             android:layout_height="27dp"
             android:layout_marginStart="50dp"
             android:layout_marginLeft="50dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="24dp"
             android:text="@string/woofcorner_edit_post_contact"
             android:textColor="#090909"
             android:textSize="14sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName3" />
 
-        <Button
-            android:id="@+id/editpost_change_photo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="@string/woofcorner_add_post_addPhoto"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView8" />
-
         <EditText
             android:id="@+id/editTextPhone"
-            android:layout_width="220dp"
-            android:layout_height="27dp"
-            android:layout_marginStart="4dp"
-            android:layout_marginLeft="4dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="32dp"
+            android:layout_marginRight="32dp"
             android:ems="10"
             android:inputType="phone"
+            android:textSize="14sp"
             app:layout_constraintBaseline_toBaselineOf="@+id/textView35"
-            app:layout_constraintStart_toEndOf="@+id/textView35" />
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <EditText
             android:id="@+id/editTextTextEmailAddress"
-            android:layout_width="243dp"
-            android:layout_height="30dp"
-            android:layout_marginStart="4dp"
-            android:layout_marginLeft="4dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="32dp"
+            android:layout_marginRight="32dp"
             android:ems="10"
             android:inputType="textEmailAddress"
+            android:textSize="14sp"
             app:layout_constraintBaseline_toBaselineOf="@+id/textView33"
-            app:layout_constraintStart_toEndOf="@+id/textView33" />
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <TextView
             android:id="@+id/textView30"
@@ -145,7 +140,7 @@
             android:layout_height="27dp"
             android:layout_marginStart="50dp"
             android:layout_marginLeft="50dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             android:text="@string/woofcorner_edit_post_price"
             android:textColor="#090909"
             app:layout_constraintStart_toStartOf="parent"
@@ -157,12 +152,12 @@
             android:layout_height="28dp"
             android:layout_marginStart="50dp"
             android:layout_marginLeft="50dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="24dp"
             android:text="@string/woofcorner_edit_post_breed"
             android:textColor="#090909"
             android:textSize="14sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editpost_change_photo" />
+            app:layout_constraintTop_toBottomOf="@+id/imageButton" />
 
         <EditText
             android:id="@+id/editTextTextPersonName"
@@ -173,6 +168,7 @@
             android:layout_marginLeft="4dp"
             android:ems="10"
             android:inputType="textPersonName"
+            android:textSize="14sp"
             app:layout_constraintBaseline_toBaselineOf="@+id/textView36"
             app:layout_constraintStart_toEndOf="@+id/textView36" />
 
@@ -184,6 +180,7 @@
             android:layout_marginLeft="4dp"
             android:ems="10"
             android:inputType="textPersonName"
+            android:textSize="14sp"
             app:layout_constraintBaseline_toBaselineOf="@+id/textView30"
             app:layout_constraintStart_toEndOf="@+id/textView30" />
 
@@ -197,34 +194,32 @@
             android:ems="10"
             android:inputType="textPersonName"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView10" />
-
-        <ImageView
-            android:id="@+id/imageView8"
-            android:layout_width="200dp"
-            android:layout_height="139dp"
-            android:layout_marginTop="20dp"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_baseline_photo_camera_24" />
+            app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
         <Button
             android:id="@+id/addpost"
             android:layout_width="82dp"
             android:layout_height="45dp"
-            android:layout_marginStart="150dp"
-            android:layout_marginLeft="150dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginRight="32dp"
             android:text="@string/woofcorner_add_post_postbut"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/edit_post_cancel"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/textView33" />
+
+        <ImageButton
+            android:id="@+id/imageButton"
+            android:layout_width="215dp"
+            android:layout_height="146dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="22dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_baseline_photo_camera_24" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

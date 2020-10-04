@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(MainActivity.this,login_activity.class);
+                Intent intent = new Intent(MainActivity.this, login.class);
                 startActivity(intent);
                 //disable baack button navigation
                 finish();
