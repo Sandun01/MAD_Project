@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -19,6 +20,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -61,8 +63,8 @@ public class woofadmin_addItem extends AppCompatActivity {
     }
 
     @Override
-    protected void onPostResume() {
-        super.onPostResume();
+    protected void onResume() {
+        super.onResume();
 
 
         imageProductInput.setOnClickListener(new View.OnClickListener() {
@@ -83,6 +85,7 @@ public class woofadmin_addItem extends AppCompatActivity {
                 try{
 
                     //get details
+
                     itemName = txtProdName.getText().toString();
                     itemDescription = txtProdDescription.getText().toString();
                     itemPrice = Float.parseFloat(txtUnitPrice.getText().toString());
@@ -93,9 +96,9 @@ public class woofadmin_addItem extends AppCompatActivity {
                     else if (TextUtils.isEmpty(txtUnitPrice.getText().toString()))
                         Toast.makeText(getApplicationContext(),"enter quantity",Toast.LENGTH_SHORT).show();
                     else if (TextUtils.isEmpty(txtProdName.getText().toString()))
-                        Toast.makeText(getApplicationContext(),"Enter ptoduct name",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(),"Enter product name",Toast.LENGTH_SHORT).show();
                     else if (TextUtils.isEmpty(txtProdDescription.getText().toString()))
-                        Toast.makeText(getApplicationContext(),"Enter ptoduct name",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(),"Enter product description",Toast.LENGTH_SHORT).show();
                     else {
 
                         //store information of image
@@ -104,8 +107,45 @@ public class woofadmin_addItem extends AppCompatActivity {
                     }
                 }
                 catch (NumberFormatException e){
-                    Toast.makeText(getApplicationContext(),"Enter valid pricee or quantity",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),"Enter valid price or quantity",Toast.LENGTH_SHORT).show();
                 }
+            }
+        });
+
+        //bottom navigation bar begins
+        BottomNavigationView bottomNavigationView = findViewById(R.id.app_admin_bottom_navigationbar);
+        //set selected
+        bottomNavigationView.setSelectedItemId(R.id.bottomNaviBar_adminItems);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                switch(item.getItemId())
+                {
+                    case R.id.bottomNaviBar_adminOrganizations:
+                        startActivity(new Intent(getApplicationContext(), woofadmin_organization_view.class));
+                        overridePendingTransition(0,0);
+                        return true;
+
+                    case R.id.bottomNaviBar_adminItems:
+                        startActivity(new Intent(getApplicationContext(), woofadmin_viewProduct.class));
+                        overridePendingTransition(0,0);
+                        return true;
+
+                    case R.id.bottomNaviBar_adminOrders:
+                        startActivity(new Intent(getApplicationContext(), woofadmin_orders.class));
+                        overridePendingTransition(0,0);
+                        return true;
+
+                    case R.id.bottomNaviBar_adminProfile:
+                        startActivity(new Intent(getApplicationContext(), admin_account.class));
+                        overridePendingTransition(0,0);
+                        return true;
+
+                }
+
+                return false;
             }
         });
 
@@ -216,40 +256,6 @@ public class woofadmin_addItem extends AppCompatActivity {
 
                     }
                 });
-        //bottom navigation bar begins
-//        BottomNavigationView bottomNavigationView = findViewById(R.id.app_admin_bottom_navigationbar);
-//        //set selected
-//        bottomNavigationView.setSelectedItemId(R.id.bottomNaviBar_adminProfile);
-//
-//        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-//            @Override
-//            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-//
-//                switch(item.getItemId())
-//                {
-//                    case R.id.bottomNaviBar_adminOrganizations:
-//                        startActivity(new Intent(getApplicationContext(), woofadmin_organization_view.class));
-//                        overridePendingTransition(0,0);
-//                        return true;
-//
-//                    case R.id.bottomNaviBar_adminItems:
-//                        startActivity(new Intent(getApplicationContext(), woofadmin_addItem.class));
-//                        overridePendingTransition(0,0);
-//                        return true;
-//
-//                    case R.id.bottomNaviBar_adminOrders:
-//                        startActivity(new Intent(getApplicationContext(), woofadmin_orders.class));
-//                        overridePendingTransition(0,0);
-//                        return true;
-//
-//                    case R.id.bottomNaviBar_adminProfile:
-//                        return true;
-//
-//                }
-//
-//                return false;
-//            }
-//        });
 
     }
 

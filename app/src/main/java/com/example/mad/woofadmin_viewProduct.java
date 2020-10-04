@@ -3,6 +3,7 @@ package com.example.mad;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -16,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.mad.viewholders.AdminProductViewholder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
@@ -112,39 +114,41 @@ public class woofadmin_viewProduct extends AppCompatActivity {
             }
         });
 
-//        //bottom navigation bar begins
-//        BottomNavigationView bottomNavigationView = findViewById(R.id.app_admin_bottom_navigationbar);
-//        //set selected
-//        bottomNavigationView.setSelectedItemId(R.id.bottomNaviBar_adminProfile);
-//
-//        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-//            @Override
-//            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-//
-//                switch(item.getItemId())
-//                {
-//                    case R.id.bottomNaviBar_adminOrganizations:
-//                        startActivity(new Intent(getApplicationContext(), woofadmin_organization_view.class));
-//                        overridePendingTransition(0,0);
-//                        return true;
-//
-//                    case R.id.bottomNaviBar_adminItems:
-//                        startActivity(new Intent(getApplicationContext(), woofadmin_addItem.class));
-//                        overridePendingTransition(0,0);
-//                        return true;
-//
-//                    case R.id.bottomNaviBar_adminOrders:
-//                        startActivity(new Intent(getApplicationContext(), woofadmin_orders.class));
-//                        overridePendingTransition(0,0);
-//                        return true;
-//
-//                    case R.id.bottomNaviBar_adminProfile:
-//                        return true;
-//
-//                }
-//
-//                return false;
-//            }
-//        });
+        //bottom navigation bar begins
+        BottomNavigationView bottomNavigationView = findViewById(R.id.app_admin_bottom_navigationbar);
+        //set selected
+        bottomNavigationView.setSelectedItemId(R.id.bottomNaviBar_adminItems);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                switch(item.getItemId())
+                {
+                    case R.id.bottomNaviBar_adminOrganizations:
+                        startActivity(new Intent(getApplicationContext(), woofadmin_organization_view.class));
+                        overridePendingTransition(0,0);
+                        return true;
+
+                    case R.id.bottomNaviBar_adminItems:
+                        startActivity(new Intent(getApplicationContext(), woofadmin_viewProduct.class));
+                        overridePendingTransition(0,0);
+                        return true;
+
+                    case R.id.bottomNaviBar_adminOrders:
+                        startActivity(new Intent(getApplicationContext(), woofadmin_orders.class));
+                        overridePendingTransition(0,0);
+                        return true;
+
+                    case R.id.bottomNaviBar_adminProfile:
+                        startActivity(new Intent(getApplicationContext(), admin_account.class));
+                        overridePendingTransition(0,0);
+                        return true;
+
+                }
+
+                return false;
+            }
+        });
     }
 }
