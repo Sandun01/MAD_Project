@@ -4,21 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#0F367CF4"
     tools:context=".Home">
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="serif"
         android:text="@string/app_home"
         android:textSize="60sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.162" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
     <ImageButton
         android:id="@+id/btn_woofcare"
@@ -31,12 +30,12 @@
         android:paddingRight="0dp"
         android:paddingBottom="0dp"
         android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.069"
+        app:layout_constraintBottom_toTopOf="@+id/btn_woofprofile"
+        app:layout_constraintEnd_toStartOf="@+id/btn_woofcorner"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="spread"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.499"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
         app:srcCompat="@drawable/btn_woofcare" />
 
     <ImageButton
@@ -49,19 +48,18 @@
         android:paddingRight="0dp"
         android:paddingBottom="0dp"
         android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/btn_woofshop"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.93"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.499"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btn_woofcare"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintVertical_chainStyle="spread"
         app:srcCompat="@drawable/btn_woofcorner" />
 
     <ImageButton
         android:id="@+id/btn_woofshop"
         android:layout_width="180dp"
         android:layout_height="180dp"
-        android:layout_marginTop="242dp"
         android:contentDescription="@string/app_top_txtShop"
         android:paddingLeft="0dp"
         android:paddingTop="0dp"
@@ -70,17 +68,15 @@
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.931"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.785"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btn_woofprofile"
+        app:layout_constraintTop_toBottomOf="@+id/btn_woofcorner"
         app:srcCompat="@drawable/btn_accessories" />
 
     <ImageButton
         android:id="@+id/btn_woofprofile"
         android:layout_width="180dp"
         android:layout_height="180dp"
-        android:layout_marginTop="242dp"
         android:contentDescription="@string/app_top_txtProfile"
         android:paddingLeft="0dp"
         android:paddingTop="0dp"
@@ -88,11 +84,20 @@
         android:paddingBottom="0dp"
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btn_woofshop"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_woofcare"
+        app:srcCompat="@drawable/btn_woofprofile" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="409dp"
+        android:layout_height="91dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.068"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.785"
-        app:srcCompat="@drawable/btn_woofprofile" />
+        app:srcCompat="@drawable/logo_top" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

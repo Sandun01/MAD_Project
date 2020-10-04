@@ -2,6 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.mad">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,8 +14,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-        <activity android:name=".admin_account" />
+        <activity android:name=".woofshop_update_cartitem"></activity>
+        <activity android:name=".woofshop_vieworderItems" />
+        <activity android:name=".woofadmin_ordersViewItems" />
+        <activity android:name=".user_forgetpassword" />
+        <activity android:name=".woofadmin_account" />
         <activity android:name=".Registratiion" />
         <activity android:name=".woofadmin_addItem" />
         <activity android:name=".woofadmin_selectedProductView" />
@@ -22,7 +30,6 @@
         <activity android:name=".woofshop_view_product" />
         <activity android:name=".woofshop_show_products" />
         <activity android:name=".woofshop_show_orders" />
-
         <activity android:name=".woofadmin_orders" />
         <activity android:name=".woofcorrner_add_post" />
         <activity android:name=".woofcorner_edit_post" />
@@ -30,20 +37,15 @@
         <activity android:name=".woofcorner_myAds" />
         <activity android:name=".woofcorner_viewad" />
         <activity android:name=".woofcorner_show_ads" />
-
-
-
         <activity android:name=".Home" />
         <activity android:name=".woofcare_show_clinics" />
         <activity android:name=".woofcare_clinc_details" />
-
-
         <activity android:name=".woofadmin_org_addDetails" />
         <activity android:name=".woofadmin_org_update" />
         <activity android:name=".woofadmin_org_details" />
         <activity android:name=".woofadmin_organization_view" />
         <activity android:name=".woofadmin_menu" />
-        <activity android:name=".login_activity" />
+        <activity android:name=".login" />
         <activity android:name=".app_woofprofile_menu" />
         <activity android:name=".MainActivity">
             <intent-filter>

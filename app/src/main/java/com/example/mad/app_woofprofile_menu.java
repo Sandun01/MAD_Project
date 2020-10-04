@@ -20,6 +20,16 @@ public class app_woofprofile_menu extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_app_woofprofile_menu);
 
+        orders = findViewById(R.id.woofprofile_menu_ordersbtn);
+        myAd = findViewById(R.id.woofprofile_menu_adsbtn);
+        profile =findViewById(R.id.woofprofile_menu_profilebtn);
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
         //bottom navigation bar begins
         BottomNavigationView bottomNavigationView = findViewById(R.id.app_bottom_navigationbar);
         //set selected
@@ -56,16 +66,6 @@ public class app_woofprofile_menu extends AppCompatActivity {
         });
         //bottom navigation bar ends
 
-        orders = findViewById(R.id.woofprofile_menu_ordersbtn);
-        myAd = findViewById(R.id.woofprofile_menu_adsbtn);
-        profile =findViewById(R.id.woofprofile_menu_profilebtn);
-
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -81,7 +81,6 @@ public class app_woofprofile_menu extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
 
         myAd.setOnClickListener(new View.OnClickListener() {
             @Override

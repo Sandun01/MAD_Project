@@ -48,7 +48,7 @@
             android:id="@+id/woofprofile_menu_adsbtn"
             android:layout_width="280dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="24dp"
             android:background="@drawable/btn_normal_common"
             android:text="@string/woofadmin_menu_admiprof"
             android:textSize="24sp"
