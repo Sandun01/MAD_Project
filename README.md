@@ -2,7 +2,7 @@
 
 <h2>Mobile application to manage user orders, advertisements, and other related things. (Dog care application)</h2>
 
-IDE – Android Studio
+IDE – Android Studio  </br>
 Technology – Java, Firebase Database
 
 <h3>A mobile application development project about a Dog care application using android studio in java language.</h3>
